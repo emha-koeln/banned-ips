@@ -11,24 +11,6 @@
  * @package banned-ips
  * @author emha.koeln
  */
-<<<<<<< Upstream, based on origin/main
-function bips_deactivate_cronjobs() {
-	
-	// WP Cron
-	// include_once (BIPS_SYS . "/cron.php");
-	// everyminute
-	$timestamp = wp_next_scheduled ( 'bips_hook_everyminute_cronjob' );
-	wp_unschedule_event ( $timestamp, 'bips_hook_everyminute_cronjob' );
-	// tenminutes
-	$timestamp = wp_next_scheduled ( 'bips_hook_tenminutes_cronjob' );
-	wp_unschedule_event ( $timestamp, 'bips_hook_tenminutes_cronjob' );
-	// Hourly
-	$timestamp = wp_next_scheduled ( 'bips_hook_hourly_cronjob' );
-	wp_unschedule_event ( $timestamp, 'bips_hook_hourly_cronjob' );
-	// Daily
-	$timestamp = wp_next_scheduled ( 'bips_hook_daily_cronjob' );
-	wp_unschedule_event ( $timestamp, 'bips_hook_daily_cronjob' );
-=======
 function bannedips_deactivate_cronjobs() {
 	
 	// WP Cron
@@ -67,7 +49,6 @@ function bannedips_deactivate_cronjobs() {
 	// Daily
 	$timestamp = wp_next_scheduled ( 'bannedips_hook_daily_cronjob' );
 	wp_unschedule_event ( $timestamp, 'bannedips_hook_daily_cronjob' );
->>>>>>> b9a6b74 v 0.1.5-alpha
 	
 	// $recepients = 'root@localhost';
 	// $subject = 'Hello from your Bannedips Sys Cron Job: deactivated';

@@ -13,17 +13,19 @@ defined( 'ABSPATH' ) or
 class BannedIPs_Widget extends WP_Widget{
 
 	private $imgsrc = '';
+	private $imgpath = '';
 	//initialise widget values
 	public function __construct(){
 		//set base values for the widget (override parent)
 		parent::__construct(
 				'BannedIPs_Widget_ID',	// ID
-				'BannedIPs Widget', // Name
-				array('description' => 'Show Banned IPs Stats Graphs')
+				'BannedIPs', // Name
+				array('description' => __('Show Banned IPs Stats Graphs','banned-ips'))
 				);
 		
 		$this->imgsrc = str_replace('/cls', '', plugin_dir_url(__FILE__) ) . 'img/f2b_graph_24.png';
-
+		$this->imgsrc = str_replace('/cls', '', plugin_dir_path(__FILE__) ) . 'img/f2b_graph_24.png';
+		
 		add_action( 'widgets_init', function() {
 			register_widget( 'BannedIPs_Widget' );
 			//load_plugin_textdomain( 'banned-ips', false, str_replace('/cls', '', dirname(plugin_basename( __FILE__ ))) . '/languages/');
@@ -50,30 +52,64 @@ class BannedIPs_Widget extends WP_Widget{
 			echo $args['before_title'] . apply_filters( 'widget_title', $defaulttitle ) . $args['after_title'];
 			//_e('Translate me', 'banned-ips');
 		}
-
-		if ( $instance['period'] == 'last week'){
+		
+		echo '<ul><li><div class="">';
+		if ( $instance['period'] == 'last hour'){
+			_e ('since last hour','banned-ips');
+			$this->imgsrc = str_replace('/cls', '', plugin_dir_url(__FILE__) ) . 'img/f2b_graph_1.png';
+			$this->imgpath = str_replace('/cls', '', plugin_dir_path(__FILE__) ) . 'img/f2b_graph_1.png';
+		}elseif ( $instance['period'] == 'last 24 hours'){
+			_e ('since last 24 hour','banned-ips');
+			$this->imgsrc = str_replace('/cls', '', plugin_dir_url(__FILE__) ) . 'img/f2b_graph_24.png';
+			$this->imgpath = str_replace('/cls', '', plugin_dir_path(__FILE__) ) . 'img/f2b_graph_24.png';
+		}elseif ( $instance['period'] == 'last week'){
+			_e ('since last week','banned-ips');
 			$this->imgsrc = str_replace('/cls', '', plugin_dir_url(__FILE__) ) . 'img/f2b_graph_week.png';
+			$this->imgpath = str_replace('/cls', '', plugin_dir_path(__FILE__) ) . 'img/f2b_graph_week.png';
 		}elseif ( $instance['period'] == 'last month'){
+			_e ('since last month','banned-ips');
 			$this->imgsrc = str_replace('/cls', '', plugin_dir_url(__FILE__) ) . 'img/f2b_graph_month.png';
+			$this->imgpath = str_replace('/cls', '', plugin_dir_path(__FILE__) ) . 'img/f2b_graph_month.png';
 		}elseif ( $instance['period'] == 'last year'){
+			_e ('since last year','banned-ips');
 			$this->imgsrc = str_replace('/cls', '', plugin_dir_url(__FILE__) ) . 'img/f2b_graph_year.png';
+			$this->imgpath = str_replace('/cls', '', plugin_dir_path(__FILE__) ) . 'img/f2b_graph_year.png';
 		}elseif ( $instance['period'] == 'all'){
+			_e ('all','banned-ips');
 			$this->imgsrc = str_replace('/cls', '', plugin_dir_url(__FILE__) ) . 'img/f2b_graph_all.png';
-		}
-		
-		
-		echo '<div class="image">';
-		if (! empty($instance['image'])) {
-			//echo( str_replace('cls', '', plugin_dir_url(__FILE__) ) );
-			echo ('<img src="' . $this->imgsrc . '" alt="Selected Banned IPs Stats">');
-			//echo __( $instance['image'], 'banned_ips' );
-			//_e('Translate me', 'banned-ips');
-		} else{
-			//echo __('No Image selected', 'banned_ips');
-			echo ('<img src="' . $this->imgsrc . '" alt="Current Banned IPs Stats">');
-			//_e('Translate me', 'banned-ips');
+			$this->imgpath = str_replace('/cls', '', plugin_dir_path(__FILE__) ) . 'img/f2b_graph_all.png';
 		}
 		echo '</div>';
+		
+		echo '<div class="image">';
+		//echo '<div>'; 
+		if (! empty($instance['image'])) {
+			
+			echo ('<img src="' . $instance['image'] . '" alt="Banned IPs Stats">');
+
+		} else{
+			
+			if(file_exists($this->imgpath)){			
+				echo '<br><a href="' . $this->imgsrc . '" target="_blank">';
+				echo ('<img src="' . $this->imgsrc . '" alt="Current Banned IPs Stats">');
+				echo '</a>';
+			}else{
+				
+				global $wp;
+				$current_url = home_url(add_query_arg(array(),$wp->request));
+				echo '<br>';
+				_e ('...waiting for Graph to be ceated', 'banned-ips');
+				//echo '<br>(' . $this->imgpath . ')';
+				echo '<br><a href="' . $current_url . '">'; 
+				_e ('please reload page', 'banned-ips');
+				echo '</a>';
+				
+			}
+
+		}
+		
+		echo '</div></li></ul>';
+		//echo '</div>';
 		
 		//_e('Translate me', 'banned-ips');
 		
@@ -100,7 +136,10 @@ class BannedIPs_Widget extends WP_Widget{
             	//echo __('last week', 'banned-ips');?>
             <label for="<?php echo $this->get_field_id('period'); ?>"><?php _e ('Select Period','banned-ips')?></label>
             <select class="widefat" name="<?php echo $this->get_field_name('period'); ?>" id="<?php echo $this->get_field_id('period'); ?>" value="<?php echo $period; ?>">
-                <option value="last 24 hours" <?php if($period == '24 hours'){ echo 'selected';}?>>
+                <option value="last hour" <?php if($period == 'last hour'){ echo 'selected';}?>>
+                	<?php _e ('last hour','banned-ips') ?>
+                </option>
+                <option value="last 24 hours" <?php if($period == 'last 24 hours'){ echo 'selected';}?>>
                 	<?php _e ('last 24 hours','banned-ips') ?>
                 </option>
                 <option value="last week" <?php if($period == 'last week'){ echo 'selected';}?>>

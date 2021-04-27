@@ -36,58 +36,6 @@ function cron_add_tenminutes($schedules) {
 }
 
 // Everyminute
-<<<<<<< Upstream, based on origin/main
-add_action ( 'bips_hook_everyminute_cronjob', 'bips_everyminute_cronjob' );
-function bips_everyminute_cronjob() {
-	// test
-	// $recepients = 'root@localhost';
-	// $subject = 'Hello from your Everyminute Cron Job';
-	// $message = 'This is a test mail sent by bannedips automatically as per your schedule.';
-	// let's send it
-	// mail ( $recepients, $subject, $message );
-	include_once (BIPS_ETC . "/cron/everyminute/f2b_stats.php");
-	
-	// TODO automaticly read folder
-	bips_cron_f2b_stats2db ();
-}
-
-// Tenminutes
-add_action ( 'bips_hook_tenminutes_cronjob', 'bips_tenminutes_cronjob' );
-function bips_tenminutes_cronjob() {
-	// test
-	// $recepients = 'root@localhost';
-	// $subject = 'Hello from your tenminutes Cron Job';
-	// $message = 'This is a test mail sent by bannedips automatically as per your schedule.';
-	// let's send it
-	// mail ( $recepients, $subject, $message );
-	include_once (BIPS_ETC . "/cron/tenminutes/ab_stats.php");
-	include_once (BIPS_ETC . "/cron/tenminutes/bl_stats.php");
-	
-	// TODO automaticly read folder
-	bips_cron_ab_stats2db ();
-	bips_cron_bl_stats2db ();
-}
-
-// Hourly
-add_action ( 'bips_hook_hourly_cronjob', 'bips_hourly_cronjob' );
-function bips_hourly_cronjob() {
-	// test
-	// $recepients = 'root@localhost';
-	// $subject = 'Hello from your Hourly Cron Job';
-	// $message = 'This is a test mail sent by bannedips automatically as per your schedule.';
-	// let's send it
-	// mail ( $recepients, $subject, $message );
-	
-	// include_once (BIPS_ETC . "/cron/hourly");
-	
-	// TODO automaticly read folder
-	// bips_cron_ab_stats2db();
-}
-
-// Daily
-add_action ( 'bips_hook_daily_cronjob', 'bips_daily_cronjob' );
-function bips_daily_cronjob() {
-=======
 add_action ( 'bannedips_hook_everyminute_cronjob', 'bannedips_everyminute_cronjob' );
 function bannedips_everyminute_cronjob() {
 	// test
@@ -139,7 +87,6 @@ function bannedips_hourly_cronjob() {
 // Daily
 add_action ( 'bannedips_hook_daily_cronjob', 'bannedips_daily_cronjob' );
 function bannedips_daily_cronjob() {
->>>>>>> b9a6b74 v 0.1.5-alpha
 	// test
 	// $recepients = 'root@localhost';
 	// $subject = 'Hello from your Daily Cron Job';

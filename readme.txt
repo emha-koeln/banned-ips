@@ -4,7 +4,8 @@ Contributors: emha.koeln
 Stable tag: 0.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
-Requires php: 7.2+
+Requires at least: 5.7
+Requires PHP: 7.2+
 Requires php-sqlite3
 Requires php-curl
 Requires php-gd
@@ -83,15 +84,10 @@ Shortcode [bannedips] and Widget for showing the current blocked IPs by fail2ban
 	
 = 0.1.5.alpha =
     Bugs:       Installation in 'banned-ips' plugin folder only works with 'banned-ips.zip'
-<<<<<<< Upstream, based on origin/main
- 
-    TODO:       Cron, Use statistics from own DB, Graph Colors, blockist per user stats
-=======
                 Translation in Widget
  
     TODO:       Cron, Use statistics from own DB, Graph Colors, blocklist per user stats,
                 Widget
->>>>>>> b9a6b74 v 0.1.5-alpha
     NEW:        Options: i18n, Use Cron, Show Stats Graph
                 With Cron we use our own stats-db for abuseipdb and blocklist  
     

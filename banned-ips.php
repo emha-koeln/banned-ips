@@ -3,7 +3,9 @@
  * Plugin Name: Banned IPs
  * Plugin URI: https://emha.koeln/banned-ips-plugin
  * Description: Shortcode [bannedips] for showing the current blocked IPs by fail2ban.
- * Version: 0.1.5.alpha11
+ * Version: 0.1.5.alpha12
+ * Requires at least: 5.7
+ * Requires PHP: 7.2+
  * License: GPLv2 or later
  * Text Domain: banned-ips
  * Domain Path: /languages
@@ -57,29 +59,6 @@ include_once (BIPS_SYS . "/cron.php");
 // WP Plugin activation
 register_activation_hook ( __FILE__, 'bannedips_register_activation' );
 function bannedips_register_activation() {
-<<<<<<< Upstream, based on origin/main
-	bips_activate_create_db ();
-	// bips_activate_cronjobs ();
-}
-
-// WP Plugin deactivation
-register_deactivation_hook ( __FILE__, 'bannedips_register_deactivation' );
-function bannedips_register_deactivation() {
-	bips_deactivate_cronjobs ();
-}
-
-// My Text Domain
-add_filter( 'load_textdomain_mofile', 'bannedips_load_my_own_textdomain', 10, 2 );
-function bannedips_load_my_own_textdomain( $mofile, $domain ) {
-	if ( 'banned-ips' === $domain && false !== strpos( $mofile, WP_LANG_DIR . '/plugins/' ) ) {
-		$locale = apply_filters( 'plugin_locale', determine_locale(), $domain );
-		$mofile = WP_PLUGIN_DIR . '/' . dirname( plugin_basename( __FILE__ ) ) . '/languages/' . $domain . '-' . $locale . '.mo';
-	}
-	return $mofile;
-}
-
-
-=======
 	bannedips_activate_create_db ();
 	bannedips_activate_cronjobs (); // ?
 }
@@ -109,7 +88,6 @@ function bannedips_localization_init(){
 // Widget
 include_once (BIPS_CLS . '/BannedIPs_Widget.php');
 $bannedips_widget = new BannedIPs_Widget();
->>>>>>> b9a6b74 v 0.1.5-alpha
 
 // WP Shortcode
 if (is_admin ()) {

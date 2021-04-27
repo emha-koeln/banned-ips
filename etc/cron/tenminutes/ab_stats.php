@@ -12,11 +12,7 @@
  * @author emha.koeln
  */
 include BIPS_CLS . "/ConnectAbuseIPDB.php";
-<<<<<<< Upstream, based on origin/main
-function bips_cron_ab_stats2db() {
-=======
 function bannedips_cron_ab_stats2db() {
->>>>>>> b9a6b74 v 0.1.5-alpha
 	global $wpdb;
 	$options = get_option ( 'bannedips', array () );
 	

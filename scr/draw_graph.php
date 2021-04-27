@@ -23,7 +23,11 @@ if (! isset ( $options ['graph_time'] )) {
 
 // time period
 $searchtime = "*";
-if ($options ['graph_time'] == "last 24 hours") {
+if ($options ['graph_time'] == "last hour") {
+	$d = strtotime ( "-1 hours" );
+	$searchtime = date ( "Y-m-d H:i:s", $d );
+	// $results = $wpdb->get_results ( 'SELECT * FROM ' . $table . ' WHERE time >= '. );
+} elseif ($options ['graph_time'] == "last 24 hours") {
 	$d = strtotime ( "-24 hours" );
 	$searchtime = date ( "Y-m-d H:i:s", $d );
 	// $results = $wpdb->get_results ( 'SELECT * FROM ' . $table . ' WHERE time >= '. );
@@ -57,21 +61,26 @@ $mapfile = BIPS_IMG . "/CoordImg.map";
 // $im2 = new CoordImg ( 600, 400, $aCoordImg, 0, 0 );
 $img = new CoordImg ( $options ['graph_width'], $options ['graph_height'], $aCoordImg );
 
-if ($options ['graph_color_bg'] == "White") {
-	$img->set_BgColor ( 255, 255, 255 );
-} elseif ($options ['graph_color_bg'] == "Grey") {
-	$img->set_BgColor ( 224, 224, 224 );
-} elseif ($options ['graph_color_bg'] == "Black") {
-	$img->set_BgColor ( 0, 0, 0 );
-}
 
-if ($options ['graph_color_graph'] == "Red") {
-	$img->set_GraphColor ( 255, 0, 0 );
-} elseif ($options ['graph_color_graph'] == "Green") {
-	$img->set_GraphColor ( 0, 255, 0 );
-} elseif ($options ['graph_color_graph'] == "Blue") {
-	$img->set_GraphColor ( 0, 0, 255 );
-}
+//if ($options ['graph_color_bg'] == "White") {
+// 	$img->set_BgColor ( 255, 255, 255 );
+// } elseif ($options ['graph_color_bg'] == "Grey") {
+// 	$img->set_BgColor ( 224, 224, 224 );
+// } elseif ($options ['graph_color_bg'] == "Black") {
+// 	$img->set_BgColor ( 0, 0, 0 );
+// }
+list($r, $g, $b) = sscanf($options ['graph_color_bg_hex'], "#%02x%02x%02x");
+$img->set_BgColor ( $r, $g, $b );
+
+// if ($options ['graph_color_graph'] == "Red") {
+// 	$img->set_GraphColor ( 255, 0, 0 );
+// } elseif ($options ['graph_color_graph'] == "Green") {
+// 	$img->set_GraphColor ( 0, 255, 0 );
+// } elseif ($options ['graph_color_graph'] == "Blue") {
+// 	$img->set_GraphColor ( 28, 124, 124 );
+// }
+list($r, $g, $b) = sscanf($options ['graph_color_graph_hex'], "#%02x%02x%02x");
+$img->set_GraphColor ( $r, $g, $b );
 
 // $img->set_Debug(TRUE);
 
