@@ -1,0 +1,187 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Banned IPs\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-04-24 09:05+0000\n"
+"PO-Revision-Date: 2021-04-25 17:32+0000\n"
+"Last-Translator: \n"
+"Language-Team: German\n"
+"Language: de_DE\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Loco https://localise.biz/\n"
+"X-Loco-Version: 2.5.2; wp-5.7.1\n"
+"X-Domain: banned-ips"
+
+#: admin/options.php:213
+msgid "AbuseIPDB Account"
+msgstr "AbuseIPDB Account"
+
+#: admin/options.php:225
+msgid "AbuseIPDB Account ID"
+msgstr "AbuseIPDB Account ID"
+
+#: admin/options.php:173
+msgid "AbuseIPDB.com"
+msgstr "AbuseIPDB.com"
+
+#: admin/options.php:196
+msgid "AbuseIPDB.com Stats"
+msgstr "AbuseIPDB.com Statistiken"
+
+#: admin/options.php:289
+msgid "Activate Banned IPs Cron"
+msgstr "Aktiviere Banned IPs Cron"
+
+#: admin/options.php:293
+msgid "Activate Banned IPs Cron Jobs"
+msgstr "Aktiviere Banned IPs Cron Jobs"
+
+#: admin/options.php:387
+msgid "Background Color"
+msgstr "Hintergrundfarbe"
+
+#. Name of the plugin
+msgid "Banned IPs"
+msgstr "Banned IPs"
+
+#: admin/options.php:242
+msgid "Blocklist Account"
+msgstr "Blocklist Account"
+
+#: admin/options.php:268
+msgid "Blocklist Account APIKEY"
+msgstr "Blocklist Account APIKEY"
+
+#: admin/options.php:254
+msgid "Blocklist Account ServerID"
+msgstr "Blocklist Account ServerID"
+
+#: admin/options.php:181
+msgid "BlockList.de"
+msgstr "BlockList.de"
+
+#: admin/options.php:203
+msgid "BlockList.de Stats"
+msgstr "BlockList.de Statistiken"
+
+#: admin/options.php:100
+msgid "Configuration"
+msgstr "Konfiguration"
+
+#: admin/options.php:296
+msgid "Cron Method"
+msgstr "Cron Methode"
+
+#: admin/options.php:322
+msgid "Cron Method Activation"
+msgstr "Cron Methode aktivieren"
+
+#. Author of the plugin
+msgid "emha.koeln"
+msgstr "emha.koeln"
+
+#: admin/options.php:112
+msgid "Fail2Ban Database"
+msgstr "Fail2Ban Datenbank"
+
+#: admin/options.php:119
+msgid "Fail2Ban DB"
+msgstr "Fail2Ban Datenbank"
+
+#: admin/options.php:410
+msgid "Graph Color"
+msgstr "Graph Farbe"
+
+#: admin/options.php:461
+msgid "Graph Size"
+msgstr "Größe der Grafik"
+
+#: admin/options.php:423
+msgid "Graph Time Period"
+msgstr "Zeitraum für Grafik"
+
+#: admin/options.php:487
+msgid "Hight"
+msgstr "Höhe"
+
+#. Author URI of the plugin
+msgid "https://emha.koeln"
+msgstr "https://emha.koeln"
+
+#. URI of the plugin
+msgid "https://emha.koeln/banned-ips-plugin"
+msgstr "https://emha.koeln/banned-ips-plugin"
+
+#: admin/options.php:499
+msgid "Save"
+msgstr "Speichern"
+
+#: admin/options.php:365
+msgid "Select Colors"
+msgstr "Farbauswahl"
+
+#: admin/options.php:309
+msgid "Select Cron Method"
+msgstr "Wähle Cron Methode"
+
+#: admin/options.php:131
+msgid "Select Fail2Ban DB"
+msgstr "Wähle fail2ban Datenbank"
+
+#: admin/options.php:158
+msgid "Select German"
+msgstr "Deutsch"
+
+#: admin/options.php:154
+msgid "Select Output Language"
+msgstr "Ausgabesprache"
+
+#. Description of the plugin
+msgid "Shortcode [bannedips] for showing the current blocked IPs by fail2ban."
+msgstr ""
+"Shortcode [bannedips] zum Anzeigen der durch fail2ban geblockten IP-Adressen."
+
+#: admin/options.php:192
+msgid "Show AbuseIPDB.com Stats"
+msgstr "Zeige AbuseIPDB.com Statistiken"
+
+#: admin/options.php:199
+msgid "Show BlockList.de Stats"
+msgstr "Zeige BlockList.de Statistiken "
+
+#: admin/options.php:348
+msgid "Show Graph"
+msgstr "Grafik anzeigen"
+
+#: admin/options.php:169
+msgid "Show Links to AbuseIPDB.com"
+msgstr "Zeige Links zu AbuseIPDB.com"
+
+#: admin/options.php:176
+msgid "Show Links to BlockList.de"
+msgstr " Zeige Links zu BlockList.de"
+
+#: admin/options.php:338
+msgid "Show Stats Graph"
+msgstr "Statistik Grafik anzeigen"
+
+#: admin/options.php:452
+msgid "Time period"
+msgstr "Zeitraum"
+
+#: admin/options.php:325
+msgid "To activate do the follwing..."
+msgstr "Um Cron zu aktivieren, führen Sie folgendes aus:"
+
+#: admin/options.php:136
+msgid "To change group and get read access run:"
+msgstr ""
+"Um die Gruppe zu ändern und Leserechte zu bekommen führen Sie folgende "
+"Befehle aus"
+
+#: admin/options.php:473
+msgid "Width"
+msgstr "Breite"
