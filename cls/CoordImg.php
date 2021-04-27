@@ -299,9 +299,15 @@ class CoordImg {
 		}
 	}
 	private function _label_CoordsX_Date($x, $time, $bans) {
+<<<<<<< Upstream, based on origin/main
 		ImageString ( $this->vImage, $this->iCoordsFont, $this->iCoordsX0 + $x - 15, $this->iCoordsY0 + 7, substr ( $time, 0, 10 ), $this->vAxisColor );
 		ImageString ( $this->vImage, $this->iCoordsFont, $this->iCoordsX0 + $x - 15, $this->iCoordsY0 + 17, substr ( $time, - 8 ), $this->vAxisColor );
 		ImageString ( $this->vImage, $this->iCoordsFont, $this->iCoordsX0 + $x - 15, $this->iCoordsY0 + 27, "Bans: " . $bans, $this->vAxisColor );
+=======
+		ImageString ( $this->vImage, $this->iCoordsFont, $this->iCoordsX0 + $x - 18, $this->iCoordsY0 + 7, substr ( $time, 0, 10 ), $this->vAxisColor );
+		ImageString ( $this->vImage, $this->iCoordsFont, $this->iCoordsX0 + $x - 18, $this->iCoordsY0 + 17, substr ( $time, - 8 ), $this->vAxisColor );
+		ImageString ( $this->vImage, $this->iCoordsFont, $this->iCoordsX0 + $x - 18, $this->iCoordsY0 + 27, "Bans: " . $bans, $this->vAxisColor );
+>>>>>>> b9a6b74 v 0.1.5-alpha
 		
 		imageline ( $this->vImage, $this->iCoordsX0 + $x, $this->iCoordsY0, $this->iCoordsX0 + $x, $this->iCoordsY0 + 5, $this->vAxisColor );
 	}

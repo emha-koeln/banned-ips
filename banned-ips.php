@@ -57,6 +57,7 @@ include_once (BIPS_SYS . "/cron.php");
 // WP Plugin activation
 register_activation_hook ( __FILE__, 'bannedips_register_activation' );
 function bannedips_register_activation() {
+<<<<<<< Upstream, based on origin/main
 	bips_activate_create_db ();
 	// bips_activate_cronjobs ();
 }
@@ -78,6 +79,37 @@ function bannedips_load_my_own_textdomain( $mofile, $domain ) {
 }
 
 
+=======
+	bannedips_activate_create_db ();
+	bannedips_activate_cronjobs (); // ?
+}
+
+// WP Plugin deactivation
+register_deactivation_hook ( __FILE__, 'bannedips_register_deactivation' );
+function bannedips_register_deactivation() {
+	bannedips_deactivate_cronjobs ();
+}
+
+// My Text Domain
+/*
+add_filter( 'load_textdomain_mofile', 'bannedips_load_my_own_textdomain', 10, 2 );
+function bannedips_load_my_own_textdomain( $mofile, $domain ) {
+	if ( 'banned-ips' === $domain && false !== strpos( $mofile, WP_LANG_DIR . '/plugins/' ) ) {
+		$locale = apply_filters( 'plugin_locale', determine_locale(), $domain );
+		$mofile = WP_PLUGIN_DIR . '/' . dirname( plugin_basename( __FILE__ ) ) . '/languages/' . $domain . '-' . $locale . '.mo';
+	}
+	return $mofile;
+}
+*/
+add_action( 'plugins_loaded', 'bannedips_localization_init');
+function bannedips_localization_init(){
+		load_plugin_textdomain( 'banned-ips', false, dirname(plugin_basename( __FILE__ )) . '/languages/');
+}
+
+// Widget
+include_once (BIPS_CLS . '/BannedIPs_Widget.php');
+$bannedips_widget = new BannedIPs_Widget();
+>>>>>>> b9a6b74 v 0.1.5-alpha
 
 // WP Shortcode
 if (is_admin ()) {

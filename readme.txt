@@ -83,8 +83,15 @@ Shortcode [bannedips] and Widget for showing the current blocked IPs by fail2ban
 	
 = 0.1.5.alpha =
     Bugs:       Installation in 'banned-ips' plugin folder only works with 'banned-ips.zip'
+<<<<<<< Upstream, based on origin/main
  
     TODO:       Cron, Use statistics from own DB, Graph Colors, blockist per user stats
+=======
+                Translation in Widget
+ 
+    TODO:       Cron, Use statistics from own DB, Graph Colors, blocklist per user stats,
+                Widget
+>>>>>>> b9a6b74 v 0.1.5-alpha
     NEW:        Options: i18n, Use Cron, Show Stats Graph
                 With Cron we use our own stats-db for abuseipdb and blocklist  
     
