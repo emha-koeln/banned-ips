@@ -11,11 +11,15 @@
  * @package banned-ips
  * @author emha.koeln
  */
+<<<<<<< HEAD
+function bannedips_cron_f2b_stats2db() {
+=======
 <<<<<<< Upstream, based on origin/main
 function bips_cron_f2b_stats2db() {
 =======
 function bannedips_cron_f2b_stats2db() {
 >>>>>>> b9a6b74 v 0.1.5-alpha
+>>>>>>> refs/remotes/origin/main
 	global $wpdb;
 	$options = get_option ( 'bannedips', array () );
 	

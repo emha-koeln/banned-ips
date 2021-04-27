@@ -28,9 +28,9 @@ function _draw_image($imgfile, $period){
 	
 	$table = $wpdb->prefix . "bannedips_f2bstats";
 	
-	// set last 24 hours
-	$d = strtotime ( "-24 hours" );
-	$searchtime = date ( "Y-m-d H:i:s", $period );
+	// set period
+	$d = strtotime ( $period );
+	$searchtime = date ( "Y-m-d H:i:s", $d );
 	
 	// SQL results
 	$results = $wpdb->get_results ( 'SELECT * FROM ' . $table . ' WHERE time >= \'' . $searchtime . '\'' );
