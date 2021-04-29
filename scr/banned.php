@@ -120,13 +120,18 @@ if ($myLANG == "de") {
 $sql = "SELECT COUNT(*) as count FROM bips";
 $ret = $db->query ( $sql );
 $row = $ret->fetchArray ( SQLITE3_ASSOC );
+
+echo '<div>';
 echo $aLang ["BadIPS"] . " " . $row ['count'] . " IPs<br>";
+echo '</div>';
 
 // COUNT
 $sql = "SELECT COUNT(*) as count FROM bips WHERE 1 = 1 AND (timeofban + bantime > " . time () . " OR bantime <= -1)";
 $ret = $db->query ( $sql );
 $row = $ret->fetchArray ( SQLITE3_ASSOC );
+echo '<div>';
 echo $aLang ["CurrentlyBanned"] . " " . $row ['count'] . " IPs<br>";
+echo '</div>';
 
 // Ordered by
 if (isset ( $_GET ["orderby"] )) {
@@ -172,14 +177,19 @@ if (isset ( $_GET ["scby"] )) {
 // if (isset ( $_GET ["showTargetSite"] )) {
 if ($_GET ["showTargetSite"] == "Yes") {
 	$myShowTargetURL = "Yes";
+	echo '<div>';
 	echo $aLang ["LinkWarning"] . "<br>";
 	// echo "<a href=\"" . $myURL . "/banned-ips/?orderby=". $_GET["orderby"] . "&scby=". $_GET["scby"]. "&showTargetSite=\">" . $aLang["HideBannedURL"] . "</a>";
+	
 	echo "<a href=\"?orderby=" . $_GET ["orderby"] . "&scby=" . $_GET ["scby"] . "&showTargetSite=\">" . $aLang ["HideBannedURL"] . "</a>";
+	echo '</div>';
 } // }
 else {
 	$myShowTargetURL = "";
 	// echo "<a href=\"" . $myURL . "/banned-ips/?orderby=". $_GET["orderby"] . "&scby=". $_GET["scby"]. "&showTargetSite=Yes\">" . $aLang["ShowBannedURL"]. "</a>";
+	echo '<div>';
 	echo "<a href=\"?orderby=" . $_GET ["orderby"] . "&scby=" . $_GET ["scby"] . "&showTargetSite=Yes\">" . $aLang ["ShowBannedURL"] . "</a>";
+	echo '</div>';
 }
 
 // sql statement

@@ -37,6 +37,8 @@ Shortcode [bannedips] and Widget for showing the current blocked IPs by fail2ban
    https://sourceforge.net/projects/banned-ips/
    https://emha.koeln/banned-ips-plugin/
    
+   https://github.com/emha-koeln/banned-ips
+   
 == Frequently Asked Questions ==
 
     No questions have been asked.
@@ -85,6 +87,7 @@ Shortcode [bannedips] and Widget for showing the current blocked IPs by fail2ban
 = 0.1.5.alpha =
     Bugs:       Installation in 'banned-ips' plugin folder only works with 'banned-ips.zip'
                 Translation in Widget
+                Doesn't work as Frontpage
  
     TODO:       Cron, Use statistics from own DB, Graph Colors, blocklist per user stats,
                 Widget

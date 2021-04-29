@@ -432,7 +432,6 @@ function bannedips_options_f2bdb()
 	_e ('Fail2Ban Database', 'banned-ips');
 	echo '	</b>';
 	echo '	</h2></th>';
-	//bannedips_options_savebutton_td();
 	echo '</tr>';
 	
 	echo '<tr style="background-color:#FFFFFF;">';
@@ -440,29 +439,47 @@ function bannedips_options_f2bdb()
 	_e('Fail2Ban DB', 'banned-ips');
 	echo '	</th>';
 	echo '	<td>';
-	echo '	<input type="text" name="options[db]"';
+	echo '	<input type="text" size="24" name="options[db]"';
 	echo '		value="';
-	if(!$options['db']==""){
+	if( file_exists ( $options ['db'] )){
 		echo $options['db'];
 	}else{
-		echo '';
+	    echo $options['db'];
+		//_e( ': not found', 'banned-ips');
+		//$options['db'] = 'WARNING: fail2ban database not found';
 	};
 	echo '">';
 	echo '<p class="description">';
 	_e('Select Fail2Ban DB', 'banned-ips');
-	echo "<br>" . (isset($options['db']) ? ('' . $options['db']) : ('autodetect: <br>' . $myDB)) . "<br>";
+	//echo strpos($options['db'], 'WARNING');
+	echo "<br>";
+	if ( ! file_exists ( $options ['db'] )){
+	   // _e ('try:','banned-ips'); 
+       // echo '<br>' . $options ['db_autodetect'];
+	}else{
+	    //echo $options['db'] . "<br>";
+	    echo "<br>";
+	}
 	echo '</p></td>';
 	
 	echo '	<th colspan=1>';
 	_e('Please note' , 'banned-ips');
 	echo '</th>';
 	echo '	<td colspan=3>';
-	_e('To change group and get read access run:' , 'banned-ips');
+	if ( file_exists ( $options ['db'] )){
+	   _e('To change group and get read access run:' , 'banned-ips');
+	}else{
+	    echo $options['db'];
+	    _e( ': not found', 'banned-ips');
+	}
 	echo '		<p class="description">';
-	
-	echo ((PHP_OS == "Linux") ? ('$ sudo chown :www-data ' . $options['db'] .'<br> $ sudo chmod g=+r ' . $options['db']) : ('$ sudo chown :www ' . $options['db'] .'<br> $ sudo chmod g=+r ' . $options['db'])) ."<br>";
-	
-	echo '        </p>';
+	if ( file_exists ( $options ['db'] )){
+	   echo ((PHP_OS == "Linux") ? ('$ sudo chown :www-data ' . $options['db'] .'<br> $ sudo chmod g=+r ' . $options['db']) : ('$ sudo chown :www ' . $options['db'] .'<br> $ sudo chmod g=+r ' . $options['db'])) ."<br>";
+	}else{
+	    _e ('try:','banned-ips');
+	    echo '<br>' . $options ['db_autodetect'];
+	}
+	echo '</p>';
 	echo '	</td>';
 	
 	echo '</tr>';

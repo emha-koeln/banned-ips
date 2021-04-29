@@ -98,12 +98,15 @@ if ( $options ['graph_color_graph'] == "Black") {
 // Graph Siue
 if (! isset ( $options ['graph_width'] )) {
 	$options ['graph_width'] = "400";
+	update_option ( 'bannedips', $options );
 }
 if (! isset ( $options ['graph_height'] )) {
 	$options ['graph_height'] = "200";
+	update_option ( 'bannedips', $options );
 }
 if (! isset ( $options ['graph_time'] )) {
 	$options ['graph_time'] = "last seven days";
+	update_option ( 'bannedips', $options );
 }
 
 // Accounts
@@ -118,23 +121,33 @@ if (! isset ( $options ['bl_account_apikey'] )) {
 }
 
 // default fail2ban DB, 'autodetect'/select DB
-$myDB = "";
-if (! isset ( $options ['db'] ) || $options ['db'] == "") {
+if ( ! isset ( $options ['db'] ) 
+        || $options ['db'] == ""
+        || ! file_exists ( $options ['db'] )){
 	if (PHP_OS == "Linux") {
-		$myDB = "/var/lib/fail2ban/fail2ban.sqlite3";
-		if (! file_exists ( $myDB )) {
-			$myDB = "Error: autodetect failed; Fail2Ban DB is not set!";
+	    $options ['db_autodetect'] = "/var/lib/fail2ban/fail2ban.sqlite3";
+	    if (! file_exists ( $options ['db_autodetect'] )) {
+	        $options ['db_autodetect'] = "Error: autodetect failed; Fail2Ban DB is not set!";
 		}
 	} elseif (PHP_OS == "FreeBSD") {
-		$myDB = "/var/db/fail2ban/fail2ban.sqlite3";
-		if (! file_exists ( $myDB )) {
-			$myDB = "Error: autodetect failed; Fail2Ban DB is not set!";
+	    $options ['db_autodetect'] = "/var/db/fail2ban/fail2ban.sqlite3";
+	    if (! file_exists ( $options ['db_autodetect'] )) {
+	        $options ['db_autodetect'] = "Error: autodetect failed; Fail2Ban DB is not set!";
 		}
 	} else {
-		$myDB = "Error: autodetect failed; Fail2Ban DB is not set!";
+	    $options ['db_autodetect'] = "Error: autodetect failed; Fail2Ban DB is not set!";
 	}
-	$options ['db'] = $myDB;
+	if ( ! isset ( $options ['db'] )
+	    || $options ['db'] == ""){
+	   $options ['db'] = $options ['db_autodetect'];
+	   update_option ( 'bannedips', $options );
+	}else{
+	   //$options ['db'] = $options ['db_autodetect'];
+	   update_option ( 'bannedips', $options );
+	}
 }
+
+
 
 // css
 echo "<style>";
@@ -147,7 +160,7 @@ echo '<div class="wrap">';
 	echo '<h2><b>Banned IPs</b> ';
 	_e ( 'Configuration', 'banned-ips' );
 	echo '</h2>';
-
+	
 	echo '<form action="" method="post">';
         wp_nonce_field('save');
         

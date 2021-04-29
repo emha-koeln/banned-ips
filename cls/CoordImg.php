@@ -156,6 +156,15 @@ class CoordImg {
 		$this->vGraphColor_b = $Blue;
 	}
 	
+	public function set_transparency(){
+	    //$this->vImage;
+	    
+	    imagesavealpha( $this->vImage, true);
+	    $color = imagecolorallocatealpha( $this->vImage, 0, 0, 0, 127);
+	    imagefill( $this->vImage, 0, 0, $color);
+	    //imagepng($img, 'test.png');
+	}
+	
 	/**
 	 *
 	 * @param bool $Debug

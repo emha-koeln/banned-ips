@@ -13,7 +13,15 @@ defined( 'ABSPATH' ) or
 class BannedIPs_Widget extends WP_Widget{
 
 	private $imgsrc = '';
-	private $imgpath = '';
+	private $imgpath = ''; ///???
+
+	public $args = array(
+	    'before_title'  => '<h4 class="widgettitle">',
+	    'after_title'   => '</h4>',
+	    'before_widget' => '<div class="widget-wrap">',
+	    'after_widget'  => '</div></div>'
+	);
+	
 	//initialise widget values
 	public function __construct(){
 		//set base values for the widget (override parent)
@@ -23,8 +31,8 @@ class BannedIPs_Widget extends WP_Widget{
 				array('description' => __('Show Banned IPs Stats Graphs','banned-ips'))
 				);
 		
-		$this->imgsrc = str_replace('/cls', '', plugin_dir_url(__FILE__) ) . 'img/f2b_graph_24.png';
-		$this->imgsrc = str_replace('/cls', '', plugin_dir_path(__FILE__) ) . 'img/f2b_graph_24.png';
+		//$this->imgsrc = str_replace('/cls', '', plugin_dir_url(__FILE__) ) . 'img/f2b_graph_24.png';
+		//$this->imgpath = str_replace('/cls', '', plugin_dir_path(__FILE__) ) . 'img/f2b_graph_24.png';
 		
 		add_action( 'widgets_init', function() {
 			register_widget( 'BannedIPs_Widget' );
@@ -32,16 +40,11 @@ class BannedIPs_Widget extends WP_Widget{
 		});
 		
 	}
-
-	public $args = array(
-			'before_title'  => '<h4 class="widgettitle">',
-			'after_title'   => '</h4>',
-			'before_widget' => '<div class="widget-wrap">',
-			'after_widget'  => '</div></div>'
-	);
 	
 	public function widget( $args, $instance ) {
 		
+	    global $bips;
+	    
 		echo $args['before_widget'];
 		
 		if ( ! empty( $instance['title'] ) ) {
@@ -54,31 +57,44 @@ class BannedIPs_Widget extends WP_Widget{
 		}
 		
 		echo '<ul><li><div class="">';
+		
+		
+		$imgname_pre = '';
+		$imagename = 'f2b_graph';
+		$imgname_post = '1';
+		$imagetype = 'png';
+		
+		if ($instance['transparency'] == 'checked' ){
+		      $imgname_pre   = 't_'; 
+		}
+		
 		if ( $instance['period'] == 'last hour'){
 			_e ('since last hour','banned-ips');
-			$this->imgsrc = str_replace('/cls', '', plugin_dir_url(__FILE__) ) . 'img/f2b_graph_1.png';
-			$this->imgpath = str_replace('/cls', '', plugin_dir_path(__FILE__) ) . 'img/f2b_graph_1.png';
+			$imgname_post = '1';
 		}elseif ( $instance['period'] == 'last 24 hours'){
 			_e ('since last 24 hour','banned-ips');
-			$this->imgsrc = str_replace('/cls', '', plugin_dir_url(__FILE__) ) . 'img/f2b_graph_24.png';
-			$this->imgpath = str_replace('/cls', '', plugin_dir_path(__FILE__) ) . 'img/f2b_graph_24.png';
+			$imgname_post = '24';
 		}elseif ( $instance['period'] == 'last week'){
 			_e ('since last week','banned-ips');
-			$this->imgsrc = str_replace('/cls', '', plugin_dir_url(__FILE__) ) . 'img/f2b_graph_week.png';
-			$this->imgpath = str_replace('/cls', '', plugin_dir_path(__FILE__) ) . 'img/f2b_graph_week.png';
+			$imgname_post = 'week';
 		}elseif ( $instance['period'] == 'last month'){
 			_e ('since last month','banned-ips');
-			$this->imgsrc = str_replace('/cls', '', plugin_dir_url(__FILE__) ) . 'img/f2b_graph_month.png';
-			$this->imgpath = str_replace('/cls', '', plugin_dir_path(__FILE__) ) . 'img/f2b_graph_month.png';
+			$imgname_post = 'month';
 		}elseif ( $instance['period'] == 'last year'){
 			_e ('since last year','banned-ips');
-			$this->imgsrc = str_replace('/cls', '', plugin_dir_url(__FILE__) ) . 'img/f2b_graph_year.png';
-			$this->imgpath = str_replace('/cls', '', plugin_dir_path(__FILE__) ) . 'img/f2b_graph_year.png';
+			$imgname_post = 'year';
+			//$this->imgpath = str_replace('/cls', '', plugin_dir_path(__FILE__) ) . 'img/f2b_graph_year.png';
 		}elseif ( $instance['period'] == 'all'){
 			_e ('all','banned-ips');
-			$this->imgsrc = str_replace('/cls', '', plugin_dir_url(__FILE__) ) . 'img/f2b_graph_all.png';
-			$this->imgpath = str_replace('/cls', '', plugin_dir_path(__FILE__) ) . 'img/f2b_graph_all.png';
+			$imgname_post = 'all';
 		}
+
+		$this->imgsrc = $bips->URL_IMG . $imgname_pre . $imagename . '_' . $imgname_post . '.' .$imagetype;
+		$this->imgpath = $bips->PATH_IMG . $imgname_pre . $imagename . '_' . $imgname_post . '.' .$imagetype;
+		//$this->imgsrc = str_replace('/cls', '', plugin_dir_url(__FILE__) ) . 'img/f2b_graph_all.png';
+		
+		//echo $this->imgsrc;
+		
 		echo '</div>';
 		
 		echo '<div class="image">';
@@ -121,13 +137,55 @@ class BannedIPs_Widget extends WP_Widget{
 		
 		$title = ! empty( $instance['title'] ) ? $instance['title'] : esc_html__( 'Banned-IPs ','banned-ips' );
 		$period = ! empty( $instance['period'] ) ? $instance['period'] : esc_html__( 'last 24 hours', 'banned_ips' );
-		//$image = ! empty( $instance['image'] ) ? $instance['image'] : esc_html__( '', 'banned_ips' );
+		$transparency = ! empty( $instance['$transparency'] ) ? $instance['$transparency'] : esc_html__( 'checked', 'banned_ips' );
 		//$image = ! empty( $instance['image'] ) ? $instance['image'] : $this->imgsrc;
 		?>
 		
         <p>
          <label for="<?php echo esc_attr( $this->get_field_id( 'Title' ) ); ?>"><?php echo esc_html__( 'Title:', 'banned_ips' ); ?></label>
-            <input class="widefat" id="<?php echo esc_attr( $this->get_field_id( 'title' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'title' ) ); ?>" type="text" value="<?php echo esc_attr( $title ); ?>">
+            <input class="widefat" 
+            		id="<?php echo esc_attr( $this->get_field_id( 'title' ) ); ?>" 
+            		name="<?php echo esc_attr( $this->get_field_name( 'title' ) ); ?>" 
+            		type="text" 
+            		value="<?php echo esc_attr( $title ); ?>">
+        </p>
+        
+        <div>
+        	<?php /*
+        	   //var_dump($transparency);
+        	   echo '<br>';
+        	   echo 'vd: $this->get_settings()' . var_dump($this->get_settings()). '<br/>';
+        	   //echo 'vd: $this->id' . var_dump($this->id) . '<br/>';
+        	   
+        	   echo '$this->number' . $this->number . '<br/>';
+        	   echo '$this->get_settings()[$this->number][\'transparency\']' . $this->get_settings()[$this->number]['transparency'] . '<br/>';
+        	   //$transparency = $this->get_settings()[$this->number]['transparency'];
+        	   
+        	   //echo 'ID: ' . $this->get_field_id( 'transparency' ) . '<br/>';
+        	   //echo 'Name: ' . $this->get_field_name( 'transparency' ). '<br/>';
+        	   echo 'transparency: ' . $transparency. '<br/>';
+        	   */
+        	?>
+        </div>
+        
+    
+        
+        <p>
+         <label for="<?php echo esc_attr( $this->get_field_id( 'Transparency' ) ); ?>"><?php echo esc_html__( 'Transparency:', 'banned_ips' ); ?></label>
+            <input class="widefat" 
+            		id="<?php echo $this->get_field_id( 'transparency' ) ; ?>" 
+            		name="<?php echo $this->get_field_name( 'transparency' ) ; ?>" 
+            		type="checkbox" 
+            		<?php 
+                		if($this->get_settings()[$this->number]['transparency'] == 'checked'){
+                		    echo 'checked="'.$transparency.'"';
+                		    //  echo  $transparency ; 
+                		}
+            		?>
+            		value="<?php echo $transparency ; ?>">
+            <label for="<?php echo $this->get_field_id( 'transparency' ) ; ?>">
+           		<?php //echo $transparency; ?>
+            </label> 
         </p>
         
         <p>
@@ -169,12 +227,19 @@ class BannedIPs_Widget extends WP_Widget{
  
     public function update( $new_instance, $old_instance ) {
  
+        global $bips;
         $instance = array();
- 
+        
+        $bips->log('Test');
+       
+       
         $instance['title'] = ( !empty( $new_instance['title'] ) ) ? strip_tags( $new_instance['title'] ) : '';
         
         $instance['period'] = ( !empty( $new_instance['period'] ) ) ? strip_tags( $new_instance['period'] ) : '';
-        //$instance['title'] = strip_tags( esc_html__( 'Banned-IPs ','banned-ips' ) . $instance['period'] );
+        
+        $instance['transparency'] = ( !empty( $new_instance['transparency'] ) ) ? $new_instance['transparency']  : '';
+        //$instance['transparency'] = $new_instance['transparency'];
+        
         
         $instance['image'] = ( !empty( $new_instance['image'] ) ) ? $new_instance['image'] : '';
  

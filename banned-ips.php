@@ -3,7 +3,7 @@
  * Plugin Name: Banned IPs
  * Plugin URI: https://emha.koeln/banned-ips-plugin
  * Description: Shortcode [bannedips] for showing the current blocked IPs by fail2ban.
- * Version: 0.1.5.alpha12
+ * Version: 0.1.5.alpha14
  * Requires at least: 5.7
  * Requires PHP: 7.2+
  * License: GPLv2 or later
@@ -85,99 +85,128 @@ function bannedips_localization_init(){
 		load_plugin_textdomain( 'banned-ips', false, dirname(plugin_basename( __FILE__ )) . '/languages/');
 }
 
+
+class Bips {
+    
+    public $options;
+    
+    // Path
+    public $PATH;
+    
+    public $PATH_CLS;
+    public $PATH_IMG;
+    public $PATH_SCR;
+    public $PATH_SYS;
+        
+    // URLs
+    public $URL;
+    
+    public $URL_CLS;
+    public $URL_IMG;
+    public $URL_SCR;
+    public $URL_SYS;
+    
+    // Debug
+    public $DEBUG;
+    public $LOGFILE;
+    
+    public function __construct(){
+        $this->options = get_option ( 'bannedips', [ ] );
+        
+        $this->PATH = plugin_dir_path ( __FILE__ );
+        $this->PATH_CLS = $this->PATH . 'cls/';
+        $this->PATH_IMG = $this->PATH . 'img/';
+        $this->PATH_SCR = $this->PATH . 'scr/';
+        $this->PATH_SYS = $this->PATH . 'sys/';
+        
+        $this->URL = plugin_dir_url (__FILE__ );
+        $this->URL_CLS = $this->URL . 'cls/';
+        $this->URL_IMG = $this->URL . 'img/';
+        $this->URL_SCR = $this->URL . 'scr/';
+        $this->URL_SYS = $this->URL . 'sys/';
+        
+        $this->DEBUG = TRUE;
+        $this->LOGFILE = $this->PATH . 'bips.log';
+    }
+    
+    // DEBUG LOG
+    public function log( $log ){
+        
+        
+        if ($this->DEBUG){
+        
+            if (!file_exists($this->LOGFILE)){
+                $logfile = fopen( $this->LOGFILE, "w");
+            }else {
+                $logfile = fopen( $this->LOGFILE, "a");
+            }
+            
+            fwrite($logfile, time() . ' ' .$log . PHP_EOL);
+            fclose($logfile);
+        }
+        
+    }
+    
+    
+    
+    // testing/learnig...
+    public function tools_get_site_url()
+    {
+        $site_url = site_url();
+        return $site_url;
+    }
+    
+    public function tools_get_current_url()
+    {
+        global $wp;
+        $current_url = home_url(add_query_arg(array(),$wp->request));
+        return $current_url;
+    }
+    
+    public function tools_get_current_slug()
+    {
+        global $wp;
+        $current_slug = add_query_arg( array(), $wp->request );
+        return $current_slug;
+    }
+    
+    public function tools_get_current_id()
+    {
+        $current_id = get_the_ID();
+        return $current_id;
+    }
+    
+    public function tools_get_current_page()
+    {
+        $current_page = get_page_link();
+        return $current_page;
+    }
+    
+    public function tools_get_current_post()
+    {
+        $current_post = get_post($this->tools_get_current_id());
+        return $current_post;
+    }
+    
+ 
+    
+    
+}
+
+$bips = new Bips();
+
 // Widget
 include_once (BIPS_CLS . '/BannedIPs_Widget.php');
-$bannedips_widget = new BannedIPs_Widget();
+$bips_widget = new BannedIPs_Widget();
+
+// Shortcode
+include_once (BIPS_CLS . '/BannedIPs_Shortcode.php');
+$bips_shortcode = new BannedIPs_Sortcode();
+
 
 // WP Shortcode
 if (is_admin ()) {
 	include BIPS_PATH . '/admin/admin.php';
-} else {
+} 
 	
-	// Shortcode
-	add_shortcode ( 'bannedips', 'bannedips_call' );
-	function bannedips_call($attrs, $content = null) {
-		$options = get_option ( 'bannedips', [ ] );
-		
-		$file = BIPS_PATH . "/banned.php";
-		
-		// Table abuseipdb and/or blocklist
 
-		// Use SQL with conjob for WP
-		if (isset ( $options ['sys_cron'] ) 
-				&& (isset ( $options ['ab_stats'] ) || isset ( $options ['bl_stats'] ))) {
-			
-			global $wpdb;
-			
-			ob_start ();
-			echo "<table>";
-			if (isset ( $options ['ab_stats'] )) {
-				$table = $wpdb->prefix . "bannedips_abuseipdb";
-				// $result = array( 'attacks' => 0 );
-				$result = $wpdb->get_results ( 'SELECT attacks FROM ' . $table . ' ORDER BY ID DESC LIMIT 1' );
-				// var_dump($result);
-				echo "<td>";
-				echo "<b>AbuseIPDB Stats:</b><br>";
-				if (! isset ( $result ['0']->attacks )) {
-					echo "Attacks: Not stats<br>";
-				} else {
-					echo "Attacks: " . $result ['0']->attacks . "<br>";
-				}
-				echo "</td>";
-			}
-			
-			if (isset ( $options ['bl_stats'] )) {
-				$table = $wpdb->prefix . "bannedips_blocklist";
-				$result = $wpdb->get_results ( 'SELECT attacks, reports FROM ' . $table . ' ORDER BY ID DESC LIMIT 1' );
-				echo "<td>";
-				echo "<b>Blocklist Stats:</b><br>";
-				if (! isset ( $result ['0']->attacks )) {
-					echo "Attacks: Not stats, ";
-					echo "Reports: Not stats<br>";
-				} else {
-					echo "Attacks: " . $result ['0']->attacks . ", ";
-					echo "Reports: " . $result ['0']->reports . "<br>";
-				}
-				echo "</td>";
-			}
-			echo "</table>";
-			ob_flush ();
-
-		// Use direct request for standalone use
-		} else {
-			ob_start ();
-			echo "<table>";
-			if (isset ( $options ['ab_stats'] )) {
-				echo "<td>";
-				include (BIPS_SCR . "/abuseipdb_stats.php");
-				echo "</td>";
-			}
-			
-			if (isset ( $options ['bl_stats'] )) {
-				echo "<td>";
-				include (BIPS_SCR . "/blocklist_stats.php");
-				echo "</td>";
-			}
-			echo "</table>";
-			ob_flush ();
-		}
-		
-		// TODO: Use Theme Colors and Widths
-		// echo "Test Colors: " . get_some_textcolor;
-		// echo "Test Colors: " . get_some_theme_info;
-		
-		// create stats graph image
-		if (isset ( $options ['show_graph']) && isset(  $options ['sys_cron'])) {
-			ob_start ();
-			include (BIPS_SCR . "/draw_graph.php");
-			ob_flush ();
-		}
-		
-		ob_start ();
-		include ($file);
-		ob_flush ();
-		
-		$buffer = ob_get_clean ();
-		return $buffer;
-	}
-}
