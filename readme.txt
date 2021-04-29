@@ -37,6 +37,8 @@ Shortcode [bannedips] and Widget for showing the current blocked IPs by fail2ban
    https://sourceforge.net/projects/banned-ips/
    https://emha.koeln/banned-ips-plugin/
    
+   https://github.com/emha-koeln/banned-ips
+   
 == Frequently Asked Questions ==
 
     No questions have been asked.

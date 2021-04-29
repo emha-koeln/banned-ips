@@ -3,7 +3,7 @@
  * Plugin Name: Banned IPs
  * Plugin URI: https://emha.koeln/banned-ips-plugin
  * Description: Shortcode [bannedips] for showing the current blocked IPs by fail2ban.
- * Version: 0.1.5.alpha12
+ * Version: 0.1.5.alpha13
  * Requires at least: 5.7
  * Requires PHP: 7.2+
  * License: GPLv2 or later
