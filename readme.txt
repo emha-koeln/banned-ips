@@ -4,6 +4,7 @@ Contributors: emha.koeln
 Stable tag: 0.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
+
 Requires at least: 5.7
 Requires PHP: 7.2+
 Requires php-sqlite3
@@ -14,17 +15,21 @@ Requires fail2ban: 0.11+
 Shortcode [bannedips] and Widget for showing the current blocked IPs by fail2ban and/or statistics
  from your blocklist and abuseipdb account
 
+
 == Description ==
 
-Shortcode [bannedips] and Widget for showing the current blocked IPs by fail2ban and/or statistics
- from your blocklist and abuseipdb account
+    Shortcode [bannedips] and Widget for showing the current blocked IPs by fail2ban and/or statistics
+     from your blocklist and abuseipdb account
+
 
 == Installation ==
 
-    1. Make your fail2ban.sqlite3 db readable to the web server
-    (e.g. # chown root:www-data /var/lib/fail2ban/fail2ban.sqlite3
-          # chmod 0640 /var/lib/fail2ban/fail2ban.sqlite3)
-    2. Use it with fail2ban's banntime.incremt
+    1. Make your fail2ban database readable to the web server
+       (e.g. on a comon GNU/Linux as root
+          # chown root:www-data /var/lib/fail2ban/fail2ban.sqlite3
+          # chmod 0640 /var/lib/fail2ban/fail2ban.sqlite3
+       )
+    2. Use it with fail2ban's 'banntime.increment' settings!
 
     WordPress:
     1. Put the plugin folder into [wordpress_dir]/wp-content/plugins/
@@ -32,20 +37,24 @@ Shortcode [bannedips] and Widget for showing the current blocked IPs by fail2ban
     2. Go to the WordPress admin interface and activate the plugin
     3. Set defaults in Banned IPs' configuration interface
     
+
 == Homepage ==
    
    https://sourceforge.net/projects/banned-ips/
    https://emha.koeln/banned-ips-plugin/
    
    https://github.com/emha-koeln/banned-ips
-   
+
+
 == Frequently Asked Questions ==
 
     No questions have been asked.
 
+
 == Screenshots ==
 
     Screenshots available on https://sourceforge.net/projects/banned-ips/
+
 
 == Options/Attributes ==
 
@@ -64,39 +73,59 @@ Shortcode [bannedips] and Widget for showing the current blocked IPs by fail2ban
     You may change the defaults in the Banned IP's configuration interface
     or, for standalone use, inside the banned.php file
 
+
 == Use ==
 
     As WordPress Plugin:
+	    Sample:     [bannedips]
+        or:         [bannedips db='/path/to/fail2banDB' lang='de' bl_links=false]
 
-    Sample:     [bannedips]
-    or:         [bannedips db='/path/to/fail2banDB' lang='de' bl_links=false]
-
-    Attributes given overwrite defaults.
+        Attributes given overwrite defaults.
 
     Standalone:
+        The files 'banned.php','abuseipdb.php' and 'blocklist.php' maybe used 'as is' on your site without WordPress.
+        For configuration see '$my*'-vars inside banned.php.
 
-    The file 'banned.php' maybe used 'as is' on your site without WordPress.
-    For configuration see '$my*'-vars inside banned.php.
+
+== Tested on ==
+
+    Ubuntu Ubuntu 18.04.5 LTS
+        defaults: look above 'Requires'
+        apache 2.4
+        
+    Debian 10.5 
+        defaults: look above 'Requires'
+        apache 2.4
+        
+    FreeBSD 12.x
+        defaults: look above 'Requires'
+        apache 2.4
+
 
 == Changelog ==
 
 = 0.1.5.beta =
+
     (Not started)
-    TODO:       Use more OOP
+    TODO:       Use more OOP, Standalone Testing
 	
 = 0.1.5.alpha =
+
     Bugs:       Installation in 'banned-ips' plugin folder only works with 'banned-ips.zip'
                 Translation in Widget
                 Doesn't work as Frontpage
+                Null in ConnectBlocklist
  
     TODO:       Cron, Use statistics from own DB, Graph Colors, blocklist per user stats,
                 Widget
     NEW:        Options: i18n, Use Cron, Show Stats Graph
-                With Cron we use our own stats-db for abuseipdb and blocklist  
+                With Cron we use our own stats-db for abuseipdb and blocklist
+                Transparent Graphs in Widget  
     
     Options, Options-Page, WP-Cronjobs, Graph
 
 = 0.1.4 =
+
     Bugs:       Installation in 'banned-ips' plugin folder only works with 'banned-ips.zip'
    
     Test WP deactivation hook, WP cron, Blocklist and AbuseIPDB Statistics
@@ -129,5 +158,3 @@ Shortcode [bannedips] and Widget for showing the current blocked IPs by fail2ban
 
 = 0.1 =
     Bugs:       Links don't work in page-preview
-
-

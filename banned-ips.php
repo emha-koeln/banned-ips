@@ -2,8 +2,8 @@
 /**
  * Plugin Name: Banned IPs
  * Plugin URI: https://emha.koeln/banned-ips-plugin
- * Description: Shortcode [bannedips] for showing the current blocked IPs by fail2ban.
- * Version: 0.1.5.alpha14
+ * Description: Display blocked IPs by fail2ban as Stats, Table or Grap. WP-Shortcode, WP-Widget or Standalone 
+ * Version: 0.1.5.alpha15
  * Requires at least: 5.7
  * Requires PHP: 7.2+
  * License: GPLv2 or later
@@ -85,7 +85,7 @@ function bannedips_localization_init(){
 		load_plugin_textdomain( 'banned-ips', false, dirname(plugin_basename( __FILE__ )) . '/languages/');
 }
 
-
+// (B)annd(I)(P)(s) class
 class Bips {
     
     public $options;
@@ -111,39 +111,50 @@ class Bips {
     public $LOGFILE;
     
     public function __construct(){
-        $this->options = get_option ( 'bannedips', [ ] );
+        $this->options = get_option ( 'bannedips', [ ] );   // WP Options
         
-        $this->PATH = plugin_dir_path ( __FILE__ );
-        $this->PATH_CLS = $this->PATH . 'cls/';
+        // Paths
+        $this->PATH = plugin_dir_path ( __FILE__ );         // local Path    
+        $this->PATH_CLS = $this->PATH . 'cls/';             // local Paths    
         $this->PATH_IMG = $this->PATH . 'img/';
         $this->PATH_SCR = $this->PATH . 'scr/';
         $this->PATH_SYS = $this->PATH . 'sys/';
         
-        $this->URL = plugin_dir_url (__FILE__ );
-        $this->URL_CLS = $this->URL . 'cls/';
+        //URLs
+        $this->URL = plugin_dir_url (__FILE__ );            // our URL 
+        $this->URL_CLS = $this->URL . 'cls/';               // URL_Paths
         $this->URL_IMG = $this->URL . 'img/';
         $this->URL_SCR = $this->URL . 'scr/';
         $this->URL_SYS = $this->URL . 'sys/';
         
-        $this->DEBUG = TRUE;
+        $this->DEBUG = TRUE;                                // TRUE on alpha, beta and theta
         $this->LOGFILE = $this->PATH . 'bips.log';
     }
     
-    // DEBUG LOG
+    // DEBUG LOG - Developing...
+    /**
+     * 
+     * @param mixed $log
+     * @return boolean
+     */
     public function log( $log ){
-        
         
         if ($this->DEBUG){
         
-            if (!file_exists($this->LOGFILE)){
-                $logfile = fopen( $this->LOGFILE, "w");
+            if ( ! file_exists($this->LOGFILE)){
+                $logfile = fopen( $this->LOGFILE, "w" );
             }else {
-                $logfile = fopen( $this->LOGFILE, "a");
+                $logfile = fopen( $this->LOGFILE, "a" );
             }
             
             fwrite($logfile, time() . ' ' .$log . PHP_EOL);
             fclose($logfile);
+            
+            return True;
+        }else{
+            return False;
         }
+        
         
     }
     
