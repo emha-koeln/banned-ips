@@ -40,10 +40,10 @@ Shortcode [bannedips] and Widget for showing the current blocked IPs by fail2ban
 
 == Homepage ==
    
-   https://sourceforge.net/projects/banned-ips/
-   https://emha.koeln/banned-ips-plugin/
+   https://emha.koeln/banned-ips-plugin/ DE
+   https://sourceforge.net/projects/banned-ips/ EN
    
-   https://github.com/emha-koeln/banned-ips
+   https://github.com/emha-koeln/banned-ips DEV
 
 
 == Frequently Asked Questions ==
@@ -76,7 +76,7 @@ Shortcode [bannedips] and Widget for showing the current blocked IPs by fail2ban
 
 == Use ==
 
-    As WordPress Plugin:
+    As WordPress Shortcode:
 	    Sample:     [bannedips]
         or:         [bannedips db='/path/to/fail2banDB' lang='de' bl_links=false]
 
@@ -118,6 +118,7 @@ Shortcode [bannedips] and Widget for showing the current blocked IPs by fail2ban
  
     TODO:       Cron, Use statistics from own DB, Graph Colors, blocklist per user stats,
                 Widget
+                
     NEW:        Options: i18n, Use Cron, Show Stats Graph
                 With Cron we use our own stats-db for abuseipdb and blocklist
                 Transparent Graphs in Widget  

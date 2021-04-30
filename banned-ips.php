@@ -154,11 +154,9 @@ class Bips {
         }else{
             return False;
         }
-        
-        
+          
     }
-    
-    
+   
     
     // testing/learnig...
     public function tools_get_site_url()
@@ -198,26 +196,23 @@ class Bips {
         $current_post = get_post($this->tools_get_current_id());
         return $current_post;
     }
-    
- 
-    
-    
+        
 }
-
-$bips = new Bips();
-
-// Widget
-include_once (BIPS_CLS . '/BannedIPs_Widget.php');
-$bips_widget = new BannedIPs_Widget();
-
-// Shortcode
-include_once (BIPS_CLS . '/BannedIPs_Shortcode.php');
-$bips_shortcode = new BannedIPs_Sortcode();
-
 
 // WP Shortcode
 if (is_admin ()) {
 	include BIPS_PATH . '/admin/admin.php';
 } 
 	
+$bips = new Bips();
+
+// Widget
+include_once ($bips->PATH_CLS . '/BannedIPs_Widget.php');
+$bips_widget = new BannedIPs_Widget();
+
+// Shortcode
+include_once ($bips->PATH_CLS . '/BannedIPs_Shortcode.php');
+$bips_shortcode = new BannedIPs_Sortcode();
+
+
 
