@@ -101,7 +101,7 @@ class BannedIPs_Sortcode{
             if (isset ( $options ['show_graph']) && isset(  $options ['sys_cron'])) {
                 ob_start ();
                 echo '<div>';
-                include ( $bips->SCR . "draw_graph.php");
+                include ( $bips->PATH_SCR . "draw_graph.php");
                 echo '</div>';
                 ob_flush ();
             }
