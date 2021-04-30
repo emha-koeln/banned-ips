@@ -133,8 +133,9 @@ class BannedIPs_Sortcode
             function callback($buffer)
             {
                 global $bips;
-                
-                return (str_replace("?orderby", "?page_id=" . $bips->tools_get_current_id() . "?orderby", $buffer));
+                //get_the_ID()
+                return (str_replace("?orderby", "?page_id=" . $bips->tools_get_current_id() . "&?orderby", $buffer));
+                //return (str_replace("?orderby", "?page_id=" . get_the_ID() . "?orderby", $buffer));
                 // return (str_replace("orderby", "uorderby", $buffer));
             }
             
