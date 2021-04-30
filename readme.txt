@@ -96,6 +96,7 @@ Shortcode [bannedips] and Widget for showing the current blocked IPs by fail2ban
     Debian 10.5 
         defaults: look above 'Requires'
         apache 2.4
+        MariaDB 10.3
         
     FreeBSD 12.x
         defaults: look above 'Requires'
