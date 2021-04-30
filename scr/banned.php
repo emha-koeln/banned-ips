@@ -14,22 +14,22 @@
  */
 
 // $my*, defaults are not used if part of banned-ips plugin
-$myDB = ""; // set fail2ban DB, leave empty for auto detection
-$myLANG = ""; // set to "de" for german output
-$myAB_LINKS = False; // show abuseipdb link
-$myBL_LINKS = False; // show blocklist link
+$myDB = "";                                     // set fail2ban DB, leave empty for auto detection
+$myLANG = "";                                   // set to "de" for german output
+$myAB_LINKS = False;                            // show abuseipdb link
+$myBL_LINKS = False;                            // show blocklist link
 $myShowTargetURL = "";
 
 // check if we are part of wp-plugin banned-ips
 if (is_null ( $options )) { // not part of banned-ips plugin, use default $my*
-	$options = array ( // used in standalone mode?
+	$options = array (                         // used in standalone mode?
 			'db' => $myDB,
 			'lang' => $myLANG,
 			'ab_links' => $myAB_LINKS,
 			'bl_links' => $myBL_LINKS 
 	);
-} else { // we are part of banned-ips plugin; set $my*
-         // db
+} else {                                        // we are part of banned-ips plugin; set $my*
+    // db
 	if (isset ( $attrs ['db'] )) {
 		$myDB = $attrs ['db'];
 	} elseif (isset ( $options ['db'] )) {

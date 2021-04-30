@@ -1,4 +1,16 @@
 <?php
+/**
+ * BannedIPs_Shortcode.php
+ * Part of banned-ips, also for standalone use
+ * v 0.1.5.alpha
+ * (c) 2021 emha.koeln
+ * License: GPLv2+
+ */
+/**
+ *
+ * @package banned-ips
+ * @author emha.koeln
+ */
 defined( 'ABSPATH' ) 
     or die( );
 

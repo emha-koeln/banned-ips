@@ -6,6 +6,11 @@
  * (c) 2021 emha.koeln
  * License: GPLv2+
  */
+/**
+ *
+ * @package banned-ips
+ * @author emha.koeln
+ */
 defined( 'ABSPATH' ) or 
 	die( );
 
