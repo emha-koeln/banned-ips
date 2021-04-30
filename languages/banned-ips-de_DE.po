@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: Banned IPs\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-04-24 09:05+0000\n"
-"PO-Revision-Date: 2021-04-29 10:17+0000\n"
+"PO-Revision-Date: 2021-05-01 00:20+0000\n"
 "Last-Translator: \n"
 "Language-Team: Deutsch\n"
 "Language: de-DE\n"
@@ -15,44 +15,48 @@ msgstr ""
 "X-Loco-Version: 2.5.2; wp-5.7.1\n"
 "X-Domain: banned-ips"
 
-#: admin/options_functions.php:191 admin/options_functions.php:249
+#: admin/options_functions.php:204 admin/options_functions.php:262
 msgid "#Hex"
 msgstr "#Hexadezimal"
 
-#: cls/BannedIPs_Widget.php:103
+#: cls/BannedIPs_Widget.php:117
 msgid "...waiting for Graph to be ceated"
 msgstr "... warte bis Grafiken erstellt sind"
 
-#: admin/options_functions.php:38
+#: admin/options_functions.php:473
+msgid ": not found"
+msgstr ": nicht gefunden"
+
+#: admin/options_functions.php:56
 msgid "AbuseIPDB Account"
 msgstr "AbuseIPDB Account"
 
-#: admin/options_functions.php:50
+#: admin/options_functions.php:68
 msgid "AbuseIPDB Account ID"
 msgstr "AbuseIPDB Account ID"
 
-#: admin/options_functions.php:501
+#: admin/options_functions.php:531
 msgid "AbuseIPDB.com"
 msgstr "AbuseIPDB.com"
 
-#: admin/options_functions.php:18
+#: admin/options_functions.php:29
 msgid "AbuseIPDB.com Stats"
 msgstr "AbuseIPDB.com Statistiken"
 
-#: admin/options_functions.php:533
+#: admin/options_functions.php:563
 msgid "Activate Banned IPs Cron"
 msgstr "Aktiviere Banned IPs Cron"
 
-#: admin/options_functions.php:537
+#: admin/options_functions.php:567
 msgid "Activate Banned IPs Cron Jobs"
 msgstr "Aktiviere Banned IPs Cron Jobs"
 
-#: cls/BannedIPs_Widget.php:80 cls/BannedIPs_Widget.php:157 
-#: admin/options_functions.php:357
+#: cls/BannedIPs_Widget.php:88 cls/BannedIPs_Widget.php:213 
+#: admin/options_functions.php:370
 msgid "all"
 msgstr "Alle"
 
-#: admin/options_functions.php:197
+#: admin/options_functions.php:210
 msgid "Background Color"
 msgstr "Hintergrundfarbe"
 
@@ -60,52 +64,52 @@ msgstr "Hintergrundfarbe"
 msgid "Banned IPs"
 msgstr "Banned IPs"
 
-#: cls/BannedIPs_Widget.php:124
+#: cls/BannedIPs_Widget.php:138
 msgid "Banned-IPs "
 msgstr "Gesperrte IP Adressen"
 
-#: cls/BannedIPs_Widget.php:51
+#: cls/BannedIPs_Widget.php:54
 #| msgid "Banned-IPs last 24 hours"
 msgid "Banned-IPs Stats last 24 hours"
 msgstr "Gesperrte IPs der letzten 24 Stunden"
 
-#: admin/options_functions.php:183 admin/options_functions.php:209
+#: admin/options_functions.php:196 admin/options_functions.php:222
 msgid "Black"
 msgstr "Schwartz"
 
-#: admin/options_functions.php:75
+#: admin/options_functions.php:88
 msgid "Blocklist Account"
 msgstr "Blocklist Account"
 
-#: admin/options_functions.php:101
+#: admin/options_functions.php:114
 msgid "Blocklist Account APIKEY"
 msgstr "Blocklist Account APIKEY"
 
-#: admin/options_functions.php:87
+#: admin/options_functions.php:100
 msgid "Blocklist Account ServerID"
 msgstr "Blocklist Account ServerID"
 
-#: admin/options_functions.php:509
+#: admin/options_functions.php:539
 msgid "BlockList.de"
 msgstr "BlockList.de"
 
-#: admin/options_functions.php:25
+#: admin/options_functions.php:36
 msgid "BlockList.de Stats"
 msgstr "BlockList.de Statistiken"
 
-#: admin/options_functions.php:217
+#: admin/options_functions.php:230
 msgid "Blue"
 msgstr "Blau"
 
-#: admin/options.php:148
+#: admin/options.php:161
 msgid "Configuration"
 msgstr "Konfiguration"
 
-#: admin/options_functions.php:540
+#: admin/options_functions.php:570
 msgid "Cron Method"
 msgstr "Cron Methode"
 
-#: admin/options_functions.php:570
+#: admin/options_functions.php:600
 msgid "Cron Method Activation"
 msgstr "Cron Methode aktivieren"
 
@@ -113,39 +117,39 @@ msgstr "Cron Methode aktivieren"
 msgid "emha.koeln"
 msgstr "emha.koeln"
 
-#: admin/options_functions.php:419
+#: admin/options_functions.php:432
 msgid "Fail2Ban Database"
 msgstr "Fail2Ban Datenbank"
 
-#: admin/options_functions.php:427
+#: admin/options_functions.php:439
 msgid "Fail2Ban DB"
 msgstr "Fail2Ban Datenbank"
 
-#: admin/options_functions.php:254
+#: admin/options_functions.php:267
 msgid "Graph Color"
 msgstr "Graph Farbe"
 
-#: admin/options_functions.php:371
+#: admin/options_functions.php:384
 msgid "Graph Size"
 msgstr "Größe der Grafik"
 
-#: admin/options_functions.php:314
+#: admin/options_functions.php:327
 msgid "Graph Time Period"
 msgstr "Zeitraum für Grafik"
 
-#: admin/options_functions.php:233
+#: admin/options_functions.php:246
 msgid "Green"
 msgstr "Grün"
 
-#: admin/options_functions.php:175
+#: admin/options_functions.php:188
 msgid "Grey"
 msgstr "Grau"
 
-#: admin/options_functions.php:284 admin/options_functions.php:298
+#: admin/options_functions.php:297 admin/options_functions.php:311
 msgid "Hex Value"
 msgstr "Hexadezimal"
 
-#: admin/options_functions.php:397
+#: admin/options_functions.php:410
 msgid "Hight"
 msgstr "Höhe"
 
@@ -157,71 +161,71 @@ msgstr "https://emha.koeln"
 msgid "https://emha.koeln/banned-ips-plugin"
 msgstr "https://emha.koeln/banned-ips-plugin"
 
-#: cls/BannedIPs_Widget.php:145 admin/options_functions.php:333
+#: cls/BannedIPs_Widget.php:201 admin/options_functions.php:346
 msgid "last 24 hours"
 msgstr "letzte 24 Stunden"
 
-#: cls/BannedIPs_Widget.php:142 admin/options_functions.php:325
+#: cls/BannedIPs_Widget.php:198 admin/options_functions.php:338
 msgid "last hour"
 msgstr "letzte Stunde"
 
-#: cls/BannedIPs_Widget.php:151
+#: cls/BannedIPs_Widget.php:207
 msgid "last month"
 msgstr "letzter Monat"
 
-#: admin/options_functions.php:341
+#: admin/options_functions.php:354
 msgid "last seven days"
 msgstr "letzten sieben Tage"
 
-#: admin/options_functions.php:349
+#: admin/options_functions.php:362
 msgid "last thirty days"
 msgstr "letzten 30 Tage"
 
-#: cls/BannedIPs_Widget.php:148
+#: cls/BannedIPs_Widget.php:204
 msgid "last week"
 msgstr "letzte Woche"
 
-#: cls/BannedIPs_Widget.php:154
+#: cls/BannedIPs_Widget.php:210
 msgid "last year"
 msgstr "letztes Jahr"
 
-#: admin/options_functions.php:444
+#: admin/options_functions.php:466
 msgid "Please note"
 msgstr "Hinweis"
 
-#: cls/BannedIPs_Widget.php:106
+#: cls/BannedIPs_Widget.php:120
 msgid "please reload page"
 msgstr "Seite neu laden"
 
-#: admin/options_functions.php:225
+#: admin/options_functions.php:238
 msgid "Red"
 msgstr "Rot"
 
-#: admin/options.php:174 admin/options_functions.php:622
+#: admin/options.php:187 admin/options_functions.php:652
 msgid "Save"
 msgstr "Speichern"
 
-#: admin/options_functions.php:156
+#: admin/options_functions.php:169
 msgid "Select Colors"
 msgstr "Farbauswahl"
 
-#: admin/options_functions.php:554
+#: admin/options_functions.php:584
 msgid "Select Cron Method"
 msgstr "Wähle Cron Methode"
 
-#: admin/options_functions.php:439
+#: admin/options_functions.php:453
 msgid "Select Fail2Ban DB"
 msgstr "Wähle fail2ban Datenbank"
 
-#: admin/options_functions.php:475
+#: admin/options_functions.php:505
 msgid "Select German"
 msgstr "Deutsch"
 
-#: admin/options_functions.php:471
+#: admin/options_functions.php:501
 msgid "Select Output Language"
 msgstr "Ausgabesprache"
 
-#: cls/BannedIPs_Widget.php:139
+#: cls/BannedIPs_Widget.php:195
 msgid "Select Period"
 msgstr "Zeitraum"
 
@@ -230,73 +234,77 @@ msgid "Shortcode [bannedips] for showing the current blocked IPs by fail2ban."
 msgstr ""
 "Shortcode [bannedips] zum Anzeigen der durch fail2ban geblockten IP-Adressen."
 
-#: admin/options_functions.php:14
+#: admin/options_functions.php:25
 msgid "Show AbuseIPDB.com Stats"
 msgstr "Zeige AbuseIPDB.com Statistiken"
 
-#: cls/BannedIPs_Widget.php:23
+#: cls/BannedIPs_Widget.php:31
 msgid "Show Banned IPs Stats Graphs"
 msgstr "Zeigt BannedIPs Grafiker an"
 
-#: admin/options_functions.php:21
+#: admin/options_functions.php:32
 msgid "Show BlockList.de Stats"
 msgstr "Zeige BlockList.de Statistiken "
 
-#: admin/options_functions.php:139 admin/options_functions.php:146
+#: admin/options_functions.php:152 admin/options_functions.php:159
 msgid "Show Graph"
 msgstr "Grafik anzeigen"
 
-#: admin/options_functions.php:497
+#: admin/options_functions.php:527
 msgid "Show Links to AbuseIPDB.com"
 msgstr "Zeige Links zu AbuseIPDB.com"
 
-#: admin/options_functions.php:504
+#: admin/options_functions.php:534
 msgid "Show Links to BlockList.de"
 msgstr " Zeige Links zu BlockList.de"
 
-#: admin/options_functions.php:127
+#: admin/options_functions.php:140
 msgid "Show Stats Graph"
 msgstr "Statistik Grafik anzeigen"
 
-#: cls/BannedIPs_Widget.php:64
+#: cls/BannedIPs_Widget.php:75
 msgid "since last 24 hour"
 msgstr "der letzten 24 Stunden"
 
-#: cls/BannedIPs_Widget.php:60
+#: cls/BannedIPs_Widget.php:72
 msgid "since last hour"
 msgstr "der letzten Stunde"
 
-#: cls/BannedIPs_Widget.php:72
+#: cls/BannedIPs_Widget.php:81
 msgid "since last month"
 msgstr "der letzten 30 Tage"
 
-#: cls/BannedIPs_Widget.php:68
+#: cls/BannedIPs_Widget.php:78
 msgid "since last week"
 msgstr ""
 "der letzten sieben Tage\n"
 
-#: cls/BannedIPs_Widget.php:76
+#: cls/BannedIPs_Widget.php:84
 msgid "since last year"
 msgstr "seit einem Jahr"
 
-#: admin/options_functions.php:362
+#: admin/options_functions.php:375
 msgid "Time period"
 msgstr "Zeitraum"
 
-#: admin/options_functions.php:573
+#: admin/options_functions.php:603
 msgid "To activate do the follwing..."
 msgstr "Um Cron zu aktivieren, führen Sie folgendes aus:"
 
-#: admin/options_functions.php:447
+#: admin/options_functions.php:470
 msgid "To change group and get read access run:"
 msgstr ""
 "Um die Gruppe zu ändern und Leserechte zu bekommen führen Sie folgende "
 "Befehle aus"
 
-#: admin/options_functions.php:167 admin/options_functions.php:241
+#: admin/options_functions.php:479
+msgid "try:"
+msgstr "versuche:"
+
+#: admin/options_functions.php:180 admin/options_functions.php:254
 msgid "White"
 msgstr "Weiss"
 
-#: admin/options_functions.php:383
+#: admin/options_functions.php:396
 msgid "Width"
 msgstr "Breite"
