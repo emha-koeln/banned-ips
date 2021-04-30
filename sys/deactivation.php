@@ -1,4 +1,5 @@
 <?php
+
 /**
  * deactivation.php
  * Part of banned-ips
@@ -11,50 +12,28 @@
  * @package banned-ips
  * @author emha.koeln
  */
-function bannedips_deactivate_cronjobs() {
-	
-	// WP Cron
-	// include_once (BIPS_SYS . "/cron.php");
-	// everyminute
-	
-	// old
-	if (wp_next_scheduled ( 'bips_hook_everyminute_cronjob' )) {
-		$timestamp = wp_next_scheduled ( 'bips_hook_everyminute_cronjob' );
-		wp_unschedule_event ( $timestamp, 'bips_hook_everyminute_cronjob' );
-	}
-	// tenminutes
-	if (wp_next_scheduled ( 'bips_hook_tenminutes_cronjob' )) {
-		$timestamp = wp_next_scheduled ( 'bips_hook_tenminutes_cronjob' );
-		wp_unschedule_event ( $timestamp, 'bips_hook_tenminutes_cronjob' );
-	}
-	// Hourly
-	if (wp_next_scheduled ( 'bips_hook_hourly_cronjob' )) {
-		$timestamp = wp_next_scheduled ( 'bips_hook_hourly_cronjob' );
-		wp_unschedule_event ( $timestamp, 'bips_hook_hourly_cronjob' );
-	}
-	// Daily
-	if (wp_next_scheduled ( 'bips_hook_daily_cronjob' )) {
-		$timestamp = wp_next_scheduled ( 'bips_hook_daily_cronjob' );
-		wp_unschedule_event ( $timestamp, 'bips_hook_daily_cronjob' );
-	}
-	
-	$timestamp = wp_next_scheduled ( 'bannedips_hook_everyminute_cronjob' );
-	wp_unschedule_event ( $timestamp, 'bannedips_hook_everyminute_cronjob' );
-	// tenminutes
-	$timestamp = wp_next_scheduled ( 'bannedips_hook_tenminutes_cronjob' );
-	wp_unschedule_event ( $timestamp, 'bannedips_hook_tenminutes_cronjob' );
-	// Hourly
-	$timestamp = wp_next_scheduled ( 'bannedips_hook_hourly_cronjob' );
-	wp_unschedule_event ( $timestamp, 'bannedips_hook_hourly_cronjob' );
-	// Daily
-	$timestamp = wp_next_scheduled ( 'bannedips_hook_daily_cronjob' );
-	wp_unschedule_event ( $timestamp, 'bannedips_hook_daily_cronjob' );
-	
-	// $recepients = 'root@localhost';
-	// $subject = 'Hello from your Bannedips Sys Cron Job: deactivated';
-	// $message = 'This is a test mail sent by bannedips automatically as per your schedule.';
-	// let's send it
-	// mail ( $recepients, $subject, $message );
+function bannedips_deactivate_cronjobs()
+{
+    // WP Cron
+    
+    // everyminute
+    $timestamp = wp_next_scheduled('bannedips_hook_everyminute_cronjob');
+    wp_unschedule_event($timestamp, 'bannedips_hook_everyminute_cronjob');
+    // tenminutes
+    $timestamp = wp_next_scheduled('bannedips_hook_tenminutes_cronjob');
+    wp_unschedule_event($timestamp, 'bannedips_hook_tenminutes_cronjob');
+    // Hourly
+    $timestamp = wp_next_scheduled('bannedips_hook_hourly_cronjob');
+    wp_unschedule_event($timestamp, 'bannedips_hook_hourly_cronjob');
+    // Daily
+    $timestamp = wp_next_scheduled('bannedips_hook_daily_cronjob');
+    wp_unschedule_event($timestamp, 'bannedips_hook_daily_cronjob');
+    
+    // $recepients = 'root@localhost';
+    // $subject = 'Hello from your Bannedips Sys Cron Job: deactivated';
+    // $message = 'This is a test mail sent by bannedips automatically as per your schedule.';
+    // let's send it
+    // mail ( $recepients, $subject, $message );
 }
 
 ?>

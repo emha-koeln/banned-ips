@@ -1,4 +1,5 @@
 <?php
+
 /**
  * ab_stats.php
  * Part of banned-ips
@@ -11,43 +12,45 @@
  * @package banned-ips
  * @author emha.koeln
  */
+function bannedips_cron_f2b_stats2db()
+{
+    global $wpdb;
+    $options = get_option('bannedips', array());
 
-function bannedips_cron_f2b_stats2db() {
+    // SQLite Fail2Ban DB
+    class MyDB extends SQLite3
+    {
 
-	global $wpdb;
-	$options = get_option ( 'bannedips', array () );
-	
-	// SQLite Fail2Ban DB
-	class MyDB extends SQLite3 {
-		function __construct($_myDB) {
-			$this->open ( $_myDB );
-		}
-	}
-	// Open Fail2Ban DB
-	$db = new MyDB ( $options ['db'] );
-	if (! $db) {
-		echo $db->lastErrorMsg ();
-	} else {
-		// echo "Open database successfully\n";
-		// echo "<br>\n";
-	}
-	
-	$sql = "SELECT COUNT(*) as count FROM bips";
-	$ret = $db->query ( $sql );
-	$row = $ret->fetchArray ( SQLITE3_ASSOC );
-	$bad = $row ['count'];
-	
-	$sql = "SELECT COUNT(*) as count FROM bips WHERE 1 = 1 AND (timeofban + bantime > " . time () . " OR bantime <= -1)";
-	$ret = $db->query ( $sql );
-	$row = $ret->fetchArray ( SQLITE3_ASSOC );
-	$count = $row ['count'];
-	
-	require_once (ABSPATH . 'wp-admin/includes/upgrade.php');
-	
-	// fail2ban_stats
-	$table = $wpdb->prefix . "bannedips_f2bstats";
-	
-	$sql = "INSERT INTO $table (
+        function __construct($_myDB)
+        {
+            $this->open($_myDB);
+        }
+    }
+    // Open Fail2Ban DB
+    $db = new MyDB($options['db']);
+    if (! $db) {
+        echo $db->lastErrorMsg();
+    } else {
+        // echo "Open database successfully\n";
+        // echo "<br>\n";
+    }
+    
+    $sql = "SELECT COUNT(*) as count FROM bips";
+    $ret = $db->query($sql);
+    $row = $ret->fetchArray(SQLITE3_ASSOC);
+    $bad = $row['count'];
+    
+    $sql = "SELECT COUNT(*) as count FROM bips WHERE 1 = 1 AND (timeofban + bantime > " . time() . " OR bantime <= -1)";
+    $ret = $db->query($sql);
+    $row = $ret->fetchArray(SQLITE3_ASSOC);
+    $count = $row['count'];
+    
+    require_once (ABSPATH . 'wp-admin/includes/upgrade.php');
+    
+    // fail2ban_stats
+    $table = $wpdb->prefix . "bannedips_f2bstats";
+    
+    $sql = "INSERT INTO $table (
 				time,
 				markedbad,
           		bans
@@ -57,9 +60,9 @@ function bannedips_cron_f2b_stats2db() {
 				$bad,
 				$count)
 				";
-	// echo $sql;
-	
-	dbDelta ( $sql );
+    // echo $sql;
+    
+    dbDelta($sql);
 }
 
 ?>

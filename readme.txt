@@ -113,7 +113,7 @@ Shortcode [bannedips] and Widget for showing the current blocked IPs by fail2ban
 
     Bugs:       Installation in 'banned-ips' plugin folder only works with 'banned-ips.zip'
                 Translation in Widget
-                Doesn't work as Frontpage
+                ! Doesn't work as Frontpage
                 Null in ConnectBlocklist
  
     TODO:       Cron, Use statistics from own DB, Graph Colors, blocklist per user stats,

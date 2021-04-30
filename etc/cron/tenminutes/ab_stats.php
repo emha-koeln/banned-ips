@@ -13,20 +13,20 @@
  */
 include BIPS_CLS . "/ConnectAbuseIPDB.php";
 
-function bannedips_cron_ab_stats2db() {
-
-	global $wpdb;
-	$options = get_option ( 'bannedips', array () );
-	
-	$connectab = new ConnectAbuseIPDB ( $options ['ab_account_id'] );
-	$attacks = $connectab->get_Attacks ();
-	
-	require_once (ABSPATH . 'wp-admin/includes/upgrade.php');
-	
-	// fail2ban_stats
-	$table = $wpdb->prefix . "bannedips_abuseipdb";
-	
-	$sql = "INSERT INTO $table (
+function bannedips_cron_ab_stats2db()
+{
+    global $wpdb;
+    $options = get_option('bannedips', array());
+    
+    $connectab = new ConnectAbuseIPDB($options['ab_account_id']);
+    $attacks = $connectab->get_Attacks();
+    
+    require_once (ABSPATH . 'wp-admin/includes/upgrade.php');
+    
+    // fail2ban_stats
+    $table = $wpdb->prefix . "bannedips_abuseipdb";
+    
+    $sql = "INSERT INTO $table (
 				time,
 				attacks
     			)
@@ -34,9 +34,9 @@ function bannedips_cron_ab_stats2db() {
 				now(),
 				$attacks)
 				";
-	// echo $sql;
-	
-	dbDelta ( $sql );
+    // echo $sql;
+    
+    dbDelta($sql);
 }
 
 ?>

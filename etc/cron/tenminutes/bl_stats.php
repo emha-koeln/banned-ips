@@ -13,23 +13,23 @@
  */
 include BIPS_CLS . "/ConnectBlocklist.php";
 
-function bannedips_cron_bl_stats2db() {
-
-	global $wpdb;
-	$options = get_option ( 'bannedips', array () );
-	
-	$connectBlocklist = new ConnectBlocklist ( $options ['bl_account_serverid'], $options ['bl_account_apikey'] );
-	$result = $connectBlocklist->get_Attacks ();
-	
-	$attacks = $result ['attacks'];
-	$reports = $result ['reports'];
-	
-	require_once (ABSPATH . 'wp-admin/includes/upgrade.php');
-	
-	// fail2ban_stats
-	$table = $wpdb->prefix . "bannedips_blocklist";
-	
-	$sql = "INSERT INTO $table (
+function bannedips_cron_bl_stats2db()
+{
+    global $wpdb;
+    $options = get_option('bannedips', array());
+    
+    $connectBlocklist = new ConnectBlocklist($options['bl_account_serverid'], $options['bl_account_apikey']);
+    $result = $connectBlocklist->get_Attacks();
+    
+    $attacks = $result['attacks'];
+    $reports = $result['reports'];
+    
+    require_once (ABSPATH . 'wp-admin/includes/upgrade.php');
+    
+    // fail2ban_stats
+    $table = $wpdb->prefix . "bannedips_blocklist";
+    
+    $sql = "INSERT INTO $table (
 				time,
 				attacks,
 				reports
@@ -40,9 +40,9 @@ function bannedips_cron_bl_stats2db() {
 				$reports
 				)
 				";
-	// echo $sql;
-	
-	dbDelta ( $sql );
+    // echo $sql;
+    
+    dbDelta($sql);
 }
 
 ?>
