@@ -28,16 +28,22 @@
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
  * GNU General Public License for more details.
  *
- * You should have received a copy of the GNU General Public License
+ * You should have received a copy (license.txt) of the GNU General Public License
  * along with banned-ips. If not, see https://emha.koeln/wp-content/uploads/2021/04/gpl-2.0.txt.
  */
+
+// Exit if accessed directly
+if (! defined ( 'ABSPATH' )) {
+	exit ();
+}
 
 // Define
 define ( 'BIPS_VERSION', '0.1.5.alpha' );
 
+// most define deprecated as of OOP ?
 define ( 'BIPS_PATH', rtrim ( plugin_dir_path ( __file__ ), "/" ) ); // local path
 
-define ( 'BIPS_SYS', BIPS_PATH . "/sys" ); // bips system
+define ( 'BIPS_SYS', BIPS_PATH . "/sys" ); // bips system           
 define ( 'BIPS_ETC', BIPS_PATH . "/etc" ); // bips config
 define ( 'BIPS_SCR', BIPS_PATH . "/scr" ); // bips scripts
 define ( 'BIPS_IMG', BIPS_PATH . "/img" ); // bips images
@@ -45,11 +51,6 @@ define ( 'BIPS_CLS', BIPS_PATH . "/cls" ); // bips classes
 
 define ( 'BIPS_DIR_URL', plugin_dir_url ( __file__ ) ); // local url
 define ( 'BIPS_DIR_NAME', str_replace ( "/banned-ips.php", "", plugin_basename ( __FILE__ ) ) ); // plugin dir name
-                                                                                                 
-// Exit if accessed directly
-if (! defined ( 'ABSPATH' )) {
-	exit ();
-}
 
 // include sys
 include_once (BIPS_SYS . "/activation.php");
