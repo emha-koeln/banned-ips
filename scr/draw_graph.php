@@ -6,7 +6,19 @@
  * (c) 2021 emha.koeln
  * License: GPLv2+
  */
-include BIPS_CLS . "/CoordImg.php";
+/**
+ *
+ * @package banned-ips
+ * @author emha.koeln
+ */
+
+if (! defined ( 'ABSPATH' )) {
+    exit ();
+}
+
+global $bips;
+
+include $bips->PATH_CLS . "CoordImg.php";
 
 global $wpdb;
 $options = get_option('bannedips', array());
@@ -55,9 +67,8 @@ foreach ($results as $result) {
 }
 
 // Save Image
-// $imgfile = BIPS_IMG . "/CoordImg.jpg";
-$imgfile = BIPS_IMG . "/CoordImg.png";
-$mapfile = BIPS_IMG . "/CoordImg.map";
+$imgfile = $bips->PATH_IMG . "CoordImg.png";
+$mapfile = $bips->PATH_IMG . "CoordImg.map";
 // $im2 = new CoordImg ( 600, 400, $aCoordImg, 0, 0 );
 $img = new CoordImg($options['graph_width'], $options['graph_height'], $aCoordImg);
 
@@ -80,9 +91,9 @@ echo $img->get_HtmlMap();
 $data = ob_get_clean();
 file_put_contents($mapfile, $data);
 
-// $imgurl = BIPS_DIR_URL . "img/CoordImg.jpg";
-$imgurl = BIPS_DIR_URL . "img/CoordImg.png";
+
+$imgurl = $bips->URL_IMG . "CoordImg.png";
 echo '<img width="" hight="" src="' . $imgurl . '" alt="Fail2Ban Stats" title="Fail2Ban Stats" usemap="#Map" >';
-include (BIPS_IMG . "/CoordImg.map");
+include ( $bips->PATH_IMG . "CoordImg.map");
 echo '<br />';
 ?>

@@ -11,11 +11,9 @@
  * @package banned-ips
  * @author emha.koeln
  */
-defined('ABSPATH') 
-    or die();
 
 // defines the functionality for the location shortcode
-class BannedIPs_Sortcode
+class Banned_IPs_Shortcode
 {
 
     // on initialize
@@ -31,6 +29,10 @@ class BannedIPs_Sortcode
     public function register_shortcodes()
     {
         add_shortcode('bannedips', array(
+            $this,
+            'shortcode_output'
+        ));
+        add_shortcode('banned-ips', array(
             $this,
             'shortcode_output'
         ));

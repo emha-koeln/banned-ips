@@ -11,7 +11,13 @@
  * @package banned-ips
  * @author emha.koeln
  */
-include BIPS_CLS . "/ConnectBlocklist.php";
+if (! defined ( 'ABSPATH' )) {
+    exit ();
+}
+
+global $bips;
+
+include $bips->PATH_CLS . "/ConnectBlocklist.php";
 
 function bannedips_cron_bl_stats2db()
 {

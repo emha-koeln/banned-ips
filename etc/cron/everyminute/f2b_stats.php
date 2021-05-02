@@ -12,6 +12,9 @@
  * @package banned-ips
  * @author emha.koeln
  */
+if (! defined ( 'ABSPATH' )) {
+    exit ();
+}
 function bannedips_cron_f2b_stats2db()
 {
     global $wpdb;

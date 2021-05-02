@@ -18,25 +18,6 @@ if (! defined('WP_UNINSTALL_PLUGIN')) {
 
 delete_option('bannedips');
 
-// Old Images
-/*
- * $imgf = BIPS_IMG . "/testfile.jpg";
- * if (file_exists ( $imgf )) {
- * unlink ( $imgf );
- * }
- * $imgf = BIPS_IMG . "/CoordImg.jpg";
- * if (file_exists ( $imgf )) {
- * unlink ( $imgf );
- * }
- * $imgf = BIPS_IMG . "/CoordImg.png";
- * if (file_exists ( $imgf )) {
- * unlink ( $imgf );
- * }
- * $imgf = BIPS_IMG . "/CoordImg.map";
- * if (file_exists ( $imgf )) {
- * unlink ( $imgf );
- * }
- */
 // Drop db tables
 global $wpdb;
 

@@ -11,7 +11,9 @@
  * @package banned-ips
  * @author emha.koeln
  */
-
+if (! defined ( 'ABSPATH' )) {
+    exit ();
+}
 // Cronjobs
 echo "bannedips_cron called <br>";
 

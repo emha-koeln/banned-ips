@@ -12,6 +12,7 @@
  * @package banned-ips
  * @author emha.koeln
  */
+
 class CoordImg
 {
 

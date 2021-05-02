@@ -11,7 +11,13 @@
  * @package banned-ips
  * @author emha.koeln
  */
-include BIPS_CLS . "/ConnectAbuseIPDB.php";
+
+defined('ABSPATH')
+    or die();
+
+global $bips;
+
+include $bips->PATH_CLS . "/ConnectAbuseIPDB.php";
 
 function bannedips_cron_ab_stats2db()
 {

@@ -7,29 +7,39 @@
  * (c) 2021 emha.koeln
  * License: GPLv2+
  */
+/**
+ *
+ * @package banned-ips
+ * @author emha.koeln
+ */
+if (! defined ( 'ABSPATH' )) {
+    exit ();
+}
+
 function bannedips_cron_f2b_graph()
 {
-    include BIPS_CLS . "/CoordImg.php";
+    global $bips;
     
-    _draw_image(BIPS_IMG . "/f2b_graph_1.png", "-1 hours");
-    _draw_image(BIPS_IMG . "/f2b_graph_24.png", "-24 hours");
-    _draw_image(BIPS_IMG . "/f2b_graph_week.png", "-7 days");
-    _draw_image(BIPS_IMG . "/f2b_graph_month.png", "-30 days");
-    _draw_image(BIPS_IMG . "/f2b_graph_year.png", "-365 days");
-    _draw_image(BIPS_IMG . "/f2b_graph_all.png", "*");
+    include $bips->PATH_CLS . "/CoordImg.php";
     
-    _draw_t_image(BIPS_IMG . "/t_f2b_graph_1.png", "-1 hours");
-    _draw_t_image(BIPS_IMG . "/t_f2b_graph_24.png", "-24 hours");
-    _draw_t_image(BIPS_IMG . "/t_f2b_graph_week.png", "-7 days");
-    _draw_t_image(BIPS_IMG . "/t_f2b_graph_month.png", "-30 days");
-    _draw_t_image(BIPS_IMG . "/t_f2b_graph_year.png", "-365 days");
-    _draw_t_image(BIPS_IMG . "/t_f2b_graph_all.png", "*");
+    _draw_image( $bips->PATH_IMG . "/f2b_graph_1.png", "-1 hours");
+    _draw_image( $bips->PATH_IMG . "/f2b_graph_24.png", "-24 hours");
+    _draw_image( $bips->PATH_IMG . "/f2b_graph_week.png", "-7 days");
+    _draw_image( $bips->PATH_IMG . "/f2b_graph_month.png", "-30 days");
+    _draw_image( $bips->PATH_IMG . "/f2b_graph_year.png", "-365 days");
+    _draw_image( $bips->PATH_IMG . "/f2b_graph_all.png", "*");
+    
+    _draw_t_image( $bips->PATH_IMG . "/t_f2b_graph_1.png", "-1 hours");
+    _draw_t_image( $bips->PATH_IMG . "/t_f2b_graph_24.png", "-24 hours");
+    _draw_t_image( $bips->PATH_IMG . "/t_f2b_graph_week.png", "-7 days");
+    _draw_t_image( $bips->PATH_IMG . "/t_f2b_graph_month.png", "-30 days");
+    _draw_t_image( $bips->PATH_IMG . "/t_f2b_graph_year.png", "-365 days");
+    _draw_t_image( $bips->PATH_IMG . "/t_f2b_graph_all.png", "*");
 }
 
 function _draw_image($imgfile, $period)
 {
     
-    // include BIPS_CLS . "/CoordImg.php";
     global $wpdb;
     $options = get_option('bannedips', array());
     
@@ -78,7 +88,6 @@ function _draw_image($imgfile, $period)
 function _draw_t_image($imgfile, $period)
 {
     
-    // include BIPS_CLS . "/CoordImg.php";
     global $wpdb;
     $options = get_option('bannedips', array());
     

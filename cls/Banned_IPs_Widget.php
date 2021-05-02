@@ -11,11 +11,9 @@
  * @package banned-ips
  * @author emha.koeln
  */
-defined('ABSPATH') 
-    or die();
 
 // Wp Widget
-class BannedIPs_Widget extends WP_Widget
+class Banned_IPs_Widget extends WP_Widget
 {
 
     private $imgsrc = '';
@@ -32,15 +30,15 @@ class BannedIPs_Widget extends WP_Widget
     public function __construct()
     {
         // set base values for the widget (override parent)
-        parent::__construct('BannedIPs_Widget_ID',                      // ID
-            'BannedIPs', // Name
+        parent::__construct('Banned_IPs_Widget_ID',                      // ID
+            'Banned-IPs', // Name
             array(
                 'description' => __('Show Banned IPs Stats Graphs', 'banned-ips')
             )
         );
         
         add_action('widgets_init', function () {
-            register_widget('BannedIPs_Widget');
+            register_widget('Banned_IPs_Widget');
             // load_plugin_textdomain( 'banned-ips', false, str_replace('/cls', '', dirname(plugin_basename( __FILE__ ))) . '/languages/');
         }
         );
@@ -237,7 +235,7 @@ class BannedIPs_Widget extends WP_Widget
         global $bips;
         $instance = array();
         
-        $bips->log('Test');
+        $bips->log(__FUNCTION__, 'INFO');
         
         $instance['title'] = (! empty($new_instance['title'])) ? strip_tags($new_instance['title']) : '';
         

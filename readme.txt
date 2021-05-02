@@ -77,8 +77,8 @@ Shortcode [bannedips] and Widget for showing the current blocked IPs by fail2ban
 == Use ==
 
     As WordPress Shortcode:
-	    Sample:     [bannedips]
-        or:         [bannedips db='/path/to/fail2banDB' lang='de' bl_links=false]
+	    Sample:     [banned-ips]
+        or:         [banned-ips db='/path/to/fail2banDB' lang='de' bl_links=false]
 
         Attributes given overwrite defaults.
 

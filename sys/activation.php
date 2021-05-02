@@ -13,8 +13,12 @@
  * @author emha.koeln
  */
 
+if (! defined ( 'ABSPATH' )) {
+    exit ();
+}
+
 // DB
-function bannedips_activate_create_db()
+function banned_ips_activate_create_db()
 {
     global $wpdb;
     
@@ -69,13 +73,13 @@ function bannedips_activate_create_db()
 }
 
 // Cron
-add_action('wp', 'bannedips_activate_cronjobs');
+add_action('wp', 'banned_ips_activate_cronjobs');
 
-function bannedips_activate_cronjobs()
+function banned_ips_activate_cronjobs()
 {
     
     // WP Cron
-    // include_once (BIPS_SYS . "/cron.php");
+    
     if (! wp_next_scheduled('bannedips_hook_everyminute_cronjob')) {
         wp_schedule_event(time(), 'everyminute', 'bannedips_hook_everyminute_cronjob');
     }

@@ -11,11 +11,17 @@
  * @package banned-ips
  * @author emha.koeln
  */
-if (function_exists('load_plugin_textdomain')) {
-    load_plugin_textdomain('banned-ips', false, BIPS_PATH . '/languages');
+if (! defined ( 'ABSPATH' )) {
+    exit ();
 }
 
-include_once (BIPS_PATH . '/admin/options_functions.php');
+global $bips;
+
+if (function_exists('load_plugin_textdomain')) {
+    load_plugin_textdomain('banned-ips', false, $bips->PATH . '/languages');
+}
+
+include_once ($bips->PATH . '/admin/options_functions.php');
 
 // Save options
 if (isset($_POST['_wpnonce']) && wp_verify_nonce($_POST['_wpnonce'], 'save')) {
@@ -33,9 +39,9 @@ if (isset($_POST['_wpnonce']) && wp_verify_nonce($_POST['_wpnonce'], 'save')) {
 
 // Cron
 if (isset($options['sys_cron'])) {
-    bannedips_activate_cronjobs();
+    banned_ips_activate_cronjobs();
 } else {
-    bannedips_deactivate_cronjobs();
+    banned_ips_deactivate_cronjobs();
 }
 
 if (! isset($options['sys_cron_methode'])) {
@@ -116,6 +122,13 @@ if (! isset($options['bl_account_apikey'])) {
     $options['bl_account_apikey'] = "";
 }
 
+// Log Level
+if (! isset($options['sys_log_level'])) {
+    $options['sys_log_level'] = "none";
+}
+$bips->set_loglevel($options['sys_log_level']);
+update_option('bannedips', $options);
+
 // default fail2ban DB, 'autodetect'/select DB
 if (! isset($options['db']) || $options['db'] == "" || ! file_exists($options['db'])) {
     if (PHP_OS == "Linux") {
@@ -142,7 +155,7 @@ if (! isset($options['db']) || $options['db'] == "" || ! file_exists($options['d
 
 // css
 echo "<style>";
-echo "include BIPS_PATH.'/admin/admin.css'";
+echo "include " .$bips->PATH . "/admin/admin.css";
 echo "</style>";
 
 echo '<div class="wrap">';
@@ -169,6 +182,8 @@ bannedips_options_accounts();
 bannedips_options_cron();
 
 bannedips_options_graph();
+
+bannedips_options_log();
 
 echo '</table>';
 echo '<p class="submit">';

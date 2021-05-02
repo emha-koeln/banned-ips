@@ -12,7 +12,12 @@
  * @package banned-ips
  * @author emha.koeln
  */
-function bannedips_deactivate_cronjobs()
+
+if (! defined ( 'ABSPATH' )) {
+    exit ();
+}
+
+function banned_ips_deactivate_cronjobs()
 {
     // WP Cron
     

@@ -12,6 +12,12 @@
  * @package banned-ips
  * @author emha.koeln
  */
+if (! defined ( 'ABSPATH' )) {
+    exit ();
+}
+
+
+
 function bannedips_options_stats()
 {
     $options = get_option('bannedips', array());
@@ -604,6 +610,87 @@ function bannedips_options_cron()
     
     bannedips_options_savebutton_tr();
 }
+
+function bannedips_options_log()
+{
+    global $bips;
+    
+    $options = get_option('bannedips', array());
+    
+    
+
+    echo ('<!--  log -->');
+    
+    echo ('<tr>');
+    echo ('	<th colspan=2 style="text-decoration: underline"><h2>');
+    echo ('			<b>Log Level</b>');
+    echo ('		</h2></th>');
+    echo ('</tr>');
+    echo ('<tr style="background-color: #FFFFFF;">');
+   // echo ('	<th>');
+   // _e('Activate Banned IPs log', 'banned-ips');
+   // echo (' </th>');
+   // echo ('	<td><input type="checkbox" name="options[sys_log]" value="0"');
+   // 			echo isset($options['sys_cron']) ? 'checked' : '';
+   // echo ('>');
+   // echo ('		<p class="description">');
+   // _e('Activate Banned IPs log', 'banned-ips');
+   // echo ('                    </p></td>');
+    
+   
+    
+    echo ('	<th >');
+    _e ('Log Level', 'banned-ips');
+    echo ('</th>');
+    echo ('	<td><select name="options[sys_log_level]">');
+    echo ('			<option value="NONE"');
+    					if($options['sys_log_level']=="NONE"){echo " selected";}
+    					echo ('>NONE</option>');
+    echo ('			<option value="NOTICE"');
+    					if($options['sys_log_level']=="NOTICE"){echo " selected";}
+    					echo ('>NOTICE</option>');
+    echo ('			<option value="INFO"');
+    					if($options['sys_log_level']=="INFO"){echo " selected";}
+    					echo ('>INFO</option>');
+    echo ('			<option value="DEBUG"');
+    					if($options['sys_log_level']=="DEBUG"){echo " selected";}
+    					echo ('>DEBUG</option>');
+    
+    echo ('	</select>');
+    echo ('		<p class="description">');
+    				_e('Select log level', 'banned-ips');
+    echo ('                   </p></td>');
+    echo ('	<th colspan=4></th>');
+    echo ('</tr>');
+    
+    
+    // show log file
+    if ( $options['sys_log_level'] !== 'none') {
+        echo '<tr style="background-color:#FFFFFF;" rowspan=3>';
+        //echo '<th><br></th>';
+        //echo '<td>';
+        //echo '		<p class="description"></p>';
+        //echo '</td>';
+        echo '<th>';
+        _e('Log File: ', 'banned-ips');
+        echo '</th>';
+        echo '<td colspan=5>';
+        //_e('logs: ', 'banned-ips');
+        echo '<textarea cols="80" rows="10">';
+        echo $bips->get_logs();
+        echo '</textarea></td>';
+        
+        echo '</tr>';
+        echo '<tr>';
+        echo '</tr>';
+        echo '<tr>';
+        echo '</tr>';
+        
+    }
+    
+    bannedips_options_savebutton_tr();
+}
+
 
 function bannedips_options_savebutton_tr()
 {
