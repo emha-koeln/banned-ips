@@ -11,6 +11,7 @@
  * @package banned-ips
  * @author emha.koeln
  */
+
 if (! defined ( 'ABSPATH' )) {
     exit ();
 }

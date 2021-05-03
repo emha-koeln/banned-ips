@@ -178,22 +178,23 @@ if (isset($_GET["scby"])) {
 // }
 
 // echo with or without banned URL
-// if (isset ( $_GET ["showTargetSite"] )) {
-if ($_GET["showTargetSite"] == "Yes") {
-    $myShowTargetURL = "Yes";
-    echo '<div>';
-    echo $aLang["LinkWarning"] . "<br>";
-    // echo "<a href=\"" . $myURL . "/banned-ips/?orderby=". $_GET["orderby"] . "&scby=". $_GET["scby"]. "&showTargetSite=\">" . $aLang["HideBannedURL"] . "</a>";
-    
-    echo "<a href=\"?orderby=" . $_GET["orderby"] . "&scby=" . $_GET["scby"] . "&showTargetSite=\">" . $aLang["HideBannedURL"] . "</a>";
-    echo '</div>';
-} // }
-else {
-    $myShowTargetURL = "";
-    // echo "<a href=\"" . $myURL . "/banned-ips/?orderby=". $_GET["orderby"] . "&scby=". $_GET["scby"]. "&showTargetSite=Yes\">" . $aLang["ShowBannedURL"]. "</a>";
-    echo '<div>';
-    echo "<a href=\"?orderby=" . $_GET["orderby"] . "&scby=" . $_GET["scby"] . "&showTargetSite=Yes\">" . $aLang["ShowBannedURL"] . "</a>";
-    echo '</div>';
+if (isset ( $_GET ["showTargetSite"] )) {
+    if ($_GET["showTargetSite"] == "Yes") {
+        $myShowTargetURL = "Yes";
+        echo '<div>';
+        echo $aLang["LinkWarning"] . "<br>";
+        // echo "<a href=\"" . $myURL . "/banned-ips/?orderby=". $_GET["orderby"] . "&scby=". $_GET["scby"]. "&showTargetSite=\">" . $aLang["HideBannedURL"] . "</a>";
+        
+        echo "<a href=\"?orderby=" . $_GET["orderby"] . "&scby=" . $_GET["scby"] . "&showTargetSite=\">" . $aLang["HideBannedURL"] . "</a>";
+        echo '</div>';
+    } 
+    else {
+        $myShowTargetURL = "";
+        // echo "<a href=\"" . $myURL . "/banned-ips/?orderby=". $_GET["orderby"] . "&scby=". $_GET["scby"]. "&showTargetSite=Yes\">" . $aLang["ShowBannedURL"]. "</a>";
+        echo '<div>';
+        echo "<a href=\"?orderby=" . $_GET["orderby"] . "&scby=" . $_GET["scby"] . "&showTargetSite=Yes\">" . $aLang["ShowBannedURL"] . "</a>";
+        echo '</div>';
+    }
 }
 
 // sql statement

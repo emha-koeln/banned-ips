@@ -11,13 +11,12 @@
  * @package banned-ips
  * @author emha.koeln
  */
-
 if (! defined ( 'ABSPATH' )) {
     exit ();
 }
 
 // Cronjobs
-global $bips;
+
 // add custom interval
 add_filter('cron_schedules', 'cron_add_minute');
 
@@ -48,9 +47,9 @@ add_action('bannedips_hook_everyminute_cronjob', 'bannedips_everyminute_cronjob'
 
 function bannedips_everyminute_cronjob()
 {
-    global $bips;
-    include_once ( $bips->PATH_ETC . "/cron/everyminute/f2b_stats.php");
-    include_once ( $bips->PATH_ETC . "/cron/everyminute/f2b_graph.php");
+    global $Bips;
+    include_once ( $Bips->PATH_ETC . "/cron/everyminute/f2b_stats.php");
+    include_once ( $Bips->PATH_ETC . "/cron/everyminute/f2b_graph.php");
     // TODO automaticly read folder
     bannedips_cron_f2b_stats2db();
     bannedips_cron_f2b_graph();
@@ -60,9 +59,10 @@ function bannedips_everyminute_cronjob()
 add_action('bannedips_hook_tenminutes_cronjob', 'bannedips_tenminutes_cronjob');
 
 function bannedips_tenminutes_cronjob()
-{
-    include_once ( $bips->PATH_ETC . "/cron/tenminutes/ab_stats.php");
-    include_once ( $bips->PATH_ETC . "/cron/tenminutes/bl_stats.php");
+{   
+    global $Bips;
+    include_once ( $Bips->PATH_ETC . "/cron/tenminutes/ab_stats.php");
+    include_once ( $Bips->PATH_ETC . "/cron/tenminutes/bl_stats.php");
     
     // TODO automaticly read folder
     bannedips_cron_ab_stats2db();

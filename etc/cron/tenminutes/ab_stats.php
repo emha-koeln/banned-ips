@@ -15,9 +15,9 @@
 defined('ABSPATH')
     or die();
 
-global $bips;
+global $$Bipsips;
 
-include $bips->PATH_CLS . "/ConnectAbuseIPDB.php";
+include $Bips->PATH_CLS . "/ConnectAbuseIPDB.php";
 
 function bannedips_cron_ab_stats2db()
 {

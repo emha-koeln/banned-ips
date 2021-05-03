@@ -18,23 +18,23 @@ if (! defined ( 'ABSPATH' )) {
 
 function bannedips_cron_f2b_graph()
 {
-    global $bips;
+    global $Bips;
     
-    include $bips->PATH_CLS . "/CoordImg.php";
+    include $Bips->PATH_CLS . "/CoordImg.php";
     
-    _draw_image( $bips->PATH_IMG . "/f2b_graph_1.png", "-1 hours");
-    _draw_image( $bips->PATH_IMG . "/f2b_graph_24.png", "-24 hours");
-    _draw_image( $bips->PATH_IMG . "/f2b_graph_week.png", "-7 days");
-    _draw_image( $bips->PATH_IMG . "/f2b_graph_month.png", "-30 days");
-    _draw_image( $bips->PATH_IMG . "/f2b_graph_year.png", "-365 days");
-    _draw_image( $bips->PATH_IMG . "/f2b_graph_all.png", "*");
+    _draw_image( $Bips->PATH_IMG . "/f2b_graph_1.png", "-1 hours");
+    _draw_image( $Bips->PATH_IMG . "/f2b_graph_24.png", "-24 hours");
+    _draw_image( $Bips->PATH_IMG . "/f2b_graph_week.png", "-7 days");
+    _draw_image( $Bips->PATH_IMG . "/f2b_graph_month.png", "-30 days");
+    _draw_image( $Bips->PATH_IMG . "/f2b_graph_year.png", "-365 days");
+    _draw_image( $Bips->PATH_IMG . "/f2b_graph_all.png", "*");
     
-    _draw_t_image( $bips->PATH_IMG . "/t_f2b_graph_1.png", "-1 hours");
-    _draw_t_image( $bips->PATH_IMG . "/t_f2b_graph_24.png", "-24 hours");
-    _draw_t_image( $bips->PATH_IMG . "/t_f2b_graph_week.png", "-7 days");
-    _draw_t_image( $bips->PATH_IMG . "/t_f2b_graph_month.png", "-30 days");
-    _draw_t_image( $bips->PATH_IMG . "/t_f2b_graph_year.png", "-365 days");
-    _draw_t_image( $bips->PATH_IMG . "/t_f2b_graph_all.png", "*");
+    _draw_t_image( $Bips->PATH_IMG . "/t_f2b_graph_1.png", "-1 hours");
+    _draw_t_image( $Bips->PATH_IMG . "/t_f2b_graph_24.png", "-24 hours");
+    _draw_t_image( $Bips->PATH_IMG . "/t_f2b_graph_week.png", "-7 days");
+    _draw_t_image( $Bips->PATH_IMG . "/t_f2b_graph_month.png", "-30 days");
+    _draw_t_image( $Bips->PATH_IMG . "/t_f2b_graph_year.png", "-365 days");
+    _draw_t_image( $Bips->PATH_IMG . "/t_f2b_graph_all.png", "*");
 }
 
 function _draw_image($imgfile, $period)

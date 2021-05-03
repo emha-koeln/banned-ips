@@ -16,9 +16,9 @@ if (! defined ( 'ABSPATH' )) {
     exit ();
 }
 
-global $bips;
+global $Bips;
 
-include $bips->PATH_CLS . "CoordImg.php";
+include $Bips->PATH_CLS . "CoordImg.php";
 
 global $wpdb;
 $options = get_option('bannedips', array());
@@ -67,8 +67,8 @@ foreach ($results as $result) {
 }
 
 // Save Image
-$imgfile = $bips->PATH_IMG . "CoordImg.png";
-$mapfile = $bips->PATH_IMG . "CoordImg.map";
+$imgfile = $Bips->PATH_IMG . "CoordImg.png";
+$mapfile = $Bips->PATH_IMG . "CoordImg.map";
 // $im2 = new CoordImg ( 600, 400, $aCoordImg, 0, 0 );
 $img = new CoordImg($options['graph_width'], $options['graph_height'], $aCoordImg);
 
@@ -92,8 +92,8 @@ $data = ob_get_clean();
 file_put_contents($mapfile, $data);
 
 
-$imgurl = $bips->URL_IMG . "CoordImg.png";
+$imgurl = $Bips->URL_IMG . "CoordImg.png";
 echo '<img width="" hight="" src="' . $imgurl . '" alt="Fail2Ban Stats" title="Fail2Ban Stats" usemap="#Map" >';
-include ( $bips->PATH_IMG . "CoordImg.map");
+include ( $Bips->PATH_IMG . "CoordImg.map");
 echo '<br />';
 ?>

@@ -613,7 +613,7 @@ function bannedips_options_cron()
 
 function bannedips_options_log()
 {
-    global $bips;
+    global $Bips;
     
     $options = get_option('bannedips', array());
     
@@ -677,7 +677,7 @@ function bannedips_options_log()
         echo '<td colspan=5>';
         //_e('logs: ', 'banned-ips');
         echo '<textarea cols="80" rows="10">';
-        echo $bips->get_logs();
+        echo $Bips->get_logs();
         echo '</textarea></td>';
         
         echo '</tr>';

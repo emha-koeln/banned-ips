@@ -1,6 +1,6 @@
 <?php
 /**
- * BannedIPs_Widget.php
+ * Banned_IPs_Widget.php
  * Part of banned-ips
  * v 0.1.5.alpha
  * (c) 2021 emha.koeln
@@ -46,7 +46,7 @@ class Banned_IPs_Widget extends WP_Widget
 
     public function widget($args, $instance)
     {
-        global $bips;
+        global $Bips;
         
         echo $args['before_widget'];
         
@@ -91,8 +91,8 @@ class Banned_IPs_Widget extends WP_Widget
             $imgname_post = 'all';
         }
         
-        $this->imgsrc = $bips->URL_IMG . $imgname_pre . $imagename . '_' . $imgname_post . '.' . $imagetype;
-        $this->imgpath = $bips->PATH_IMG . $imgname_pre . $imagename . '_' . $imgname_post . '.' . $imagetype;
+        $this->imgsrc = $Bips->URL_IMG . $imgname_pre . $imagename . '_' . $imgname_post . '.' . $imagetype;
+        $this->imgpath = $Bips->PATH_IMG . $imgname_pre . $imagename . '_' . $imgname_post . '.' . $imagetype;
         
         echo '</div>';
         
@@ -232,10 +232,10 @@ class Banned_IPs_Widget extends WP_Widget
 
     public function update($new_instance, $old_instance)
     {
-        global $bips;
+        global $Bips;
         $instance = array();
         
-        $bips->log(__FUNCTION__, 'INFO');
+        $Bips->log(__FUNCTION__, 'INFO');
         
         $instance['title'] = (! empty($new_instance['title'])) ? strip_tags($new_instance['title']) : '';
         

@@ -43,7 +43,7 @@ class Banned_IPs_Shortcode
     {
         
         // get the global class
-        global $bips;
+        global $Bips;
         
         // build default arguments
         // $arguments = shortcode_atts(array(
@@ -54,8 +54,8 @@ class Banned_IPs_Shortcode
         // uses the main output function of the location class
         // $html = $wp_simple_locations->get_locations_output($arguments);
         
-        $options = $bips->options;
-        $file = $bips->PATH_SCR . "banned.php";
+        $options = $Bips->options;
+        $file = $Bips->PATH_SCR . "banned.php";
         
         // Use SQL with conjob for WP
         if (isset($options['sys_cron']) && (isset($options['ab_stats']) || isset($options['bl_stats']))) {
@@ -102,13 +102,13 @@ class Banned_IPs_Shortcode
             echo "<table>";
             if (isset($options['ab_stats'])) {
                 echo "<td>";
-                include ($bips->PATH_SCR . "abuseipdb_stats.php");
+                include ($Bips->PATH_SCR . "abuseipdb_stats.php");
                 echo "</td>";
             }
             
             if (isset($options['bl_stats'])) {
                 echo "<td>";
-                include ($bips->PATH_SCR . "blocklist_stats.php");
+                include ($Bips->PATH_SCR . "blocklist_stats.php");
                 echo "</td>";
             }
             echo "</table>";
@@ -123,20 +123,20 @@ class Banned_IPs_Shortcode
         if (isset($options['show_graph']) && isset($options['sys_cron'])) {
             ob_start();
             echo '<div>';
-            include ($bips->PATH_SCR . "draw_graph.php");
+            include ($Bips->PATH_SCR . "draw_graph.php");
             echo '</div>';
             ob_flush();
         }
         
         
         // TODO: Load as Frontpage
-        if ($bips->tools_get_current_slug() == '') {
+        if ($Bips->tools_get_current_slug() == '') {
 
             function callback($buffer)
             {
-                global $bips;
+                global $Bips;
                 //get_the_ID()
-                return (str_replace("?orderby", "?page_id=" . $bips->tools_get_current_id() . "&?orderby", $buffer));
+                return (str_replace("?orderby", "?page_id=" . $Bips->tools_get_current_id() . "&?orderby", $buffer));
                 //return (str_replace("?orderby", "?page_id=" . get_the_ID() . "?orderby", $buffer));
                 // return (str_replace("orderby", "uorderby", $buffer));
             }

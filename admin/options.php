@@ -15,13 +15,13 @@ if (! defined ( 'ABSPATH' )) {
     exit ();
 }
 
-global $bips;
+global $Bips;
 
 if (function_exists('load_plugin_textdomain')) {
-    load_plugin_textdomain('banned-ips', false, $bips->PATH . '/languages');
+    load_plugin_textdomain('banned-ips', false, $Bips->PATH . '/languages');
 }
 
-include_once ($bips->PATH . '/admin/options_functions.php');
+include_once ($Bips->PATH . '/admin/options_functions.php');
 
 // Save options
 if (isset($_POST['_wpnonce']) && wp_verify_nonce($_POST['_wpnonce'], 'save')) {
@@ -126,8 +126,8 @@ if (! isset($options['bl_account_apikey'])) {
 if (! isset($options['sys_log_level'])) {
     $options['sys_log_level'] = "none";
 }
-$bips->set_loglevel($options['sys_log_level']);
-update_option('bannedips', $options);
+//$Bips->set_loglevel($options['sys_log_level']);
+//update_option('bannedips', $options);
 
 // default fail2ban DB, 'autodetect'/select DB
 if (! isset($options['db']) || $options['db'] == "" || ! file_exists($options['db'])) {
@@ -155,7 +155,7 @@ if (! isset($options['db']) || $options['db'] == "" || ! file_exists($options['d
 
 // css
 echo "<style>";
-echo "include " .$bips->PATH . "/admin/admin.css";
+echo "include " .$Bips->PATH . "/admin/admin.css";
 echo "</style>";
 
 echo '<div class="wrap">';

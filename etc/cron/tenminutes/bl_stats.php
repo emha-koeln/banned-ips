@@ -15,9 +15,9 @@ if (! defined ( 'ABSPATH' )) {
     exit ();
 }
 
-global $bips;
+global $Bips;
 
-include $bips->PATH_CLS . "/ConnectBlocklist.php";
+include $Bips->PATH_CLS . "/ConnectBlocklist.php";
 
 function bannedips_cron_bl_stats2db()
 {
