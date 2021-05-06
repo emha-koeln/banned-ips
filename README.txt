@@ -111,11 +111,15 @@ Shortcode [bannedips] and Widget for showing the current blocked IPs by fail2ban
                 ? Translation in Widget
                 ! Doesn't work as Frontpage
                 Null in ConnectBlocklist
-                Map doesn't allways match CoordImage
+                Map doesn't allways match CoordImage (if Imagesize is change by WP)
                 
    TODO:        Use more OOP, Standalone Testing
    
    NEW:         now based on https://github.com/DevinVinson/WordPress-Plugin-Boilerplate (not all done)  
+
+= 0.1.5 =
+	
+	not published, changed to 0.3.0
 	
 = 0.1.5.alpha =
 
