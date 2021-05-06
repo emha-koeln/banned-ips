@@ -25,15 +25,29 @@ class Banned_IPs_Widget extends WP_Widget
         'before_widget' => '<div class="widget-wrap">',
         'after_widget' => '</div></div>'
     );
-
-    // initialise widget values
-    public function __construct()
-    {
+    /**
+     * Store plugin main class to allow public access.
+     *
+     * @since    20180622
+     * @var object      The main class.
+     */
+    public $main;
+    
+    /**
+     * Initialize the class and set its properties.
+     *
+     * @since    0.3.0
+     * @param      string    $plugin_name       The name of this plugin.
+     * @param      string    $version    The version of this plugin.
+     */
+    public function __construct(   ) {
+        
         // set base values for the widget (override parent)
         parent::__construct('Banned_IPs_Widget_ID',                      // ID
             'Banned-IPs', // Name
             array(
                 'description' => __('Show Banned IPs Stats Graphs', 'banned-ips')
+                
             )
         );
         
@@ -42,11 +56,17 @@ class Banned_IPs_Widget extends WP_Widget
             // load_plugin_textdomain( 'banned-ips', false, str_replace('/cls', '', dirname(plugin_basename( __FILE__ ))) . '/languages/');
         }
         );
+        
+        
+    }
+    
+    public function init( $plugin_main){
+        $this->main = $plugin_main;
     }
 
     public function widget($args, $instance)
     {
-        global $Bips;
+        //global $Bips;
         
         echo $args['before_widget'];
         
@@ -91,8 +111,8 @@ class Banned_IPs_Widget extends WP_Widget
             $imgname_post = 'all';
         }
         
-        $this->imgsrc = $Bips->URL_IMG . $imgname_pre . $imagename . '_' . $imgname_post . '.' . $imagetype;
-        $this->imgpath = $Bips->PATH_IMG . $imgname_pre . $imagename . '_' . $imgname_post . '.' . $imagetype;
+        $this->imgsrc = $this->main->url . 'img/' . $imgname_pre . $imagename . '_' . $imgname_post . '.' . $imagetype;
+        $this->imgpath = $this->main->path . 'img/' . $imgname_pre . $imagename . '_' . $imgname_post . '.' . $imagetype;
         
         echo '</div>';
         
@@ -232,10 +252,10 @@ class Banned_IPs_Widget extends WP_Widget
 
     public function update($new_instance, $old_instance)
     {
-        global $Bips;
+        //global $Bips;
         $instance = array();
         
-        $Bips->log(__FUNCTION__, 'INFO');
+        //$Bips->log(__FUNCTION__, 'INFO');
         
         $instance['title'] = (! empty($new_instance['title'])) ? strip_tags($new_instance['title']) : '';
         

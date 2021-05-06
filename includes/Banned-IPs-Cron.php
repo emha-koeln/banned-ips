@@ -10,11 +10,11 @@
 /**
  *
  * @package banned-ips
- * @author emha.koeln
+ * @author eric busch (ericbusch.net), emha.koeln
  */
 
 
-class BannedIPs_Cron {
+class BIPS_Cron {
     
     /** @var string $hook A name for this cron. */
     public $hook;

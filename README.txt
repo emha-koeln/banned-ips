@@ -1,7 +1,7 @@
-=== Banned IPs ===
+=== Banned IPsIPs ===
 Tags: fail2ban, php, WordPress, Linux, FreeBSD, blocklist, abuseipdb
 Contributors: emha.koeln
-Stable tag: 0.1
+Stable tag: 1.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -77,8 +77,8 @@ Shortcode [bannedips] and Widget for showing the current blocked IPs by fail2ban
 == Use ==
 
     As WordPress Shortcode:
-	    Sample:     [banned-ips]
-        or:         [banned-ips db='/path/to/fail2banDB' lang='de' bl_links=false]
+	    Sample:     [bannedips]
+        or:         [bannedips db='/path/to/fail2banDB' lang='de' bl_links=false]
 
         Attributes given overwrite defaults.
 
