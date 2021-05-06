@@ -1,15 +1,28 @@
 <?php
 /**
- * ab_stats.php
+ * Banned-IPs-BL-Stats.php
  * Part of banned-ips
- * v 0.1.5.alpha
+ * v 0.3
  * (c) 2021 emha.koeln
  * License: GPLv2+
- */
-/**
  *
- * @package banned-ips
- * @author emha.koeln
+ * Get Blocklist.de Stats
+ *
+ * @since      0.3.0
+ *
+ * @package    banned-ips
+ * @subpackage banned-ips/includes
+ */
+
+/**
+ * Get Blocklist.de Stats
+ *
+ * This class gets the Blocklist.de Stats.
+ *
+ * @since      0.3.0
+ * @package    banned-ips
+ * @subpackage banned-ips/includes
+ * @author     emha.koeln
  */
 if (! defined ( 'ABSPATH' )) {
     exit ();

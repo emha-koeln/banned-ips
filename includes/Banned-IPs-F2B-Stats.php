@@ -1,16 +1,28 @@
 <?php
-
 /**
- * ab_stats.php
+ * Banned-IPs-F2B-Stats.php
  * Part of banned-ips
- * v 0.3.0
+ * v 0.3
  * (c) 2021 emha.koeln
  * License: GPLv2+
- */
-/**
  *
- * @package banned-ips
- * @author emha.koeln
+ * Get local fail2ban Stats
+ *
+ * @since      0.3.0
+ *
+ * @package    banned-ips
+ * @subpackage banned-ips/includes
+ */
+
+/**
+ * Get local fail2ban Stats
+ *
+ * This class gets local fail2ban Stats.
+ *
+ * @since      0.3.0
+ * @package    banned-ips
+ * @subpackage banned-ips/includes
+ * @author     emha.koeln
  */
 if (! defined ( 'ABSPATH' )) {
     exit ();

@@ -1,18 +1,29 @@
 <?php
-
 /**
  * Banned-IPs-DB.php
- * Part of banned-ips, also for standalone use
+ * Part of banned-ips
  * v 0.3
  * (c) 2021 emha.koeln
  * License: GPLv2+
- */
-/**
  *
- * @package banned-ips
- * @author emha.koeln
+ * Create the Banned-IPs Database
+ *
+ * @since      0.3.0
+ *
+ * @package    banned-ips
+ * @subpackage banned-ips/includes
  */
 
+/**
+ * Create the Banned-IPs Database
+ *
+ * This class creates the Banned-IPs Database.
+ *
+ * @since      0.3.0
+ * @package    banned-ips
+ * @subpackage banned-ips/includes
+ * @author     emha.koeln
+ */
 class Banned_IPs_DB{
     // DB
     public static function create_db()

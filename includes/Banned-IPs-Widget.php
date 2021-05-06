@@ -1,23 +1,35 @@
 <?php
 /**
- * Banned_IPs_Widget.php
+ * Banned-IPs-Widget.php
  * Part of banned-ips
- * v 0.1.5.alpha
+ * v 0.3
  * (c) 2021 emha.koeln
  * License: GPLv2+
- */
-/**
  *
- * @package banned-ips
- * @author emha.koeln
+ * Public Widget
+ *
+ * @since      0.3.0
+ *
+ * @package    banned-ips
+ * @subpackage banned-ips/includes
  */
 
+/**
+ * Public Widget
+ *
+ * This class is the Public Widget.
+ *
+ * @since      0.3.0
+ * @package    banned-ips
+ * @subpackage banned-ips/includes
+ * @author     emha.koeln
+ */
 // Wp Widget
-class Banned_IPs_Widget extends WP_Widget
-{
+// TODO no i18n in Widget 
+class Banned_IPs_Widget extends WP_Widget{
 
-    private $imgsrc = '';
-    private $imgpath = '';                          
+    public $imgsrc = '';
+    public $imgpath = '';                          
     
     public $args = array(
         'before_title' => '<h4 class="widgettitle">',
@@ -40,7 +52,7 @@ class Banned_IPs_Widget extends WP_Widget
      * @param      string    $plugin_name       The name of this plugin.
      * @param      string    $version    The version of this plugin.
      */
-    public function __construct(   ) {
+    public function __construct( ) {
         
         // set base values for the widget (override parent)
         parent::__construct('Banned_IPs_Widget_ID',                      // ID
@@ -60,10 +72,6 @@ class Banned_IPs_Widget extends WP_Widget
         
     }
     
-    public function init( $plugin_main){
-        $this->main = $plugin_main;
-    }
-
     public function widget($args, $instance)
     {
         //global $Bips;
@@ -110,9 +118,10 @@ class Banned_IPs_Widget extends WP_Widget
             _e('all', 'banned-ips');
             $imgname_post = 'all';
         }
+        ;
         
-        $this->imgsrc = $this->main->url . 'img/' . $imgname_pre . $imagename . '_' . $imgname_post . '.' . $imagetype;
-        $this->imgpath = $this->main->path . 'img/' . $imgname_pre . $imagename . '_' . $imgname_post . '.' . $imagetype;
+        $this->imgsrc = str_replace( 'includes' , '', plugin_dir_url(__FILE__) ) . 'img/' . $imgname_pre . $imagename . '_' . $imgname_post . '.' . $imagetype;
+        $this->imgpath = str_replace( 'includes' , '', plugin_dir_path(__FILE__)) . 'img/' . $imgname_pre . $imagename . '_' . $imgname_post . '.' . $imagetype;
         
         echo '</div>';
         
@@ -133,8 +142,8 @@ class Banned_IPs_Widget extends WP_Widget
                 global $wp;
                 $current_url = home_url(add_query_arg(array(), $wp->request));
                 echo '<br>';
-                _e('...waiting for Graph to be ceated', 'banned-ips');
-                // echo '<br>(' . $this->imgpath . ')';
+                _e('...waiting for Graph to be ceated ', 'banned-ips');
+                // echo '<br>(under: ' . $this->imgpath . ')';
                 echo '<br><a href="' . $current_url . '">';
                 _e('please reload page', 'banned-ips');
                 echo '</a>';

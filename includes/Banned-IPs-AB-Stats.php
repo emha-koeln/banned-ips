@@ -1,22 +1,31 @@
 <?php
 /**
- * ab_stats.php
+ * Banned-IPs-AB-Stats.php
  * Part of banned-ips
- * v 0.1.5.alpha
+ * v 0.3
  * (c) 2021 emha.koeln
  * License: GPLv2+
- */
-/**
  *
- * @package banned-ips
- * @author emha.koeln
+ * Get AbuseIPDB.com Stats
+ *
+ * @since      0.3.0
+ *
+ * @package    banned-ips
+ * @subpackage banned-ips/includes
  */
 
+/**
+ * Get AbuseIPDB.com Stats
+ *
+ * This class gets the AbuseIPDB.com Stats.
+ *
+ * @since      0.3.0
+ * @package    banned-ips
+ * @subpackage banned-ips/includes
+ * @author     emha.koeln
+ */
 defined('ABSPATH')
     or die();
-
-//global $$Bipsips;
-
 
 
 class Banned_IPs_AB_Stats{
@@ -24,7 +33,7 @@ class Banned_IPs_AB_Stats{
     /**
      * Store plugin main class to allow public access.
      *
-     * @since    20180622
+     * @since    0.3.0
      * @var object      The main class.
      */
     public $main;

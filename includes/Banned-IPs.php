@@ -1,7 +1,7 @@
 <?php
 
 /**
- * The core plugin class.
+ * The core Banned-IPs class.
  *
  * This is used to define internationalization, admin-specific hooks, and
  * public-facing site hooks.
@@ -10,8 +10,8 @@
  * version of the plugin.
  *
  * @since      0.3.0
- * @package    Plugin_Name
- * @subpackage Plugin_Name/includes
+ * @package    banned-ips
+ * @subpackage banned-ips/includes
  * @author     Your Name <email@example.com>
  */
 class Banned_IPs {
@@ -129,7 +129,7 @@ class Banned_IPs {
 	 * Create an instance of the loader which will be used to register the hooks
 	 * with WordPress.
 	 *
-	 * @since    1.0.0
+	 * @since    0.3.0
 	 * @access   private
 	 */
 	private function load_dependencies() {
@@ -160,8 +160,8 @@ class Banned_IPs {
 
 		$this->loader = new Banned_IPs_Loader();
 		
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/Banned-IPs-Classes.php';
-		$this->classes = New Banned_IPs_Classes();
+		//require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/Banned-IPs-Classes.php';
+		//$this->classes = New Banned_IPs_Classes();
 
 	}
 
@@ -171,7 +171,7 @@ class Banned_IPs {
 	 * Uses the Plugin_Name_i18n class in order to set the domain and to register the hook
 	 * with WordPress.
 	 *
-	 * @since    1.0.0
+	 * @since    0.3.0
 	 * @access   private
 	 */
 	private function set_locale() {
@@ -181,21 +181,25 @@ class Banned_IPs {
 		$this->loader->add_action( 'plugins_loaded', $plugin_i18n, 'load_plugin_textdomain' );
 
 	}
-
+	/**
+	 * Register all of the hooks related to the plugin functionality.
+	 *
+	 * @since    0.3.0
+	 * @access   private
+	 */
 	private function define_hooks(){
-	    
-	    
+
 	    // New Cron Schedules
 	    $this->loader->add_filter( 'cron_schedules', $this, 'cron_add_minute');
 	    $this->loader->add_filter( 'cron_schedules', $this, 'cron_add_tenminutes');
 
-	
 	}
+	
 	/**
 	 * Register all of the hooks related to the admin area functionality
 	 * of the plugin.
 	 *
-	 * @since    1.0.0
+	 * @since    0.3.0
 	 * @access   private
 	 */
 	private function define_admin_hooks() {
@@ -227,7 +231,7 @@ class Banned_IPs {
 	 * Register all of the hooks related to the public-facing functionality
 	 * of the plugin.
 	 *
-	 * @since    1.0.0
+	 * @since    0.3.0
 	 * @access   private
 	 */
 	private function define_public_hooks() {
@@ -241,8 +245,7 @@ class Banned_IPs {
 	}
 	
 	/**
-	 * Register all of the hooks related to the public-facing functionality
-	 * of the plugin.
+	 * Load related Classes
 	 *
 	 * @since    0.3.0
 	 * @access   private
@@ -282,7 +285,7 @@ class Banned_IPs {
 	 * The name of the plugin used to uniquely identify it within the context of
 	 * WordPress and to define internationalization functionality.
 	 *
-	 * @since     1.0.0
+	 * @since     0.3.0
 	 * @return    string    The name of the plugin.
 	 */
 	public function get_plugin_name() {
@@ -292,7 +295,7 @@ class Banned_IPs {
 	/**
 	 * The reference to the class that orchestrates the hooks with the plugin.
 	 *
-	 * @since     1.0.0
+	 * @since     0.3.0
 	 * @return    Banned_IPs_Loader    Orchestrates the hooks of the plugin.
 	 */
 	public function get_loader() {
@@ -302,7 +305,7 @@ class Banned_IPs {
 	/**
 	 * Retrieve the version number of the plugin.
 	 *
-	 * @since     1.0.0
+	 * @since     0.3.0
 	 * @return    string    The version number of the plugin.
 	 */
 	public function get_version() {

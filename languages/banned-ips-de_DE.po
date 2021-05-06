@@ -1,0 +1,339 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Banned-IPs\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-05-06 15:03+0000\n"
+"PO-Revision-Date: 2021-05-06 15:42+0000\n"
+"Last-Translator: \n"
+"Language-Team: Deutsch\n"
+"Language: de-DE\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Loco https://localise.biz/\n"
+"X-Loco-Version: 2.5.2; wp-5.7.1\n"
+"X-Domain: banned-ips"
+
+#: admin/partials/Banned-IPs-Admin-Display-Functions.php:209 
+#: admin/partials/Banned-IPs-Admin-Display-Functions.php:266
+msgid "#Hex"
+msgstr "#Hexadezimal"
+
+#: includes/Banned-IPs-Widget.php:145
+msgid "...waiting for Graph to be ceated "
+msgstr "... warte bis der graph erstellt wurde"
+
+#: admin/partials/Banned-IPs-Admin-Display-Functions.php:477
+msgid ": not found"
+msgstr ": nicht gefunden"
+
+#: admin/partials/Banned-IPs-Admin-Display-Functions.php:62
+msgid "AbuseIPDB Account"
+msgstr "AbuseIPDB Account"
+
+#: admin/partials/Banned-IPs-Admin-Display-Functions.php:74
+msgid "AbuseIPDB Account ID"
+msgstr "AbuseIPDB Account ID"
+
+#: admin/partials/Banned-IPs-Admin-Display-Functions.php:534
+msgid "AbuseIPDB.com"
+msgstr "AbuseIPDB.com"
+
+#: admin/partials/Banned-IPs-Admin-Display-Functions.php:36
+msgid "AbuseIPDB.com Stats"
+msgstr "AbuseIPDB.com Stats"
+
+#: admin/partials/Banned-IPs-Admin-Display-Functions.php:565
+msgid "Activate Banned IPs Cron"
+msgstr "Aktiviere Banned IPs Cron"
+
+#: admin/partials/Banned-IPs-Admin-Display-Functions.php:569
+msgid "Activate Banned IPs Cron Jobs"
+msgstr "Aktiviere Banned IPs Cron Jobs"
+
+#: includes/Banned-IPs-Widget.php:118 includes/Banned-IPs-Widget.php:248 
+#: admin/partials/Banned-IPs-Admin-Display-Functions.php:374
+msgid "all"
+msgstr "alle"
+
+#: admin/partials/Banned-IPs-Admin-Display-Functions.php:215
+msgid "Background Color"
+msgstr "Hintergrundfarbe"
+
+#. Name of the plugin
+msgid "Banned-IPs"
+msgstr "Banned-IPs"
+
+#: includes/Banned-IPs-Widget.php:163
+msgid "Banned-IPs "
+msgstr "Banned-IPs "
+
+#: includes/Banned-IPs-Widget.php:85
+msgid "Banned-IPs Stats last 24 hours"
+msgstr "Banned-IPs Statistik der letzten 24 Stunden"
+
+#: admin/partials/Banned-IPs-Admin-Display-Functions.php:201 
+#: admin/partials/Banned-IPs-Admin-Display-Functions.php:226
+msgid "Black"
+msgstr "Schwartz"
+
+#: admin/partials/Banned-IPs-Admin-Display-Functions.php:93
+msgid "Blocklist Account"
+msgstr "Blocklist Account"
+
+#: admin/partials/Banned-IPs-Admin-Display-Functions.php:119
+msgid "Blocklist Account APIKEY"
+msgstr "Blocklist Account APIKEY"
+
+#: admin/partials/Banned-IPs-Admin-Display-Functions.php:105
+msgid "Blocklist Account ServerID"
+msgstr "Blocklist Account ServerID"
+
+#: admin/partials/Banned-IPs-Admin-Display-Functions.php:541
+msgid "BlockList.de"
+msgstr "BlockList.de"
+
+#: admin/partials/Banned-IPs-Admin-Display-Functions.php:43
+msgid "BlockList.de Stats"
+msgstr "BlockList.de Stats"
+
+#: admin/partials/Banned-IPs-Admin-Display-Functions.php:234
+msgid "Blue"
+msgstr "Blau"
+
+#: admin/partials/Banned-IPs-Admin-Display.php:159
+msgid "Configuration"
+msgstr "Konfiguration"
+
+#: admin/partials/Banned-IPs-Admin-Display-Functions.php:572
+msgid "Cron Method"
+msgstr "Cron Methode"
+
+#: admin/partials/Banned-IPs-Admin-Display-Functions.php:600
+msgid "Cron Method Activation"
+msgstr "Cron Methode aktivieren"
+
+#. Description of the plugin
+msgid ""
+"Display blocked IPs by fail2ban as Stats, Table or Grap. WP-Shortcode, WP-"
+"Widget or Standalone"
+msgstr ""
+"Zeige von fail2ban gesperrte IPs als Tabelle oder Graphik, in einm Widget, "
+"als Shortcode oder als Standalone-'Plugin'"
+
+#. Author of the plugin
+msgid "emha.koeln"
+msgstr "emha.koeln"
+
+#: admin/partials/Banned-IPs-Admin-Display-Functions.php:435
+msgid "Fail2Ban Database"
+msgstr "Fail2Ban Datenbank"
+
+#: admin/partials/Banned-IPs-Admin-Display-Functions.php:442
+msgid "Fail2Ban DB"
+msgstr "Fail2Ban DB"
+
+#: admin/partials/Banned-IPs-Admin-Display-Functions.php:271
+msgid "Graph Color"
+msgstr "Graph Farbe"
+
+#: admin/partials/Banned-IPs-Admin-Display-Functions.php:388
+msgid "Graph Size"
+msgstr "Graph Grösse"
+
+#: admin/partials/Banned-IPs-Admin-Display-Functions.php:331
+msgid "Graph Time Period"
+msgstr "Graph Zeitraum"
+
+#: admin/partials/Banned-IPs-Admin-Display-Functions.php:250
+msgid "Green"
+msgstr "Grün"
+
+#: admin/partials/Banned-IPs-Admin-Display-Functions.php:193
+msgid "Grey"
+msgstr "Grau"
+
+#: admin/partials/Banned-IPs-Admin-Display-Functions.php:301 
+#: admin/partials/Banned-IPs-Admin-Display-Functions.php:315
+msgid "Hex Value"
+msgstr "Hexadezimal Angabe"
+
+#: admin/partials/Banned-IPs-Admin-Display-Functions.php:414
+msgid "Hight"
+msgstr "Höhe"
+
+#. Author URI of the plugin
+msgid "https://emha.koeln"
+msgstr "https://emha.koeln"
+
+#. URI of the plugin
+msgid "https://emha.koeln/banned-ips-plugin"
+msgstr "https://emha.koeln/banned-ips-plugin"
+
+#: admin/partials/Banned-IPs-Admin-Display-Functions.php:502
+msgid "Language"
+msgstr "Ausgabesprache"
+
+#: includes/Banned-IPs-Widget.php:233 
+#: admin/partials/Banned-IPs-Admin-Display-Functions.php:350
+msgid "last 24 hours"
+msgstr "letzte 24 Stunden"
+
+#: includes/Banned-IPs-Widget.php:229 
+#: admin/partials/Banned-IPs-Admin-Display-Functions.php:342
+msgid "last hour"
+msgstr "letzte Stunde"
+
+#: includes/Banned-IPs-Widget.php:241
+msgid "last month"
+msgstr "letzter Monat"
+
+#: admin/partials/Banned-IPs-Admin-Display-Functions.php:358
+msgid "last seven days"
+msgstr "letzte sieben Tage"
+
+#: admin/partials/Banned-IPs-Admin-Display-Functions.php:366
+msgid "last thirty days"
+msgstr "letzte 30 Tage"
+
+#: includes/Banned-IPs-Widget.php:237
+msgid "last week"
+msgstr "letzte Woche"
+
+#: includes/Banned-IPs-Widget.php:245
+msgid "last year"
+msgstr "letztes Jahr"
+
+#: admin/partials/Banned-IPs-Admin-Display-Functions.php:526
+msgid "Links to AbuseIPDB.com and Blocklist.de"
+msgstr "Links zu AbuseIPDB.com und Blocklist.de"
+
+#: admin/partials/Banned-IPs-Admin-Display-Functions.php:675
+msgid "Log File: "
+msgstr "Log Datei:"
+
+#: admin/partials/Banned-IPs-Admin-Display-Functions.php:643
+msgid "Log Level"
+msgstr "Log Level"
+
+#: admin/partials/Banned-IPs-Admin-Display-Functions.php:470
+msgid "Please note"
+msgstr "Bitte beachten"
+
+#: includes/Banned-IPs-Widget.php:148
+msgid "please reload page"
+msgstr "Seite neu laden"
+
+#: admin/partials/Banned-IPs-Admin-Display-Functions.php:242
+msgid "Red"
+msgstr "Rot"
+
+#: admin/partials/Banned-IPs-Admin-Display.php:186 
+#: admin/partials/Banned-IPs-Admin-Display-Functions.php:733
+msgid "Save"
+msgstr "Speichern"
+
+#: admin/partials/Banned-IPs-Admin-Display-Functions.php:174
+msgid "Select Colors"
+msgstr "Wähle Farben"
+
+#: admin/partials/Banned-IPs-Admin-Display-Functions.php:586
+msgid "Select Cron Method"
+msgstr "Wähle Cron Methode"
+
+#: admin/partials/Banned-IPs-Admin-Display-Functions.php:457
+msgid "Select Fail2Ban DB"
+msgstr "Wähle fail2ban Datenbank"
+
+#: admin/partials/Banned-IPs-Admin-Display-Functions.php:510
+msgid "Select German"
+msgstr "Wähle Deutsch"
+
+#: admin/partials/Banned-IPs-Admin-Display-Functions.php:661
+msgid "Select log level"
+msgstr "Wähle Log Level"
+
+#: admin/partials/Banned-IPs-Admin-Display-Functions.php:506
+msgid "Select Output Language"
+msgstr "Wähle Ausgabesprache"
+
+#: includes/Banned-IPs-Widget.php:222
+msgid "Select Period"
+msgstr "Wähle Zeitraum"
+
+#: admin/partials/Banned-IPs-Admin-Display-Functions.php:32
+msgid "Show AbuseIPDB.com Stats"
+msgstr "Zeige AbuseIPDB.com Statistik"
+
+#: includes/Banned-IPs-Widget.php:61
+msgid "Show Banned IPs Stats Graphs"
+msgstr "Zeige AbuseIPDB.com Graph"
+
+#: admin/partials/Banned-IPs-Admin-Display-Functions.php:39
+msgid "Show BlockList.de Stats"
+msgstr "Zeige Blocklist.de Statistik"
+
+#: admin/partials/Banned-IPs-Admin-Display-Functions.php:157 
+#: admin/partials/Banned-IPs-Admin-Display-Functions.php:164
+msgid "Show Graph"
+msgstr "Zeige Graph"
+
+#: admin/partials/Banned-IPs-Admin-Display-Functions.php:530
+msgid "Show Links to AbuseIPDB.com"
+msgstr "Zeige Links zu AbuseIPDB.com"
+
+#: admin/partials/Banned-IPs-Admin-Display-Functions.php:537
+msgid "Show Links to BlockList.de"
+msgstr "Zeige Links zu Blocklist.de"
+
+#: admin/partials/Banned-IPs-Admin-Display-Functions.php:145
+msgid "Show Stats Graph"
+msgstr "Zeige Statistik Graph"
+
+#: includes/Banned-IPs-Widget.php:105
+msgid "since last 24 hour"
+msgstr "seit den letzten 24 Stunden"
+
+#: includes/Banned-IPs-Widget.php:102
+msgid "since last hour"
+msgstr "seit letzter Stunde"
+
+#: includes/Banned-IPs-Widget.php:111
+msgid "since last month"
+msgstr "seit letztem Monat"
+
+#: includes/Banned-IPs-Widget.php:108
+msgid "since last week"
+msgstr "seit letzter Woche"
+
+#: includes/Banned-IPs-Widget.php:114
+msgid "since last year"
+msgstr "seit letztem Jahr"
+
+#: admin/partials/Banned-IPs-Admin-Display-Functions.php:379
+msgid "Time period"
+msgstr "Zeitraum"
+
+#: admin/partials/Banned-IPs-Admin-Display-Functions.php:603
+msgid "To activate do the follwing..."
+msgstr "Zur Aktivierung führe das Folgende aus..."
+
+#: admin/partials/Banned-IPs-Admin-Display-Functions.php:474
+msgid "To change group and get read access run:"
+msgstr ""
+"Um die Gruppe zu wechseln und Leseberechtigung zu erlangen, führ Folgendes "
+"aus:"
+
+#: admin/partials/Banned-IPs-Admin-Display-Functions.php:483
+msgid "try:"
+msgstr "versuche"
+
+#: admin/partials/Banned-IPs-Admin-Display-Functions.php:185 
+#: admin/partials/Banned-IPs-Admin-Display-Functions.php:258
+msgid "White"
+msgstr "Weiss"
+
+#: admin/partials/Banned-IPs-Admin-Display-Functions.php:400
+msgid "Width"
+msgstr "Breite"

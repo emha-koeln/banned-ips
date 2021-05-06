@@ -499,7 +499,7 @@ function bannedips_options_language()
 <!--  Language TODO:change to WP language-->
 <tr>
 	<th colspan=2 style="text-decoration: underline"><h2>
-			<b>Language</b>
+			<b><?php _e('Language', 'banned-ips') ?></b>
 		</h2></th>
 </tr>
 <tr style="background-color: #FFFFFF;">
@@ -523,7 +523,7 @@ function bannedips_options_links()
 <!--  Links to AbuseIPDB and Blocklist -->
 <tr>
 	<th colspan=2 style="text-decoration: underline"><h2>
-			<b>Links to AbuseIPDB and Blocklist</b>
+			<b><?php _e('Links to AbuseIPDB.com and Blocklist.de', 'banned-ips') ?></b>
 		</h2></th>
 </tr>
 <tr style="background-color: #FFFFFF;">

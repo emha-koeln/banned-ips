@@ -6,8 +6,8 @@
  * @link       http://example.com
  * @since      0.3.0
  *
- * @package    Banned-IPs
- * @subpackage Banned_IPs/public
+ * @package    banned-ips
+ * @subpackage banned-ips/public
  */
 
 /**
@@ -16,8 +16,8 @@
  * Defines the plugin name, version, and two examples hooks for how to
  * enqueue the public-facing stylesheet and JavaScript.
  *
- * @package    Banned-IPs
- * @subpackage Banned_IPs/public
+ * @package    banned-ips
+ * @subpackage banned-ips/public
  * @author     emha.koeln
  */
 class Banned_IPs_Public {
@@ -43,7 +43,7 @@ class Banned_IPs_Public {
 	/**
 	 * Store plugin main class to allow public access.
 	 *
-	 * @since    20180622
+	 * @since    0.3.0
 	 * @var object      The main class.
 	 */
 	public $main;
@@ -52,8 +52,9 @@ class Banned_IPs_Public {
 	 * Initialize the class and set its properties.
 	 *
 	 * @since    0.3.0
-	 * @param      string    $plugin_name       The name of the plugin.
-	 * @param      string    $version    The version of this plugin.
+	 * @param      string    $plugin_name    The name of the plugin.
+	 * @param      string    $version        The version of this plugin.
+	 * @param      object    $main_plugin    The main_plugin.
 	 */
 	public function __construct( $plugin_name, $version, $plugin_main ) {
 
@@ -67,8 +68,8 @@ class Banned_IPs_Public {
 		
 		// Widget
 		include_once ( $this->main->path . 'includes/Banned-IPs-Widget.php');
-		$plugin_widget = new Banned_IPs_Widget( );
-		$plugin_widget->init( $this->main );
+		$plugin_widget = new Banned_IPs_Widget();
+		
 	}
 
 	/**

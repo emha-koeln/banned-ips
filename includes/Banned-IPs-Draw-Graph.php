@@ -1,15 +1,28 @@
 <?php
 /**
- * draw_graph.php
+ * Banned-IPs-Draw-Graph.php
  * Part of banned-ips
- * v 0.1.5.alpha
+ * v 0.3
  * (c) 2021 emha.koeln
  * License: GPLv2+
- */
-/**
  *
- * @package banned-ips
- * @author emha.koeln
+ * Create the Banned-IPs Graph for the Shortcode
+ *
+ * @since      0.3.0
+ *
+ * @package    banned-ips
+ * @subpackage banned-ips/includes
+ */
+
+/**
+ * Create the Banned-IPs Graph for the Shortcode
+ *
+ * This class creates the Banned-IPs Graph for the Shortcode.
+ *
+ * @since      0.3.0
+ * @package    banned-ips
+ * @subpackage banned-ips/includes
+ * @author     emha.koeln
  */
 
 if (! defined ( 'ABSPATH' )) {

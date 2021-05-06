@@ -4,7 +4,7 @@
  * Plugin Name: Banned-IPs
  * Plugin URI: https://emha.koeln/banned-ips-plugin
  * Description: Display blocked IPs by fail2ban as Stats, Table or Grap. WP-Shortcode, WP-Widget or Standalone 
- * Version: 0.3
+ * Version: 0.3.0
  * Requires at least: 5.7
  * Requires PHP: 7.2+
  * License: GPLv2 or later

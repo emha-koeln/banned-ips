@@ -1,17 +1,29 @@
 <?php
 /**
- * BannedIPs_Shortcode.php
- * Part of banned-ips, also for standalone use
- * v 0.1.5.alpha
+ * Banned-IPs-Shortcode.php
+ * Part of banned-ips
+ * v 0.3
  * (c) 2021 emha.koeln
  * License: GPLv2+
- */
-/**
  *
- * @package banned-ips
- * @author emha.koeln
+ * Public Shortcode
+ *
+ * @since      0.3.0
+ *
+ * @package    banned-ips
+ * @subpackage banned-ips/includes
  */
 
+/**
+ * Public Shortcode
+ *
+ * This class is the Public Shortcode.
+ *
+ * @since      0.3.0
+ * @package    banned-ips
+ * @subpackage banned-ips/includes
+ * @author     emha.koeln
+ */
 // defines the functionality for the location shortcode
 class Banned_IPs_Shortcode
 {
