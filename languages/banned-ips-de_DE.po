@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: Banned-IPs\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-05-06 15:03+0000\n"
-"PO-Revision-Date: 2021-05-06 15:42+0000\n"
+"PO-Revision-Date: 2021-05-06 16:13+0000\n"
 "Last-Translator: \n"
 "Language-Team: Deutsch\n"
 "Language: de-DE\n"
@@ -268,7 +268,7 @@ msgstr "Zeige AbuseIPDB.com Statistik"
 
 #: includes/Banned-IPs-Widget.php:61
 msgid "Show Banned IPs Stats Graphs"
-msgstr "Zeige AbuseIPDB.com Graph"
+msgstr "Zeige Banned IPs Graph"
 
 #: admin/partials/Banned-IPs-Admin-Display-Functions.php:39
 msgid "Show BlockList.de Stats"
