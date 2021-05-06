@@ -94,11 +94,11 @@ if ($options['graph_color_graph'] == "Black") {
 
 // Graph Siue
 if (! isset($options['graph_width'])) {
-    $options['graph_width'] = "600";
+    $options['graph_width'] = "400";
     update_option('banned-ips', $options);
 }
 if (! isset($options['graph_height'])) {
-    $options['graph_height'] = "400";
+    $options['graph_height'] = "200";
     update_option('banned-ips', $options);
 }
 if (! isset($options['graph_time'])) {
