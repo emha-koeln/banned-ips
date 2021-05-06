@@ -105,10 +105,17 @@ Shortcode [bannedips] and Widget for showing the current blocked IPs by fail2ban
 
 == Changelog ==
 
-= 0.1.5.beta =
+= 0.3.0 =
 
-    (Not started)
-    TODO:       Use more OOP, Standalone Testing
+   Bugs:        Installation in 'banned-ips' plugin folder only works with 'banned-ips.zip'
+                ? Translation in Widget
+                ! Doesn't work as Frontpage
+                Null in ConnectBlocklist
+                Map doesn't allways match CoordImage
+                
+   TODO:        Use more OOP, Standalone Testing
+   
+   NEW:         now based on https://github.com/DevinVinson/WordPress-Plugin-Boilerplate (not all done)  
 	
 = 0.1.5.alpha =
 

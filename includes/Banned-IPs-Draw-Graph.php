@@ -133,7 +133,7 @@ class Banned_IPs_Draw_Graph {
     
     $imgurl = $this->main->url . 'img/' . "CoordImg.png";
     echo '<img width="" hight="" src="' . $imgurl . '" alt="Fail2Ban Stats" title="Fail2Ban Stats" usemap="#Map" >';
-    include ($this->main->path . 'img/' . "CoordImg.map");
+    include $this->main->path . 'img/' . "CoordImg.map";
     echo '<br />';
 
     }
