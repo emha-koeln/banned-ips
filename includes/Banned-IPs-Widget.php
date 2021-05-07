@@ -25,8 +25,38 @@
  * @author     emha.koeln
  */
 // Wp Widget
-// TODO no i18n in Widget 
-class Banned_IPs_Widget extends WP_Widget{
+/**
+ * Extends WP_Widget to pass §main_plugin
+ * 
+ * @author emha.koeln
+ *
+ */
+class Banned_IPs_Extended_Widget extends WP_Widget{
+    /**
+     * Store plugin main class to allow public access.
+     *
+     * @since    0.3.0
+     * @var object      The main class.
+     */
+    public $main;
+    // WordPress WP_Widget Class
+    public function __construct( $main_plugin ) {
+        
+           
+        parent::__construct(
+            'Banned_IPs_Widget_ID',                      // ID
+            'Banned-IPs', // Name
+            array(
+                'description' => __('Show Banned IPs Stats Graphs', 'banned-ips')
+                
+            )
+            );
+    }
+    
+}
+
+
+class Banned_IPs_Widget extends Banned_IPs_Extended_Widget{
 
     public $imgsrc = '';
     public $imgpath = '';                          
@@ -37,13 +67,6 @@ class Banned_IPs_Widget extends WP_Widget{
         'before_widget' => '<div class="widget-wrap">',
         'after_widget' => '</div></div>'
     );
-    /**
-     * Store plugin main class to allow public access.
-     *
-     * @since    20180622
-     * @var object      The main class.
-     */
-    public $main;
     
     /**
      * Initialize the class and set its properties.
@@ -52,33 +75,26 @@ class Banned_IPs_Widget extends WP_Widget{
      * @param      string    $plugin_name       The name of this plugin.
      * @param      string    $version    The version of this plugin.
      */
-    public function __construct( $main_plugin = null ) {
+    public function __construct( $main_plugin ) {
         
-        
-        //$main_plugin = null;
         // set base values for the widget (override parent)
-        parent::__construct('Banned_IPs_Widget_ID',                      // ID
-            'Banned-IPs', // Name
-            array(
-                'description' => __('Show Banned IPs Stats Graphs', 'banned-ips')
-                
-            )
-        );
-        
-        add_action('widgets_init', function () {
-            register_widget('Banned_IPs_Widget');
-            // load_plugin_textdomain( 'banned-ips', false, str_replace('/cls', '', dirname(plugin_basename( __FILE__ ))) . '/languages/');
-        }
-        );
-         
         $this->main = $main_plugin;
+        parent::__construct( $this->main );
+   
+  
+        add_action( 'widgets_init', function() {
+           
+            $plugin_main = $this->main; 
+            
+            $widget = new Banned_IPs_Widget( $plugin_main );
+            register_widget( $widget );
+        } );
         
     }
     
     public function widget($args, $instance)
     {
-        //global $Bips;
-        
+               
         echo $args['before_widget'];
         
         if (! empty($instance['title'])) {
@@ -146,7 +162,7 @@ class Banned_IPs_Widget extends WP_Widget{
                 $current_url = home_url(add_query_arg(array(), $wp->request));
                 echo '<br>';
                 _e('...waiting for Graph to be ceated ', 'banned-ips');
-                echo '<br>(under: ' . $this->main->path . ')';
+                //echo '<br>(under: ' . $this->main->path . ')';
                 echo '<br><a href="' . $current_url . '">';
                 _e('please reload page', 'banned-ips');
                 echo '</a>';
@@ -178,8 +194,8 @@ class Banned_IPs_Widget extends WP_Widget{
 </p>
 
 <div>
-        	<?php 
-/*
+        <?php 
+                /*
                * //var_dump($transparency);
                * echo '<br>';
                * echo 'vd: $this->get_settings()' . var_dump($this->get_settings()). '<br/>';
@@ -264,10 +280,8 @@ class Banned_IPs_Widget extends WP_Widget{
 
     public function update($new_instance, $old_instance)
     {
-        //global $Bips;
+
         $instance = array();
-        
-        //$Bips->log(__FUNCTION__, 'INFO');
         
         $instance['title'] = (! empty($new_instance['title'])) ? strip_tags($new_instance['title']) : '';
         
@@ -281,6 +295,5 @@ class Banned_IPs_Widget extends WP_Widget{
         return $instance;
     }
 }
-// $bannedips_widget = new BannedIPs_Widget();
 
 ?>

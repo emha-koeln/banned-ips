@@ -3,11 +3,10 @@
 /**
  * The admin-specific functionality of the plugin.
  *
- * @link       http://example.com
  * @since      0.3.0
  *
- * @package    Banned_IPs
- * @subpackage Banned_IPs/admin
+ * @package    banned-ips
+ * @subpackage banned-ips/admin
  */
 
 /**
@@ -16,8 +15,8 @@
  * Defines the plugin name, version, and two examples hooks for how to
  * enqueue the admin-specific stylesheet and JavaScript.
  *
- * @package    Banned_IPs
- * @subpackage Banned_IPs/admin
+ * @package    banned-ips
+ * @subpackage banned-ips/admin
  * @author     emha.koeln
  */
 class Banned_IPs_Admin {
@@ -43,8 +42,8 @@ class Banned_IPs_Admin {
 	/**
 	 * Store plugin main class to allow public access.
 	 *
-	 * @since    20180622
-	 * @var object      The main class.
+	 * @since    0.3.0
+	 * @var      object      The main class.
 	 */
 	public $main;
 	
@@ -52,8 +51,8 @@ class Banned_IPs_Admin {
 	 * Initialize the class and set its properties.
 	 *
 	 * @since    0.3.0
-	 * @param      string    $plugin_name       The name of this plugin.
-	 * @param      string    $version    The version of this plugin.
+	 * @param    string    $plugin_name       The name of this plugin.
+	 * @param    string    $version    The version of this plugin.
 	 */
 	public function __construct( $plugin_name, $version, $plugin_main ) {
 
@@ -160,21 +159,22 @@ class Banned_IPs_Admin {
 	
 	
 	public function set_defaults(){
+	    
 	    $options = get_option( $this->plugin_name );
 	    // default fail2ban DB, 'autodetect'/select DB
 	    if (! isset($options['db']) || $options['db'] == "" || ! file_exists($options['db'])) {
 	        if (PHP_OS == "Linux") {
 	            $options['db_autodetect'] = "/var/lib/fail2ban/fail2ban.sqlite3";
 	            if (! file_exists($options['db_autodetect'])) {
-	                $options['db_autodetect'] = "Error: autodetect failed; Fail2Ban DB is not set!";
+	                $options['db_autodetect'] = __("Error: autodetect failed; Fail2Ban DB is not set!", 'banned-ips');
 	            }
 	        } elseif (PHP_OS == "FreeBSD") {
 	            $options['db_autodetect'] = "/var/db/fail2ban/fail2ban.sqlite3";
 	            if (! file_exists($options['db_autodetect'])) {
-	                $options['db_autodetect'] = "Error: autodetect failed; Fail2Ban DB is not set!";
+	                $options['db_autodetect'] = __("Error: autodetect failed; Fail2Ban DB is not set!", 'banned-ips');
 	            }
 	        } else {
-	            $options['db_autodetect'] = "Error: autodetect failed; Fail2Ban DB is not set!";
+	            $options['db_autodetect'] = __("Error: autodetect failed; Fail2Ban DB is not set!", 'banned-ips');
 	        }
 	        if (! isset($options['db']) || $options['db'] == "") {
 	            $options['db'] = $options['db_autodetect'];
@@ -184,6 +184,22 @@ class Banned_IPs_Admin {
 	            update_option('banned-ips', $options);
 	        }
 	    }
+	    /*
+	    // DEBUG
+	    function sample_admin_notice__success() {
+	        $options = get_option( 'banned-ips' );
+	        ?>
+            <div class="notice notice-success is-dismissible">
+                <p><?php 
+                    _e( 'Setting fail2ban database to', 'banned-ips' ); 
+                    echo ($options['db']);
+                    ?>
+                </p>
+            </div>
+            <?php
+        }
+        add_action( 'admin_notices', 'sample_admin_notice__success' );
+        */
 	}
 	
 	/**
