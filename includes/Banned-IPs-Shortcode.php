@@ -82,7 +82,7 @@ class Banned_IPs_Shortcode
         // $html = $wp_simple_locations->get_locations_output($arguments);
         
         $options = get_option( $this->main->get_plugin_name() );
-        //$options = $Bips->options;
+        
         $file = $this->main->path . 'scr/' . "banned.php";
         
         // Use SQL with conjob for WP

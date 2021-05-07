@@ -69,7 +69,7 @@ if ($myDB == "") {
 
 // TODO SQLite Fail2Ban DB in standalone
 
-/*
+
 class MyDB extends SQLite3
 {
 
@@ -78,7 +78,7 @@ class MyDB extends SQLite3
         $this->open($_myDB);
     }
 }
-*/
+
 
 // Open Fail2Ban DB
 $db = new MyDB($myDB);

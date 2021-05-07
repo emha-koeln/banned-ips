@@ -68,7 +68,7 @@ class Banned_IPs_Public {
 		
 		// Widget
 		include_once ( $this->main->path . 'includes/Banned-IPs-Widget.php');
-		$plugin_widget = new Banned_IPs_Widget();
+		$plugin_widget = new Banned_IPs_Widget( $this->main );
 		
 	}
 

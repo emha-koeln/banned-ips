@@ -28,14 +28,15 @@ if (! defined ( 'ABSPATH' )) {
     exit ();
 }
 // SQLite Fail2Ban DB
-        class MyDB extends SQLite3
-        {
-    
-            function __construct($_myDB)
-            {
-                $this->open($_myDB);
-            }
-        }
+class f2bDB extends SQLite3
+{
+
+    function __construct($_myDB)
+    {
+        $this->open($_myDB);
+    }
+}
+        
 class Banned_IPs_F2B_Stats {
     
     public function banned_ips_cron_f2b_stats2db()
@@ -45,7 +46,7 @@ class Banned_IPs_F2B_Stats {
     
         
         // Open Fail2Ban DB
-        $db = new MyDB($options['db']);
+        $db = new f2bDB($options['db']);
         if (! $db) {
             echo $db->lastErrorMsg();
         } else {

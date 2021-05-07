@@ -47,12 +47,7 @@ if (! isset($options['sys_cron_methode'])) {
 if (! isset($options['graph_color_bg'])) {
     $options['graph_color_bg'] = "Grey";
 }
-// if ( ! ($options ['graph_color_bg'] == "#Hex") &&
-// ($options ['graph_color_bg_hex'] == "#ffffff" ||
-// $options ['graph_color_bg_hex'] == "#D3D3D3" ||
-// $options ['graph_color_bg_hex'] == "#00000" )){
-// ;
-// }
+
 if ($options['graph_color_bg'] == "White") {
     $options['graph_color_bg_hex'] = "#ffffff";
     // update_option('graph_color_bg_hex', "#ffffff");
@@ -121,8 +116,7 @@ if (! isset($options['bl_account_apikey'])) {
 if (! isset($options['sys_log_level'])) {
     $options['sys_log_level'] = "none";
 }
-//$Bips->set_loglevel($options['sys_log_level']);
-//update_option('bannedips', $options);
+
 
 // default fail2ban DB, 'autodetect'/select DB
 if (! isset($options['db']) || $options['db'] == "" || ! file_exists($options['db'])) {
@@ -150,7 +144,7 @@ if (! isset($options['db']) || $options['db'] == "" || ! file_exists($options['d
 
 // css
 echo "<style>";
-echo "include " .$Bips->PATH . "/admin/admin.css";
+echo "include css/banned-ips-admin.css";
 echo "</style>";
 
 echo '<div class="wrap">';

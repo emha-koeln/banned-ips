@@ -52,8 +52,10 @@ class Banned_IPs_Widget extends WP_Widget{
      * @param      string    $plugin_name       The name of this plugin.
      * @param      string    $version    The version of this plugin.
      */
-    public function __construct( ) {
+    public function __construct( $main_plugin = null ) {
         
+        
+        //$main_plugin = null;
         // set base values for the widget (override parent)
         parent::__construct('Banned_IPs_Widget_ID',                      // ID
             'Banned-IPs', // Name
@@ -68,7 +70,8 @@ class Banned_IPs_Widget extends WP_Widget{
             // load_plugin_textdomain( 'banned-ips', false, str_replace('/cls', '', dirname(plugin_basename( __FILE__ ))) . '/languages/');
         }
         );
-        
+         
+        $this->main = $main_plugin;
         
     }
     
@@ -143,7 +146,7 @@ class Banned_IPs_Widget extends WP_Widget{
                 $current_url = home_url(add_query_arg(array(), $wp->request));
                 echo '<br>';
                 _e('...waiting for Graph to be ceated ', 'banned-ips');
-                // echo '<br>(under: ' . $this->imgpath . ')';
+                echo '<br>(under: ' . $this->main->path . ')';
                 echo '<br><a href="' . $current_url . '">';
                 _e('please reload page', 'banned-ips');
                 echo '</a>';
