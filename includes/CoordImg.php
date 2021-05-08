@@ -449,6 +449,10 @@ class CoordImg
             // TODO
         } elseif (True) { // TODO Date-Time
             
+            if($this->iDataCount == 0 ){
+                $this->iDataCount = 1;
+            }
+            
             $x_gap = $this->iCoordsXlength / $this->iDataCount;
             $x = 0;
             $x_pre = 0;

@@ -114,11 +114,11 @@ class Banned_IPs_F2B_Graph {
         $data = ob_get_clean();
         file_put_contents($imgfile, $data);
         
-        ob_start();
+        //ob_start();
         // imagepng($t_img);
-        imagepng($img->get_Image());
-        $t_data = ob_get_clean();
-        file_put_contents('t_' . $imgfile, $t_data);
+        //imagepng($img->get_Image());
+        //$t_data = ob_get_clean();
+        //file_put_contents( $imgfile, $t_data);
     }
     
     function _draw_t_image($imgfile, $period)

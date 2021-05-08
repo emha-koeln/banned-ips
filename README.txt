@@ -114,6 +114,7 @@ Shortcode [bannedips] and Widget for showing the current blocked IPs by fail2ban
                 ! Doesn't work as Frontpage
                 Null in ConnectBlocklist
                 Map doesn't allways match CoordImage (if Imagesize is change by WP)
+                Cronjobs not working: Try "define('ALTERNATE_WP_CRON', true);" in wp-config.php
                 
    TODO:        Use more OOP, Standalone Testing
    

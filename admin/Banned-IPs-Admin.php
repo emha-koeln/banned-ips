@@ -251,6 +251,7 @@ class Banned_IPs_Admin {
 	/**
 	 * Cron jobs
 	 */
+	/*
 	public function activate_wp_cron(){
 	    // WP Cron
 	    
@@ -290,10 +291,11 @@ class Banned_IPs_Admin {
 	    wp_unschedule_event($timestamp, 'banned_ips_hook_daily_cronjob');
 	    
 	}
-	
+	*/
 	/**
 	 * Functions to be called by cron job hooks
 	 */
+	/*
 	// Everyminute
 	public function banned_ips_everyminute_cronjob()
 	{
@@ -327,31 +329,31 @@ class Banned_IPs_Admin {
 	    //bannedips_cron_ab_stats2db();
 	    //bannedips_cron_bl_stats2db();
 	    // test
-	    $recepients = 'root@localhost';
-	    $subject = 'Hello from your Tenminutes Cron Job';
-	    $message = 'This is a test mail sent by bannedips automatically as per your schedule.';
+	    //$recepients = 'root@localhost';
+	    //$subject = 'Hello from your Tenminutes Cron Job';
+	   // $message = 'This is a test mail sent by bannedips automatically as per your schedule.';
 	    // let's send it
-	    mail ( $recepients, $subject, $message );
+	    //mail ( $recepients, $subject, $message );
 	}
 	// Hourly
 	public function banned_ips_hourly_cronjob()
 	{
 	    // test
-	    $recepients = 'root@localhost';
-	    $subject = 'Hello from your Hourly Cron Job';
-	    $message = 'This is a test mail sent by bannedips automatically as per your schedule.';
+	    //$recepients = 'root@localhost';
+	    //$subject = 'Hello from your Hourly Cron Job';
+	    //$message = 'This is a test mail sent by bannedips automatically as per your schedule.';
 	    // let's send it
-	    mail ( $recepients, $subject, $message );
+	    //mail ( $recepients, $subject, $message );
 	}
 	// Daily
 	public function banned_ips_daily_cronjob()
 	{
 	    // test
-	    $recepients = 'root@localhost';
-	    $subject = 'Hello from your Daily Cron Job';
-	    $message = 'This is a test mail sent by bannedips automatically as per your schedule.';
+	    //$recepients = 'root@localhost';
+	    //$subject = 'Hello from your Daily Cron Job';
+	    //$message = 'This is a test mail sent by bannedips automatically as per your schedule.';
 	    // let's send it
-	    mail ( $recepients, $subject, $message );
+	    //mail ( $recepients, $subject, $message );
 	}
-
+    */
 }

@@ -32,11 +32,11 @@ if (isset($_POST['_wpnonce']) && wp_verify_nonce($_POST['_wpnonce'], 'save')) {
 
 // Cron TODO: Cron Options
 if (isset($options['sys_cron'])) {
-    $this->activate_wp_cron();
+    $this->main->activate_wp_cron();
     //banned_ips_activate_cronjobs();
 } else {
    // banned_ips_deactivate_cronjobs();
-    $this->deactivate_wp_cron();
+    $this->main->deactivate_wp_cron();
 }
 
 if (! isset($options['sys_cron_methode'])) {

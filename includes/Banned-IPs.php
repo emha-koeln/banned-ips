@@ -193,6 +193,12 @@ class Banned_IPs {
 	    $this->loader->add_filter( 'cron_schedules', $this, 'cron_add_minute');
 	    $this->loader->add_filter( 'cron_schedules', $this, 'cron_add_tenminutes');
 
+	    
+	    $this->loader->add_action( 'banned_ips_hook_everyminute_cronjob', $this, 'banned_ips_everyminute_cronjob' );
+	    $this->loader->add_action( 'banned_ips_hook_tenminutes_cronjob', $this, 'banned_ips_tenminutes_cronjob' );
+	    $this->loader->add_action( 'banned_ips_hook_hourly_cronjob', $this, 'banned_ips_hourly_cronjob' );
+	    $this->loader->add_action( 'banned_ips_hook_daily_cronjob', $this, 'banned_ips_daily_cronjob' );
+	    
 	}
 	
 	/**
@@ -219,12 +225,13 @@ class Banned_IPs {
 		//$plugin_basename = plugin_basename( plugin_dir_path( __DIR__ ) . $this->plugin_name . '.php' );
 		$plugin_basename = plugin_basename( plugin_dir_path( __DIR__ ) . $this->plugin_name . '.php' );
 		$this->loader->add_filter( 'plugin_action_links_' . $plugin_basename, $plugin_admin, 'add_action_links' );
-
+        
+		/*
 		$this->loader->add_action( 'banned_ips_hook_everyminute_cronjob', $plugin_admin, 'banned_ips_everyminute_cronjob' );
 		$this->loader->add_action( 'banned_ips_hook_tenminutes_cronjob', $plugin_admin, 'banned_ips_tenminutes_cronjob' );
 		$this->loader->add_action( 'banned_ips_hook_hourly_cronjob', $plugin_admin, 'banned_ips_hourly_cronjob' );
 		$this->loader->add_action( 'banned_ips_hook_daily_cronjob', $plugin_admin, 'banned_ips_daily_cronjob' );
-		
+		*/
 	}
 
 	/**
@@ -241,7 +248,13 @@ class Banned_IPs {
 		$this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_styles' );
 		$this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_scripts' );
 		
-
+        /*
+		$this->loader->add_action( 'banned_ips_hook_everyminute_cronjob', $plugin_public, 'banned_ips_everyminute_cronjob' );
+		$this->loader->add_action( 'banned_ips_hook_tenminutes_cronjob', $plugin_public, 'banned_ips_tenminutes_cronjob' );
+		$this->loader->add_action( 'banned_ips_hook_hourly_cronjob', $plugin_public, 'banned_ips_hourly_cronjob' );
+		$this->loader->add_action( 'banned_ips_hook_daily_cronjob', $plugin_public, 'banned_ips_daily_cronjob' );
+		*/
+		
 	}
 	
 	/**
@@ -338,6 +351,112 @@ class Banned_IPs {
 	    return $schedules;
 	}
 	
+	
+	/**
+	 * Cron jobs
+	 */
+	public function activate_wp_cron(){
+	    // WP Cron
+	    
+	    if (! wp_next_scheduled('banned_ips_hook_everyminute_cronjob')) {
+	        wp_schedule_event(time(), 'everyminute', 'banned_ips_hook_everyminute_cronjob');
+	    }
+	    
+	    if (! wp_next_scheduled('banned_ips_hook_tenminutes_cronjob')) {
+	        wp_schedule_event(time(), 'tenminutes', 'banned_ips_hook_tenminutes_cronjob');
+	    }
+	    
+	    if (! wp_next_scheduled('banned_ips_hook_hourly_cronjob')) {
+	        wp_schedule_event(time(), 'hourly', 'banned_ips_hook_hourly_cronjob');
+	    }
+	    
+	    if (! wp_next_scheduled('banned_ips_hook_daily_cronjob')) {
+	        wp_schedule_event(time(), 'daily', 'banned_ips_hook_daily_cronjob');
+	    }
+	    
+	}
+	public function deactivate_wp_cron(){
+	    // WP Cron
+	    
+	    // WP Cron
+	    
+	    // everyminute
+	    $timestamp = wp_next_scheduled('banned_ips_hook_everyminute_cronjob');
+	    wp_unschedule_event($timestamp, 'banned_ips_hook_everyminute_cronjob');
+	    // tenminutes
+	    $timestamp = wp_next_scheduled('banned_ips_hook_tenminutes_cronjob');
+	    wp_unschedule_event($timestamp, 'banned_ips_hook_tenminutes_cronjob');
+	    // Hourly
+	    $timestamp = wp_next_scheduled('banned_ips_hook_hourly_cronjob');
+	    wp_unschedule_event($timestamp, 'banned_ips_hook_hourly_cronjob');
+	    // Daily
+	    $timestamp = wp_next_scheduled('banned_ips_hook_daily_cronjob');
+	    wp_unschedule_event($timestamp, 'banned_ips_hook_daily_cronjob');
+	    
+	}
+	
+	/**
+	 * Functions to be called by cron job hooks
+	 */
+	// Everyminute
+	public function banned_ips_everyminute_cronjob()
+	{
+	    //global $Bips;
+	    // include_once ( $Bips->PATH_ETC . "/cron/everyminute/f2b_stats.php");
+	    //include_once ( $Bips->PATH_ETC . "/cron/everyminute/f2b_graph.php");
+	    // TODO automaticly read folder
+	    //bannedips_cron_f2b_stats2db();
+	    //bannedips_cron_f2b_graph();
+	    $this->f2b_stats->banned_ips_cron_f2b_stats2db();
+	    $this->f2b_graph->banned_ips_cron_f2b_graph();
+	    // test
+	    //$recepients = 'root@localhost';
+	    //$subject = 'Hello from your Everyminute Cron Job';
+	    //$message = 'This is a test mail sent by bannedips automatically as per your schedule.';
+	    // let's send it
+	    // mail ( $recepients, $subject, $message );
+	    
+	    
+	}
+	// Tenminutes
+	public function banned_ips_tenminutes_cronjob()
+	{
+	    //global $Bips;
+	    //include_once ( $Bips->PATH_ETC . "/cron/tenminutes/ab_stats.php");
+	    //include_once ( $Bips->PATH_ETC . "/cron/tenminutes/bl_stats.php");
+	    
+	    // TODO automaticly read folder
+	    $this->ab_stats->banned_ips_cron_ab_stats2db();
+	    $this->bl_stats->banned_ips_cron_bl_stats2db();
+	    //bannedips_cron_ab_stats2db();
+	    //bannedips_cron_bl_stats2db();
+	    // test
+	    //$recepients = 'root@localhost';
+	    //$subject = 'Hello from your Tenminutes Cron Job';
+	    // $message = 'This is a test mail sent by bannedips automatically as per your schedule.';
+	    // let's send it
+	    //mail ( $recepients, $subject, $message );
+	}
+	// Hourly
+	public function banned_ips_hourly_cronjob()
+	{
+	    // test
+	    //$recepients = 'root@localhost';
+	    //$subject = 'Hello from your Hourly Cron Job';
+	    //$message = 'This is a test mail sent by bannedips automatically as per your schedule.';
+	    // let's send it
+	    //mail ( $recepients, $subject, $message );
+	}
+	// Daily
+	public function banned_ips_daily_cronjob()
+	{
+	    // test
+	    //$recepients = 'root@localhost';
+	    //$subject = 'Hello from your Daily Cron Job';
+	    //$message = 'This is a test mail sent by bannedips automatically as per your schedule.';
+	    // let's send it
+	    //mail ( $recepients, $subject, $message );
+	}
 	
 	
 	// testing/learnig...
