@@ -40,7 +40,9 @@ Shortcode [bannedips] and Widget for showing the current blocked IPs by fail2ban
 
 == Homepage ==
    
-   https://emha.koeln/banned-ips-plugin/ DE
+   https://wp-plugins.emha.koeln/banned-ips DE
+   https://wp-plugins.emha.koeln/banned-ips-en EN
+   
    https://sourceforge.net/projects/banned-ips/ EN
    
    https://github.com/emha-koeln/banned-ips DEV

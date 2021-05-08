@@ -13,6 +13,8 @@
  * @author emha.koeln
  */
 
+include_once 'SqliteDB.php';
+
 // $my*, defaults are not used if part of banned-ips plugin
 $myDB = ""; // set fail2ban DB, leave empty for auto detection
 $myLANG = ""; // set to "de" for german output
@@ -70,18 +72,18 @@ if ($myDB == "") {
 // TODO SQLite Fail2Ban DB in standalone
 
 
-class MyDB extends SQLite3
-{
+//class MyDB extends SQLite3
+//{
 
-    function __construct($_myDB)
-    {
-        $this->open($_myDB);
-    }
-}
+//    function __construct($_myDB)
+//    {
+//        $this->open($_myDB);
+//    }
+//}
 
 
 // Open Fail2Ban DB
-$db = new MyDB($myDB);
+$db = new SqliteDB($myDB);
 if (! $db) {
     echo $db->lastErrorMsg();
 } else {

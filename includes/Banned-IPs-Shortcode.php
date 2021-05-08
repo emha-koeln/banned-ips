@@ -151,7 +151,7 @@ class Banned_IPs_Shortcode
         if (isset($options['show_graph']) && isset($options['sys_cron'])) {
             ob_start();
             echo '<div>';
-            include ( $this->main->path . 'includes/' . "Banned-IPs-Draw-Graph.php");
+            include_once ( $this->main->path . 'includes/' . "Banned-IPs-Draw-Graph.php");
             $draw = New Banned_IPs_Draw_Graph( $this->main);
             $draw->draw_graph();
             echo '</div>';
@@ -164,7 +164,7 @@ class Banned_IPs_Shortcode
 
             function callback($buffer)
             {
-                global $Bips;
+                //global $Bips;
                 //get_the_ID()
                 return (str_replace("?orderby", "?page_id=" . get_the_ID() . "&?orderby", $buffer));
                 
