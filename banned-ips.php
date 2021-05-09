@@ -2,8 +2,8 @@
 
 /**
  * Plugin Name: Banned-IPs
- * Plugin URI: https://emha.koeln/banned-ips-plugin
- * Description: Display blocked IPs by fail2ban as Stats, Table or Grap. WP-Shortcode, WP-Widget or Standalone 
+ * Plugin URI: https://wp-plugins.emha.koeln/banned-ips
+ * Description: Display blocked IPs by fail2ban as Stats, Table or Graph; WP-Shortcode, WP-Widget or Standalone 
  * Version: 0.3.0
  * Requires at least: 5.7
  * Requires PHP: 7.2+
@@ -40,14 +40,12 @@ if ( ! defined( 'WPINC' ) ) {
 
 /**
  * Currently plugin version.
- * Start at version 1.0.0 and use SemVer - https://semver.org
- * Rename this for your plugin and update it as you release new versions.
+ * See SemVer - https://semver.org
  */
 define( 'BANNED_IPS_VERSION', '0.3.0' );
 
 /**
  * The code that runs during plugin activation.
- * This action is documented in includes/class-plugin-name-activator.php
  */
 function activate_banned_ips() {
 	require_once plugin_dir_path( __FILE__ ) . 'includes/Banned-IPs-Activator.php';
@@ -57,7 +55,6 @@ register_activation_hook( __FILE__, 'activate_banned_ips' );
 
 /**
  * The code that runs during plugin deactivation.
- * This action is documented in includes/class-plugin-name-deactivator.php
  */
 function deactivate_banned_ips() {
 	require_once plugin_dir_path( __FILE__ ) . 'includes/Banned-IPs-Deactivator.php';

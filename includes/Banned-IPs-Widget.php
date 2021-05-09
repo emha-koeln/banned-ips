@@ -183,17 +183,17 @@ class Banned_IPs_Widget extends Banned_IPs_Extended_Widget{
         $period = ! empty($instance['period']) ? $instance['period'] : esc_html__('last 24 hours', 'banned_ips');
         $transparency = ! empty($instance['$transparency']) ? $instance['$transparency'] : esc_html__('checked', 'banned_ips');
         // $image = ! empty( $instance['image'] ) ? $instance['image'] : $this->imgsrc;
-        ?>
+?>
 
-<p>
-	<label for="<?php echo esc_attr( $this->get_field_id( 'Title' ) ); ?>"><?php echo esc_html__( 'Title:', 'banned_ips' ); ?></label>
-	<input class="widefat"
-		id="<?php echo esc_attr( $this->get_field_id( 'title' ) ); ?>"
-		name="<?php echo esc_attr( $this->get_field_name( 'title' ) ); ?>"
-		type="text" value="<?php echo esc_attr( $title ); ?>">
-</p>
+        <p>
+        	<label for="<?php echo esc_attr( $this->get_field_id( 'Title' ) ); ?>"><?php echo esc_html__( 'Title:', 'banned_ips' ); ?></label>
+        	<input class="widefat"
+        		id="<?php echo esc_attr( $this->get_field_id( 'title' ) ); ?>"
+        		name="<?php echo esc_attr( $this->get_field_name( 'title' ) ); ?>"
+        		type="text" value="<?php echo esc_attr( $title ); ?>">
+        </p>
 
-<div>
+		<div>
         <?php 
                 /*
                * //var_dump($transparency);
@@ -214,62 +214,63 @@ class Banned_IPs_Widget extends Banned_IPs_Extended_Widget{
 
 
 
-<p>
-	<label
-		for="<?php echo esc_attr( $this->get_field_id( 'Transparency' ) ); ?>"><?php echo esc_html__( 'Transparency:', 'banned_ips' ); ?></label>
-	<input class="widefat"
-		id="<?php echo $this->get_field_id( 'transparency' ) ; ?>"
-		name="<?php echo $this->get_field_name( 'transparency' ) ; ?>"
-		type="checkbox"
-		<?php
-        if ($this->get_settings()[$this->number]['transparency'] == 'checked') {
-            echo 'checked="' . $transparency . '"';
-            // echo $transparency ;
-        }
-        ?>
-		value="<?php echo $transparency ; ?>"> <label
-		for="<?php echo $this->get_field_id( 'transparency' ) ; ?>">
-           		<?php //echo $transparency; ?>
+        <p>
+        	<label
+        		for="<?php echo esc_attr( $this->get_field_id( 'Transparency' ) ); ?>"><?php echo esc_html__( 'Transparency:', 'banned_ips' ); ?></label>
+        	<input class="widefat"
+        		id="<?php echo $this->get_field_id( 'transparency' ) ; ?>"
+        		name="<?php echo $this->get_field_name( 'transparency' ) ; ?>"
+        		type="checkbox"
+        		<?php
+                if ($this->get_settings()[$this->number]['transparency'] == 'checked') {
+                    echo 'checked="' . $transparency . '"';
+                    // echo $transparency ;
+                }
+                ?>
+        		value="<?php echo $transparency ; ?>"> <label
+        		for="<?php echo $this->get_field_id( 'transparency' ) ; ?>">
+                   		<?php //echo $transparency; ?>
             </label>
-</p>
+        </p>
 
-<p>
- 
+        <p>
+         
             <?php 
-// echo $period;
-              // echo __('last week', 'banned-ips'); ?>
+                // echo $period;
+                // echo __('last week', 'banned-ips'); 
+            ?>
             <label for="<?php echo $this->get_field_id('period'); ?>"><?php _e ('Select Period','banned-ips')?></label>
-	<select class="widefat"
-		name="<?php echo $this->get_field_name('period'); ?>"
-		id="<?php echo $this->get_field_id('period'); ?>"
-		value="<?php echo $period; ?>">
-		<option value="last hour"
-			<?php if($period == 'last hour'){ echo 'selected';}?>>
-                	<?php _e ('last hour','banned-ips') ?>
-                </option>
-		<option value="last 24 hours"
-			<?php if($period == 'last 24 hours'){ echo 'selected';}?>>
-                	<?php _e ('last 24 hours','banned-ips') ?>
-                </option>
-		<option value="last week"
-			<?php if($period == 'last week'){ echo 'selected';}?>>
-                	<?php _e ('last week','banned-ips') ?>
-                </option>
-		<option value="last month"
-			<?php if($period == 'last month'){ echo 'selected';}?>>
-               	 	<?php _e ('last month','banned-ips') ?>
-                </option>
-		<option value="last year"
-			<?php if($period == 'last year'){ echo 'selected';}?>>
-                	<?php _e ('last year','banned-ips') ?>
-                </option>
-		<option value="all" <?php if($period == 'all'){ echo 'selected';}?>>
-                	<?php _e ('all','banned-ips') ?>
-                </option>
-	</select>
-</p>
+        	<select class="widefat"
+        		name="<?php echo $this->get_field_name('period'); ?>"
+        		id="<?php echo $this->get_field_id('period'); ?>"
+        		value="<?php echo $period; ?>">
+        		<option value="last hour"
+        			<?php if($period == 'last hour'){ echo 'selected';}?>>
+                        	<?php _e ('last hour','banned-ips') ?>
+                        </option>
+        		<option value="last 24 hours"
+        			<?php if($period == 'last 24 hours'){ echo 'selected';}?>>
+                        	<?php _e ('last 24 hours','banned-ips') ?>
+                        </option>
+        		<option value="last week"
+        			<?php if($period == 'last week'){ echo 'selected';}?>>
+                        	<?php _e ('last week','banned-ips') ?>
+                        </option>
+        		<option value="last month"
+        			<?php if($period == 'last month'){ echo 'selected';}?>>
+                       	 	<?php _e ('last month','banned-ips') ?>
+                        </option>
+        		<option value="last year"
+        			<?php if($period == 'last year'){ echo 'selected';}?>>
+                        	<?php _e ('last year','banned-ips') ?>
+                        </option>
+        		<option value="all" <?php if($period == 'all'){ echo 'selected';}?>>
+                        	<?php _e ('all','banned-ips') ?>
+                        </option>
+        	</select>
+        </p>
 
-<!-- 
+        <!-- 
         <p>
             <label for="<?php echo esc_attr( $this->get_field_id( 'Image' ) ); ?>"><?php echo esc_html__( 'Image:', 'banned_ips' ); ?></label>
            <textarea class="widefat" id="<?php echo esc_attr( $this->get_field_id( 'image' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'image' ) ); ?>" type="text" cols="30" rows="10"><?php echo esc_attr( $imgsrc ); ?></textarea>

@@ -60,17 +60,17 @@ Shortcode [bannedips] and Widget for showing the current blocked IPs by fail2ban
 
 == Options/Attributes ==
 
-    db	                 Fail2Ban DB                  text                default: autodetect
-    lang                 Language                     boolean, True=de    default: False
+    db	                 Fail2Ban DB                  default: "" (autodetect)
+    lang                 Language: "de"               default: 0 
     
-    ab_links	         show links to abuseipdb.com  boolean             default: False
-    ab_stats             show AbuseIPDB stats         boolean             default: False
-    ab_account_id        AbuseIPDB Number             text                default: ""
+    ab_links	         show links to abuseipdb.com  default: 0
+    ab_stats             show AbuseIPDB stats         default: 0
+    ab_account_id        AbuseIPDB Number             default: ""
     
-    bl_links	         show links to blocklist.de   boolean             default: False
-    bl_stats             show BlockList stats         boolean             default: False
-    bl_account_serverid  Blocklist ServerID           text                default: ""
-    bl_account_apikey    Blocklist APIKey             text                default: ""
+    bl_links	         show links to blocklist.de   default: 0
+    bl_stats             show BlockList stats         default: 0
+    bl_account_serverid  Blocklist ServerID           default: ""
+    bl_account_apikey    Blocklist APIKey             default: ""
 
     You may change the defaults in the Banned IP's configuration interface
     or, for standalone use, inside the banned.php file
@@ -85,8 +85,8 @@ Shortcode [bannedips] and Widget for showing the current blocked IPs by fail2ban
         Attributes given overwrite defaults.
 
     Standalone:
-        The files 'banned.php','abuseipdb.php' and 'blocklist.php' maybe used 'as is' on your site without WordPress.
-        For configuration see '$my*'-vars inside banned.php.
+        The files 'banned.php','SqliteDB', 'abuseipdb_stats.php' and 'blocklist_stats.php' maybe 
+        used 'as is' on your site without WordPress. For configuration see '$my*'-vars inside banned.php.
 
 
 == Tested on ==
@@ -118,7 +118,7 @@ Shortcode [bannedips] and Widget for showing the current blocked IPs by fail2ban
                 
    TODO:        Use more OOP, Standalone Testing
    
-   NEW:         now based on https://github.com/DevinVinson/WordPress-Plugin-Boilerplate (not all done)  
+   NEW:         now based on https://github.com/DevinVinawson/WordPress-Plugin-Boilerplate (not all done)  
 
 = 0.1.5 =
 	

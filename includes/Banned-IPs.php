@@ -401,12 +401,7 @@ class Banned_IPs {
 	// Everyminute
 	public function banned_ips_everyminute_cronjob()
 	{
-	    //global $Bips;
-	    // include_once ( $Bips->PATH_ETC . "/cron/everyminute/f2b_stats.php");
-	    //include_once ( $Bips->PATH_ETC . "/cron/everyminute/f2b_graph.php");
-	    // TODO automaticly read folder
-	    //bannedips_cron_f2b_stats2db();
-	    //bannedips_cron_f2b_graph();
+
 	    $this->f2b_stats->banned_ips_cron_f2b_stats2db();
 	    $this->f2b_graph->banned_ips_cron_f2b_graph();
 	    // test
@@ -421,11 +416,7 @@ class Banned_IPs {
 	// Tenminutes
 	public function banned_ips_tenminutes_cronjob()
 	{
-	    //global $Bips;
-	    //include_once ( $Bips->PATH_ETC . "/cron/tenminutes/ab_stats.php");
-	    //include_once ( $Bips->PATH_ETC . "/cron/tenminutes/bl_stats.php");
-	    
-	    // TODO automaticly read folder
+
 	    $this->ab_stats->banned_ips_cron_ab_stats2db();
 	    $this->bl_stats->banned_ips_cron_bl_stats2db();
 	    //bannedips_cron_ab_stats2db();
@@ -458,7 +449,9 @@ class Banned_IPs {
 	    //mail ( $recepients, $subject, $message );
 	}
 	
-	
+	/**
+	 * Testing
+	 */
 	// testing/learnig...
 	public function tools_get_site_url()
 	{

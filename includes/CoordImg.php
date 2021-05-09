@@ -445,9 +445,10 @@ class CoordImg
 
     private function _plot_Graph()
     {
+        // TODO int or Date-Time
         if (is_int($this->iXmax)) {
-            // TODO
-        } elseif (True) { // TODO Date-Time
+        
+        } elseif (True) { 
             
             if($this->iDataCount == 0 ){
                 $this->iDataCount = 1;

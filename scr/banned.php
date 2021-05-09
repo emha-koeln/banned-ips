@@ -16,47 +16,85 @@
 include_once 'SqliteDB.php';
 
 // $my*, defaults are not used if part of banned-ips plugin
-$myDB = ""; // set fail2ban DB, leave empty for auto detection
-$myLANG = ""; // set to "de" for german output
-$myAB_LINKS = False; // show abuseipdb link
-$myBL_LINKS = False; // show blocklist link
-$myShowTargetURL = "";
+$myDB                   = "";   // set fail2ban DB, leave empty for auto detection
+$myLANG                 = "";       // set to "de" for german output
+
+$myAB_LINKS             = 1;    // show abuseipdb link      
+$myBL_LINKS             = 1;    // show blocklist link
+$myShowTargetURL        = "";
+
+//Accounts
+$myAB_STATS             = 0;    //show AbuseIPDB stats      default: 0
+$myAB_ACCOUNT_ID        = "";   //AbuseIPDB Number          default: ""
+    
+
+$myBL_STATS             = 0;    //show BlockList stats      default: 0
+$myBL_ACCOUNT_SERVERID  = "";   //Blocklist ServerID        default: ""
+$myBL_ACCOUNT_APIKEY    = "";   //Blocklist APIKey          awdefault: ""
+
+//$options = array();
+/*
+echo 'attrs:<br />';
+var_dump($attrs);
+echo 'options:<br />'; 
+var_dump($options);
+*/
+//echo '<br>';
 
 // check if we are part of wp-plugin banned-ips
 if (is_null($options)) { // not part of banned-ips plugin, use default $my*
+    //echo 'New options array, no WP';
+    
     $options = array( // used in standalone mode?
-        'db' => $myDB,
-        'lang' => $myLANG,
-        'ab_links' => $myAB_LINKS,
-        'bl_links' => $myBL_LINKS
+        'db'                    => $myDB,
+        'lang'                  => $myLANG,
+        'ab_links'              => $myAB_LINKS,
+        'bl_links'              => $myBL_LINKS,
+        'ab_stats'              => $myAB_STATS,
+        'ab_account_id'         => $myAB_ACCOUNT_ID,
+        'bl_stats'              => $myBL_STATS,
+        'bl_account_serverid'   => $myBL_ACCOUNT_SERVERID,
+        'bl_account_apikey'     => $myBL_ACCOUNT_APIKEY     
     );
+    
+   // $options = [0,1];
 } else { // we are part of banned-ips plugin; set $my*
          // db
-    if (isset($attrs['db'])) {
-        $myDB = $attrs['db'];
-    } elseif (isset($options['db'])) {
+    //echo 'Use attrs or options, WP';     
+    
+    //if (isset($attrs['db'])) {
+    //    $myDB = $attrs['db'];
+    //} elseif (isset($options['db'])) {
         $myDB = $options['db'];
-    }
+    //}
     // Lang
-    if (isset($attrs['lang'])) {
-        $myLANG = $attrs['lang'];
-    } elseif (isset($options['lang'])) {
-        // $myLANG = $options['lang'];
-        $myLANG = "de";
-    }
+    //if (isset($attrs['lang'])) {
+    //    $myLANG = $attrs['lang'];
+    //} elseif (isset($options['lang'])) {
+        $myLANG = $options['lang'];
+    //    $myLANG = "de";
+    //}
     // Link_AB
-    if (isset($attrs['ab_links'])) {
-        $myLANG = $attrs['ab_links'];
-    } elseif (isset($options['ab_links'])) {
+    //if (isset($attrs['ab_links'])) {
+    //    $myAB_LINKS = $attrs['ab_links'];
+    //} elseif (isset($options['ab_links'])) {
         $myAB_LINKS = $options['ab_links'];
-    }
+    //}
     // Link_BL
-    if (isset($attrs['bl_links'])) {
-        $myLANG = $attrs['bl_links'];
-    } elseif (isset($options['bl_links'])) {
+    //if (isset($attrs['bl_links'])) {
+    //    $myBL_LINKS = $attrs['bl_links'];
+    //} elseif (isset($options['bl_links'])) {
         $myBL_LINKS = $options['bl_links'];
-    }
+    //}
 }
+/*
+echo '<br>';
+echo 'attrs:<br />';
+var_dump($attrs);
+echo 'options:<br />';
+var_dump($options);
+*/
+
 
 // myDB
 if ($myDB == "") {
@@ -68,19 +106,13 @@ if ($myDB == "") {
         echo "Fail2Ban DB not set!";
     }
 }
-
-// TODO SQLite Fail2Ban DB in standalone
-
-
-//class MyDB extends SQLite3
-//{
-
-//    function __construct($_myDB)
-//    {
-//        $this->open($_myDB);
-//    }
-//}
-
+/*
+echo '<br>DB autodetect<br>';
+echo 'attrs:<br />';
+var_dump($attrs);
+echo 'options:<br />';
+var_dump($options);
+*/
 
 // Open Fail2Ban DB
 $db = new SqliteDB($myDB);
@@ -92,7 +124,8 @@ if (! $db) {
 }
 
 // myLang
-if ($myLANG == "de") {
+if ($myLANG == "de"
+    || $myLANG) {
     $aLang = [
         "Hello" => "Hallo",
         "BadIPS" => "Vorgemerkte IPs:",
@@ -124,6 +157,40 @@ if ($myLANG == "de") {
         "Asc" => "Ascending",
         "Desc" => "Descending"
     ];
+}
+
+
+// Stats from abuseipdb und/or blocklist
+
+if (! isset($options['sys_cron'])
+    && ($options['ab_stats'] 
+        || $options['bl_stats'])){
+    
+    ob_start();
+    echo "<table>";
+    if (isset($options['ab_stats'])
+        && ( $options['ab_stats'] == '1'
+            ||  strtolower( $options['ab_stats']) == 'true' )) {
+                
+                echo "<td>";
+                //include ( $this->main->path . 'scr/' . "abuseipdb_stats.php");
+                include_once "abuseipdb_stats.php";
+                echo "</td>";
+    }
+            
+    if (isset($options['bl_stats'])
+        && ( $options['bl_stats'] == '1'
+            ||  strtolower( $options['bl_stats']) == 'true' )) {
+                
+                echo "<td>";
+                //include ( $this->main->path . 'scr/' . "blocklist_stats.php");
+                include_once  "blocklist_stats.php";
+                echo "</td>";
+    }
+    echo "</table>";
+
+    ob_flush();
+    echo '<br>';
 }
 
 // Count BadIPs
@@ -169,23 +236,10 @@ if (isset($_GET["scby"])) {
     $myScby = "DESC";
 }
 
-// echo ordered by ?
-// TODO: rewrite!
-// echo $aLang ["OrderedBy"] . ": ";
-// if ($_GET ["orderby"] == "IP") {
-// echo $_GET ["orderby"] . " " . $_GET ["scby"] . "<br>";
-// //echo "IP, " . $aLang['xxx']; test
-// } elseif ($_GET ["orderby"] == "Last") {
-// echo $_GET ["orderby"] . " " . $_GET ["scby"] . "<br>";
-//
-// } elseif ($_GET ["orderby"] == "Bans") {
-// echo $_GET ["orderby"] . " " . $_GET ["scby"] . "<br>";
-//
-// }
 
 // echo with or without banned URL
-if (isset ( $_GET ["showTargetSite"] )) {
-    if ($_GET["showTargetSite"] == "Yes") {
+if (isset ( $_GET ["showTargetSite"] ) 
+    && ($_GET["showTargetSite"] == "Yes") ){
         $myShowTargetURL = "Yes";
         echo '<div>';
         echo $aLang["LinkWarning"] . "<br>";
@@ -194,22 +248,22 @@ if (isset ( $_GET ["showTargetSite"] )) {
         echo "<a href=\"?orderby=" . $_GET["orderby"] . "&scby=" . $_GET["scby"] . "&showTargetSite=\">" . $aLang["HideBannedURL"] . "</a>";
         echo '</div>';
     } 
-    else {
-        $myShowTargetURL = "";
-        // echo "<a href=\"" . $myURL . "/banned-ips/?orderby=". $_GET["orderby"] . "&scby=". $_GET["scby"]. "&showTargetSite=Yes\">" . $aLang["ShowBannedURL"]. "</a>";
-        echo '<div>';
-        echo "<a href=\"?orderby=" . $_GET["orderby"] . "&scby=" . $_GET["scby"] . "&showTargetSite=Yes\">" . $aLang["ShowBannedURL"] . "</a>";
-        echo '</div>';
-    }
+else {
+    $myShowTargetURL = "";
+    // echo "<a href=\"" . $myURL . "/banned-ips/?orderby=". $_GET["orderby"] . "&scby=". $_GET["scby"]. "&showTargetSite=Yes\">" . $aLang["ShowBannedURL"]. "</a>";
+    echo '<div>';
+    echo "<a href=\"?orderby=" . $_GET["orderby"] . "&scby=" . $_GET["scby"] . "&showTargetSite=Yes\">" . $aLang["ShowBannedURL"] . "</a>";
+    echo '</div>';
 }
+
 
 // sql statement
 $sql = "SELECT ip, timeofban, bancount, data FROM bips WHERE 1 = 1 AND (timeofban + bantime > " . time() . " OR bantime <= -1) ORDER BY " . $myOrderby . " " . $myScby;
 $ret = $db->query($sql);
 
 // table head
-echo "<table style='font-size:80%'>\n";
-echo "<tr>\n";
+echo "<table style='font-size:80%' >\n";
+echo "<tra lign='left' >\n";
 
 // Last Seen
 if ($_GET["orderby"] == "Last") {
@@ -247,11 +301,13 @@ if ($_GET["orderby"] == "Bans") {
 }
 
 // abuseipdb
-if ($myAB_LINKS) {
+if ( strtolower($myAB_LINKS) == 'true'
+    || strtolower($myAB_LINKS) == 1) {
     echo "<th style=\"min-width:155px\">abuseipdb.com </th>";
 }
 // blocklist
-if ($myBL_LINKS) {
+if ( strtolower($myBL_LINKS) == 'true'
+    || strtolower($myBL_LINKS) == 1) {
     echo "<th style=\"min-width:150px\">blocklist.de </th>";
 }
 echo "</tr>\n";
@@ -259,7 +315,7 @@ echo "</tr>\n";
 // table rows
 while ($row = $ret->fetchArray(SQLITE3_ASSOC)) {
     
-    echo "<tr>\n";
+    echo "<tr align='middle'>\n";
     
     // Last Seen
     echo "<td>\n";
@@ -281,7 +337,8 @@ while ($row = $ret->fetchArray(SQLITE3_ASSOC)) {
     echo "</td>";
     
     // if ($options ['link_ab']) {
-    if ($myAB_LINKS) {
+    if ( strtolower($myAB_LINKS) == 'true'
+        || strtolower($myAB_LINKS) == 1) {
         // abuseipdb
         if ($_GET["showTargetSite"] == "Yes") {
             echo "<td>\n";
@@ -294,7 +351,8 @@ while ($row = $ret->fetchArray(SQLITE3_ASSOC)) {
         }
     }
     // if ($options ['link_bl']) {
-    if ($myBL_LINKS) {
+    if ( strtolower($myBL_LINKS) == 'true'
+        || strtolower($myBL_LINKS) == 1){
         // blocklist
         if ($_GET["showTargetSite"] == "Yes") {
             echo "<td>";

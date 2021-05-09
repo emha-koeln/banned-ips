@@ -69,19 +69,32 @@ class Banned_IPs_Shortcode
     public function shortcode_output($atts, $content = '', $tag)
     {
         
-        // get the global class
-        //global $Bips;
+        $options = get_option( $this->main->get_plugin_name() );
         
         // build default arguments
-        // $arguments = shortcode_atts(array(
-        // 'location_id' => '',
-        // 'number_of_locations' => -1)
-        // ,$atts,$tag);
+        $arguments = shortcode_atts(array(
+            'db' => $options['db'],
+            'lang' => $options['lang'],
+            'ab_links'	 => $options['ab_links'], //        show links to abuseipdb.com  boolean             default: False
+            'ab_stats'   => $options['ab_stats'], //          show AbuseIPDB stats         boolean             default: False
+            'ab_account_id' => $options['ab_account_id'], //        AbuseIPDB Number             text                default: ""
+            
+            'bl_links'	 => $options['bl_links'], //         show links to blocklist.de   boolean             default: False
+            'bl_stats'   => $options['bl_stats'], //           show BlockList stats         boolean             default: False
+            'bl_account_serverid' => $options['bl_account_serverid'], //  Blocklist ServerID           text                default: ""
+            'bl_account_apikey'   => $options['bl_account_apikey'] //  Blocklist APIKey             text                default: ""
+        )
+         ,$atts,$tag);
         
-        // uses the main output function of the location class
-        // $html = $wp_simple_locations->get_locations_output($arguments);
+        //var_dump($atts);
+        //var_dump($content);
+        //var_dump($tag);
         
-        $options = get_option( $this->main->get_plugin_name() );
+        //var_dump($arguments);
+        //var_dump($options);
+        
+        $options = array_merge( $options, $arguments);
+        //var_dump($options);
         
         $file = $this->main->path . 'scr/' . "banned.php";
         
@@ -124,23 +137,29 @@ class Banned_IPs_Shortcode
             echo "</table>";
             ob_flush();
             
-            // Use scripts
-        } else {
+        // Use scripts
+        /*} else {
             ob_start();
             echo "<table>";
-            if (isset($options['ab_stats'])) {
+            if (isset($options['ab_stats'])
+                && ( $options['ab_stats'] == '1'
+                    ||  $options['ab_stats'] == 'True'
+                    ||  $options['ab_stats'] == 'TRUE')) {
                 echo "<td>";
-                include ( $this->main->path . 'scr/' . "abuseipdb_stats.php");
+                include_once ( $this->main->path . 'scr/' . "abuseipdb_stats.php");
                 echo "</td>";
             }
             
-            if (isset($options['bl_stats'])) {
+            if (isset($options['bl_stats']) 
+                && ( $options['bl_stats'] == '1' 
+                    ||  $options['bl_stats'] == 'True'
+                    ||  $options['bl_stats'] == 'TRUE')) {
                 echo "<td>";
-                include ( $this->main->path . 'scr/' . "blocklist_stats.php");
+                include_once ( $this->main->path . 'scr/' . "blocklist_stats.php");
                 echo "</td>";
             }
             echo "</table>";
-            ob_flush();
+            ob_flush();*/
         }
         
         // TODO: Use Theme Colors and Widths
@@ -160,24 +179,20 @@ class Banned_IPs_Shortcode
         
         
         // TODO: Load as Frontpage
-        if ($this->main->tools_get_current_slug() == '') {
+        //if ($this->main->tools_get_current_slug() == '') {
 
-            function callback($buffer)
-            {
+        //    function set_frontpage($buffer)
+        //    {
                 //global $Bips;
                 //get_the_ID()
-                return (str_replace("?orderby", "?page_id=" . get_the_ID() . "&?orderby", $buffer));
+        //        return (str_replace("?orderby", "?page_id=" . get_the_ID() . "&?orderby", $buffer));
                 
-                //return (str_replace("?orderby", "?page_id=" . $Bips->tools_get_current_id() . "&?orderby", $buffer));
-                
-                //return (str_replace("?orderby", "?page_id=" . get_the_ID() . "?orderby", $buffer));
-                // return (str_replace("orderby", "uorderby", $buffer));
-            }
+        //    }
             
-            ob_start('callback');
-        } else {
+        //    ob_start('set_frontpage');
+        //} else {
             ob_start();
-        }
+        //}
         
         include ($file);
         ob_end_flush();
