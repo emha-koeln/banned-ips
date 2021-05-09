@@ -51,8 +51,9 @@ class Banned_IPs_Admin {
 	 * Initialize the class and set its properties.
 	 *
 	 * @since    0.3.0
-	 * @param    string    $plugin_name       The name of this plugin.
-	 * @param    string    $version    The version of this plugin.
+	 * @param string $plugin_name
+	 * @param string $version
+	 * @param $object $plugin_main
 	 */
 	public function __construct( $plugin_name, $version, $plugin_main ) {
 
@@ -84,7 +85,13 @@ class Banned_IPs_Admin {
 	     * If you want to list plugin options page under a custom post type, then change 'plugin.php' to e.g. 'edit.php?post_type=your_custom_post_type'
 	     */
 	    //add_submenu_page( 'plugins.php', 'Plugin settings page title', 'Admin area menu slug', 'manage_options', $this->plugin_name, array($this, 'display_plugin_setup_page' ) );
-	    add_options_page('Banned IPs', 'Banned IPs', 'administrator', $this->plugin_name, array($this, 'display_plugin_setup_page' ) );
+	    add_options_page(
+	        'Banned IPs', 
+	        'Banned IPs', 
+	        'administrator', 
+	        $this->plugin_name, 
+	        array($this, 'display_plugin_setup_page' ) 
+	    );
 	}
 	
 	/**

@@ -1,4 +1,4 @@
-=== Banned IPsIPs ===
+=== Banned IPs ===
 Tags: fail2ban, php, WordPress, Linux, FreeBSD, blocklist, abuseipdb
 Contributors: emha.koeln
 Stable tag: 1.0

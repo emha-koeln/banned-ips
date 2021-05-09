@@ -263,7 +263,7 @@ $ret = $db->query($sql);
 
 // table head
 echo "<table style='font-size:80%' >\n";
-echo "<tra lign='left' >\n";
+echo "<tr lign='left' >\n";
 
 // Last Seen
 if ($_GET["orderby"] == "Last") {
